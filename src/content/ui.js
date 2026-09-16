@@ -292,21 +292,28 @@ CCD.ui = {
         num(stats.wld.win, "ccd-t-win"),
         num(stats.wld.loss, "ccd-t-loss"),
         String(Number(stats.wld.draw))
-      ]),
-      chrome.i18n.getMessage("tooltipWinRate", num(Math.round(stats.winRate), "ccd-t-rate", "%"))
+      ])
     ]
 
     lines.push(
-      esc(
-        stats.accuracy === null
-          ? chrome.i18n.getMessage("tooltipNoAccuracy")
-          : chrome.i18n.getMessage("tooltipAccuracy", [
-              String(Math.round(stats.accuracy)),
-              String(stats.accGames),
-              String(stats.total)
-            ])
-      )
+      stats.accuracy === null
+        ? esc(chrome.i18n.getMessage("tooltipNoAccuracy"))
+        : chrome.i18n.getMessage("tooltipAccuracy", [
+            num(Math.round(stats.accuracy), "ccd-t-rate", "%"),
+            String(Number(stats.accGames)),
+            String(Number(stats.total))
+          ])
     )
+
+    if (stats.opening) {
+      // название приходит из API, поэтому экранируем его, а не строку целиком
+      lines.push(
+        chrome.i18n.getMessage(
+          "tooltipOpening",
+          '<span class="ccd-t-opening">' + esc(stats.opening) + "</span>"
+        )
+      )
+    }
 
     if (stats.device) {
       lines.push(esc(chrome.i18n.getMessage(stats.device === "phone" ? "devicePhone" : "devicePc")))

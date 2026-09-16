@@ -79,6 +79,7 @@ CCD.main = {
             "винрейт:", Math.round(stats.winRate) + "%",
             "точность:", stats.accuracy ? Math.round(stats.accuracy) + "% по " + stats.accGames : "нет",
             "бейджи:", stats.badges.join(",") || "нет",
+            "дебют:", stats.opening || "нет",
             "источник:", payload.source
           )
 

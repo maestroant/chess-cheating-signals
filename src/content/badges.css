@@ -129,6 +129,10 @@
   color: var(--ccd-loss);
 }
 
+.ccd-tooltip .ccd-t-opening {
+  color: var(--ccd-new);
+}
+
 .ccd-tooltip .ccd-t-rate {
   color: var(--ccd-rate);
 }

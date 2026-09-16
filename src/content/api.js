@@ -58,13 +58,35 @@ CCD.api = {
     return { games, profile, source: "internal" }
   },
 
+  /** Разовый лог структуры ответа: показывает, какие блоки реально приходят */
+  _logShape(raw) {
+    if (this._shapeLogged) return
+    this._shapeLogged = true
+
+    const first = raw?.hydratedGames?.[0]
+    if (!first) {
+      console.warn("[CCD] ответ без партий:", raw)
+      return
+    }
+
+    console.log(
+      "[CCD] блоки ответа:", Object.keys(first).join(", "),
+      "| дебют:", first.openingMetadata?.ecoFamilyName ?? "НЕТ",
+      "| точность:", first.analysisMetadata?.whitePlayerMetadata?.accuracy ?? "НЕТ",
+      "| профиль:", first.playerMetadata?.whitePlayerMetadata?.username ?? "НЕТ",
+      "| playerId в запросе:", this._needsPlayerId === true ? "да" : "нет"
+    )
+  },
+
   async _hydrate(username, page) {
     // Сначала пробуем без playerId; если сервер его требует, достаём uuid и повторяем
     if (this._needsPlayerId !== true) {
       const res = await this._post({ username, page })
       if (res.ok) {
         this._needsPlayerId = false
-        return res.json()
+        const raw = await res.json()
+        this._logShape(raw)
+        return raw
       }
       if (this._needsPlayerId === false) throw new Error("HTTP " + res.status)
       this._needsPlayerId = true
@@ -73,7 +95,10 @@ CCD.api = {
     const playerId = await this._resolveUuid(username)
     const res = await this._post({ username, playerId, page })
     if (!res.ok) throw new Error("HTTP " + res.status)
-    return res.json()
+
+    const raw = await res.json()
+    this._logShape(raw)
+    return raw
   },
 
   _post(body) {
@@ -152,6 +177,7 @@ CCD.api = {
       ratingDiff: player.ratingDiff ?? null,
       client: player.client ?? null,
       moveTimes: chess.moveTimestamps ?? null,
+      opening: item.openingMetadata?.ecoFamilyName ?? null,
       profile: meta
         ? {
             username: meta.username,
@@ -221,6 +247,26 @@ CCD.api = {
     timevsinsufficient: "draw"
   },
 
+  // Название семейства дебюта заканчивается одним из этих слов
+  ECO_TAIL: ["opening", "defense", "defence", "system", "attack", "gambit", "game"],
+
+  /**
+   * Публичный API отдаёт не название, а ссылку:
+   *   .../openings/Caro-Kann-Defense-Advance-Variation...4.Nf3-e6
+   * Вытаскиваем из неё название семейства — до слова вроде Defense включительно.
+   */
+  openingFromEcoUrl(url) {
+    if (!url) return null
+
+    const slug = String(url).split("/").pop().split("...")[0]
+    if (!slug) return null
+
+    const words = slug.split("-").filter(Boolean)
+    const end = words.findIndex((w) => this.ECO_TAIL.includes(w.toLowerCase()))
+
+    return (end === -1 ? words.slice(0, 3) : words.slice(0, end + 1)).join(" ") || null
+  },
+
   _normalizePublic(game, username) {
     const lower = username.toLowerCase()
     const side =
@@ -241,6 +287,7 @@ CCD.api = {
       ratingDiff: null,
       client: null,
       moveTimes: null,
+      opening: this.openingFromEcoUrl(game.eco),
       profile: null
     }
   },

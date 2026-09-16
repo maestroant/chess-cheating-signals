@@ -19,16 +19,8 @@
       }
     }
   },
-  "tooltipWinRate": {
-    "message": "Win rate: $RATE$",
-    "placeholders": {
-      "rate": {
-        "content": "$1"
-      }
-    }
-  },
   "tooltipAccuracy": {
-    "message": "Average accuracy: $ACC$% (from $ANALYZED$ of $TOTAL$ games)",
+    "message": "Average accuracy: $ACC$ (from $ANALYZED$ of $TOTAL$ games)",
     "placeholders": {
       "acc": {
         "content": "$1"
@@ -147,5 +139,13 @@
   },
   "labelIndicatorSelf": {
     "message": "On your card"
+  },
+  "tooltipOpening": {
+    "message": "Last opening: $NAME$",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      }
+    }
   }
 }

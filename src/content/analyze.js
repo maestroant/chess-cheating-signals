@@ -5,7 +5,7 @@ CCD.analyze = {
   /**
    * @param {object} payload результат CCD.api.playerGames
    * @param {object} s настройки
-   * @returns {{wld, winRate, accuracy, badges, source, device}}
+   * @returns {{wld, winRate, accuracy, badges, source, device, opening}}
    */
   run(payload, s) {
     const since = Date.now() - s.windowHours * 3600 * 1000
@@ -37,6 +37,7 @@ CCD.analyze = {
       accGames,
       source: payload.source,
       device: this.device(games),
+      opening: this.latest(games, "opening"),
       badges: this.badges({ total, winRate, accuracy, accGames, profile: payload.profile }, s)
     }
   },
@@ -66,9 +67,19 @@ CCD.analyze = {
     return list
   },
 
+  /** Значение поля из самой свежей партии, где оно заполнено */
+  latest(games, key) {
+    let found = null
+    for (const game of games) {
+      if (game[key] == null) continue
+      if (!found || game.endedAt > found.endedAt) found = game
+    }
+    return found ? found[key] : null
+  },
+
   /** Устройство из поля client последней партии */
   device(games) {
-    const client = games.find((g) => g.client)?.client
+    const client = this.latest(games, "client")
     if (!client) return null
     return /iphone|ipad|android|mobile|ios/i.test(client) ? "phone" : "pc"
   }

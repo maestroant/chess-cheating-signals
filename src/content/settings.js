@@ -11,7 +11,7 @@ CCD.DEFAULTS = {
   newAccountMonths: 3,    // возраст аккаунта для NEW
   timeClasses: ["BULLET", "BLITZ", "RAPID"],
   showBadges: true,
-  showOpponentIndicator: true,
+  showOpponentIndicator: false,  // по умолчанию у соперника только бейджи
   showOwnIndicator: true
 }
 

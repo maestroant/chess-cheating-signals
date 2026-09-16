@@ -8,7 +8,7 @@
   /* Бейджи: фон и цвет текста. Значения из макета. */
   --ccd-lucky: #fa412d;
   --ccd-lucky-text: #000000;
-  --ccd-new: #ffa459;
+  --ccd-new: #ffe159;
   --ccd-new-text: #000000;
   --ccd-cold: #93ea5d;
   --ccd-cold-text: #000000;
@@ -17,14 +17,15 @@
 
   /* Полоса индикатора. Сейчас отличается от цвета цифр — при желании
      достаточно указать здесь var(--ccd-win) / var(--ccd-loss). */
-  --ccd-bar-win: #8dd461;
+  --ccd-bar-win: #6ab64c;
   --ccd-bar-loss: #e45748;
 
   /* Цифры: счёт у полосы и в подсказке. Палитра chess.com. */
-  --ccd-win: #8dd461;
+  --ccd-win: #6ab64c;
   --ccd-loss: #e45748;
   --ccd-sep: #e0e0df;
-  --ccd-rate: #26c2a3;
+  /* процент средней точности — бирюзовый, как был у процента побед */
+  --ccd-rate: #57d5ff;
 
   /* Подсказка: сначала токены темы chess.com, затем наши значения. */
   --ccd-tip-bg: var(--color-bg-opaque, #302e2b);

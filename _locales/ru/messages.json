@@ -19,16 +19,8 @@
       }
     }
   },
-  "tooltipWinRate": {
-    "message": "Процент побед: $RATE$",
-    "placeholders": {
-      "rate": {
-        "content": "$1"
-      }
-    }
-  },
   "tooltipAccuracy": {
-    "message": "Средняя точность: $ACC$% (по $ANALYZED$ из $TOTAL$ партий)",
+    "message": "Средняя точность: $ACC$ (по $ANALYZED$ из $TOTAL$ партий)",
     "placeholders": {
       "acc": {
         "content": "$1"
@@ -147,5 +139,13 @@
   },
   "labelIndicatorSelf": {
     "message": "В своей карточке"
+  },
+  "tooltipOpening": {
+    "message": "Последний дебют: $NAME$",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      }
+    }
   }
 }

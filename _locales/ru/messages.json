@@ -1,51 +1,148 @@
 {
-  "extName": { "message": "Chess Opponent Insights" },
+  "extName": {
+    "message": "Chess Opponent Insights"
+  },
   "extDescription": {
     "message": "Отмечает подозрительных соперников на chess.com бейджами по статистике за последние часы."
   },
-
   "tooltipRecord": {
-    "message": "Счёт: $WINS$ побед / $LOSSES$ поражений / $DRAWS$ ничьих",
+    "message": "Побед: $WINS$ · Поражений: $LOSSES$ · Ничьих: $DRAWS$",
     "placeholders": {
-      "wins": { "content": "$1" },
-      "losses": { "content": "$2" },
-      "draws": { "content": "$3" }
+      "wins": {
+        "content": "$1"
+      },
+      "losses": {
+        "content": "$2"
+      },
+      "draws": {
+        "content": "$3"
+      }
     }
   },
   "tooltipWinRate": {
     "message": "Процент побед: $RATE$%",
-    "placeholders": { "rate": { "content": "$1" } }
+    "placeholders": {
+      "rate": {
+        "content": "$1"
+      }
+    }
   },
   "tooltipAccuracy": {
     "message": "Средняя точность: $ACC$% (по $ANALYZED$ из $TOTAL$ партий)",
     "placeholders": {
-      "acc": { "content": "$1" },
-      "analyzed": { "content": "$2" },
-      "total": { "content": "$3" }
+      "acc": {
+        "content": "$1"
+      },
+      "analyzed": {
+        "content": "$2"
+      },
+      "total": {
+        "content": "$3"
+      }
     }
   },
-  "tooltipNoAccuracy": { "message": "Нет данных о точности: она есть только у разобранных партий" },
-  "devicePhone": { "message": "Последняя партия — с телефона" },
-  "devicePc": { "message": "Последняя партия — с компьютера" },
-  "sourceFallback": { "message": "Данные из публичного API (ограниченные)" },
-
-  "popupTitle": { "message": "Бейджи соперника" },
-  "sectionWindow": { "message": "Окно анализа" },
-  "labelWindowHours": { "message": "Часов" },
-  "labelTimeClasses": { "message": "Тайм-контроли" },
-  "classBullet": { "message": "Пуля" },
-  "classBlitz": { "message": "Блиц" },
-  "classRapid": { "message": "Рапид" },
-  "sectionBadges": { "message": "Бейджи" },
-  "labelLucky": { "message": "LUCKY — побед больше" },
-  "labelCold": { "message": "COLD — побед меньше" },
-  "labelHigh": { "message": "HIGH — точность выше" },
-  "labelNew": { "message": "NEW — аккаунт моложе" },
-  "labelMinGames": { "message": "Минимум партий" },
-  "labelMinAccuracyGames": { "message": "Минимум разобранных партий" },
-  "labelMonths": { "message": "мес." },
-  "sectionOwn": { "message": "Своя карточка" },
-  "labelOwnIndicator": { "message": "Показывать индикатор побед/поражений" },
-  "buttonSave": { "message": "Сохранить" },
-  "statusSaved": { "message": "Сохранено" }
+  "tooltipNoAccuracy": {
+    "message": "Нет данных о точности: она есть только у разобранных партий"
+  },
+  "devicePhone": {
+    "message": "Последняя партия — с телефона"
+  },
+  "devicePc": {
+    "message": "Последняя партия — с компьютера"
+  },
+  "sourceFallback": {
+    "message": "Данные из публичного API (ограниченные)"
+  },
+  "popupTitle": {
+    "message": "Бейджи соперника"
+  },
+  "sectionWindow": {
+    "message": "Окно анализа"
+  },
+  "labelWindowHours": {
+    "message": "Часов"
+  },
+  "labelTimeClasses": {
+    "message": "Тайм-контроли"
+  },
+  "classBullet": {
+    "message": "Пуля"
+  },
+  "classBlitz": {
+    "message": "Блиц"
+  },
+  "classRapid": {
+    "message": "Рапид"
+  },
+  "sectionBadges": {
+    "message": "Бейджи"
+  },
+  "labelLucky": {
+    "message": "LUCKY — побед больше"
+  },
+  "labelCold": {
+    "message": "COLD — побед меньше"
+  },
+  "labelHigh": {
+    "message": "HIGH — точность выше"
+  },
+  "labelNew": {
+    "message": "NEW — аккаунт моложе"
+  },
+  "labelMinGames": {
+    "message": "Минимум партий"
+  },
+  "labelMinAccuracyGames": {
+    "message": "Минимум разобранных партий"
+  },
+  "labelMonths": {
+    "message": "мес."
+  },
+  "sectionOwn": {
+    "message": "Своя карточка"
+  },
+  "labelOwnIndicator": {
+    "message": "Показывать индикатор побед/поражений"
+  },
+  "buttonSave": {
+    "message": "Сохранить"
+  },
+  "statusSaved": {
+    "message": "Сохранено"
+  },
+  "buttonReset": {
+    "message": "По умолчанию"
+  },
+  "badgeLucky": {
+    "message": "LUCKY — Счастливчик: побед больше $N$%",
+    "placeholders": {
+      "n": {
+        "content": "$1"
+      }
+    }
+  },
+  "badgeNew": {
+    "message": "NEW — Новичок: аккаунт моложе $N$ мес.",
+    "placeholders": {
+      "n": {
+        "content": "$1"
+      }
+    }
+  },
+  "badgeHigh": {
+    "message": "HIGH — Высокая точность: в среднем выше $N$%",
+    "placeholders": {
+      "n": {
+        "content": "$1"
+      }
+    }
+  },
+  "badgeCold": {
+    "message": "COLD — Не везёт: побед меньше $N$%",
+    "placeholders": {
+      "n": {
+        "content": "$1"
+      }
+    }
+  }
 }

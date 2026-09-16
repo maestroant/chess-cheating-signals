@@ -24,6 +24,7 @@
 }
 
 .ccd-score {
+  font-family: "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   font-size: 12px;
   font-weight: 700;
   line-height: 1;
@@ -41,4 +42,25 @@
   margin: 0 2px;
   color: #ffffff;
   opacity: 0.55;
+}
+
+.ccd-tooltip {
+  position: fixed;
+  z-index: 2147483647;
+  max-width: 320px;
+  padding: 8px 10px;
+  border-radius: 5px;
+  /* токены темы chess.com; запасные значения — цвета тёмной темы */
+  background: var(--color-bg-opaque, #302e2b);
+  color: var(--color-text-subtle, #c3c2c1);
+  font-family: "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  line-height: 1.45;
+  white-space: pre-line;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+  pointer-events: none;
+}
+
+.ccd-tooltip[hidden] {
+  display: none;
 }

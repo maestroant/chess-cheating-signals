@@ -99,6 +99,14 @@ CCD.api = {
     const stored = await chrome.storage.local.get(key)
     if (stored[key]) return stored[key]
 
+    // на странице профиля uuid лежит прямо в data-атрибутах — качать HTML не нужно
+    const onPage = document.querySelector("[data-username][data-user-uuid]")
+    if (onPage?.getAttribute("data-username")?.toLowerCase() === username.toLowerCase()) {
+      const uuid = onPage.getAttribute("data-user-uuid")
+      await chrome.storage.local.set({ [key]: uuid })
+      return uuid
+    }
+
     const url = "https://www.chess.com/member/" + encodeURIComponent(username.toLowerCase())
     const html = await (await fetch(url, { credentials: "include" })).text()
     const match = html.match(

@@ -4,8 +4,13 @@
   "description": "__MSG_extDescription__",
   "version": "0.1.0",
   "default_locale": "en",
-  "permissions": ["storage"],
-  "host_permissions": ["https://*.chess.com/*", "https://api.chess.com/*"],
+  "permissions": [
+    "storage"
+  ],
+  "host_permissions": [
+    "https://*.chess.com/*",
+    "https://api.chess.com/*"
+  ],
   "action": {
     "default_title": "__MSG_extName__",
     "default_popup": "src/popup/popup.html"
@@ -13,12 +18,11 @@
   "content_scripts": [
     {
       "matches": [
-        "https://*.chess.com/play/online*",
-        "https://*.chess.com/play/arena/*",
-        "https://*.chess.com/game/live/*",
-        "https://*.chess.com/game/daily/*",
+        "https://*.chess.com/play/*",
+        "https://*.chess.com/game/*",
         "https://*.chess.com/live/game/*",
-        "https://*.chess.com/analysis/game/live/*"
+        "https://*.chess.com/analysis/*",
+        "https://*.chess.com/member/*"
       ],
       "js": [
         "src/content/settings.js",
@@ -27,14 +31,21 @@
         "src/content/ui.js",
         "src/content/index.js"
       ],
-      "css": ["src/content/badges.css"],
+      "css": [
+        "src/content/badges.css"
+      ],
       "run_at": "document_idle"
     }
   ],
   "web_accessible_resources": [
     {
-      "resources": ["svg/*.svg"],
-      "matches": ["https://*.chess.com/*"]
+      "resources": [
+        "svg/*.svg",
+        "fonts/*.woff2"
+      ],
+      "matches": [
+        "https://*.chess.com/*"
+      ]
     }
   ]
 }

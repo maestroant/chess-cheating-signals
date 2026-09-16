@@ -20,7 +20,7 @@
     }
   },
   "tooltipWinRate": {
-    "message": "Win rate: $RATE$%",
+    "message": "Win rate: $RATE$",
     "placeholders": {
       "rate": {
         "content": "$1"
@@ -49,9 +49,6 @@
   },
   "devicePc": {
     "message": "Last played on a PC"
-  },
-  "sourceFallback": {
-    "message": "Public API data (limited)"
   },
   "popupTitle": {
     "message": "Opponent badges"

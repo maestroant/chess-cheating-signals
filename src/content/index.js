@@ -54,6 +54,8 @@ CCD.main = {
         return
       }
 
+      console.log("[CCD] цели:", targets.map((t) => t.role + "=" + t.username).join(", "))
+
       for (const target of targets) {
         if (target.kind === "indicator" && !s.showOwnIndicator) {
           CCD.ui.clear(target.role)
@@ -65,7 +67,7 @@ CCD.main = {
           const payload = await CCD.api.playerGames(target.username, since)
           const stats = CCD.analyze.run(payload, s)
 
-          console.debug(
+          console.log(
             "[CCD]", target.username,
             "партий:", stats.total,
             "W/L/D:", stats.wld.win + "/" + stats.wld.loss + "/" + stats.wld.draw,

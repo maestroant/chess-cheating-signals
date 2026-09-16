@@ -20,7 +20,7 @@
     }
   },
   "tooltipWinRate": {
-    "message": "Процент побед: $RATE$%",
+    "message": "Процент побед: $RATE$",
     "placeholders": {
       "rate": {
         "content": "$1"
@@ -49,9 +49,6 @@
   },
   "devicePc": {
     "message": "Последняя партия — с компьютера"
-  },
-  "sourceFallback": {
-    "message": "Данные из публичного API (ограниченные)"
   },
   "popupTitle": {
     "message": "Бейджи соперника"

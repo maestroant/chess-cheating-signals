@@ -40,11 +40,20 @@ CCD.ui = {
   },
 
   async svg(name) {
-    if (!this._svgCache.has(name)) {
-      const url = chrome.runtime.getURL("svg/" + name + ".svg")
-      this._svgCache.set(name, fetch(url).then((r) => r.text()))
-    }
-    return this._svgCache.get(name)
+    const cached = this._svgCache.get(name)
+    if (cached) return cached
+
+    const url = chrome.runtime.getURL("svg/" + name + ".svg")
+    const promise = fetch(url).then((r) => {
+      if (!r.ok) throw new Error("svg " + name + ": HTTP " + r.status)
+      return r.text()
+    })
+
+    // неудачу не кэшируем: иначе одна осечка при перезагрузке расширения
+    // навсегда оставила бы страницу без бейджей
+    promise.catch(() => this._svgCache.delete(name))
+    this._svgCache.set(name, promise)
+    return promise
   },
 
   isProfilePage() {
@@ -118,9 +127,8 @@ CCD.ui = {
   },
 
   /**
-   * kind === "indicator" (своя карточка) — всегда счёт побед/поражений.
-   * kind === "badges" (соперник, профиль) — бейдж, а если повода для бейджа нет, тот же счёт.
-   * Партий в окне нет — не показываем ничего.
+   * У соперника и в профиле всегда виден счёт побед/поражений, бейджи идут за ним.
+   * На своей карточке — только счёт. Партий в окне нет — не показываем ничего.
    */
   async render(target, stats, settings) {
     this.ensureFont()
@@ -129,31 +137,29 @@ CCD.ui = {
       this.clear(target.role)
       return
     }
-    if (target.kind === "badges" && stats.badges.length) {
-      return this.renderBadges(target, stats, settings)
-    }
-    return this.renderIndicator(target, stats)
-  },
 
-  async renderBadges(target, stats, settings) {
     const box = document.createElement("span")
-    box.className = "ccd-badges"
+    box.className = "ccd-card"
     this.attachTooltip(box, this.tooltip(stats, settings))
+    box.appendChild(await this.indicatorNode(stats))
 
-    for (const badge of stats.badges) {
-      const wrap = document.createElement("span")
-      wrap.className = "ccd-badge"
-      wrap.innerHTML = await this.svg("badge-" + badge)
-      box.appendChild(wrap)
+    if (target.kind === "badges") {
+      for (const badge of stats.badges) box.appendChild(await this.badgeNode(badge))
     }
 
     this.mount(target, box)
   },
 
-  async renderIndicator(target, stats) {
+  async badgeNode(badge) {
+    const wrap = document.createElement("span")
+    wrap.className = "ccd-badge"
+    wrap.innerHTML = await this.svg("badge-" + badge)
+    return wrap
+  },
+
+  async indicatorNode(stats) {
     const box = document.createElement("span")
     box.className = "ccd-indicator"
-    this.attachTooltip(box, this.tooltip(stats))
 
     const bar = document.createElement("span")
     bar.className = "ccd-indicator-bar"
@@ -171,22 +177,39 @@ CCD.ui = {
       '<span class="ccd-loss">' + stats.wld.loss + "</span>"
 
     box.append(bar, score)
-    this.mount(target, box)
+    return box
   },
 
   TOOLTIP_DELAY: 250,
   TOOLTIP_GAP: 6,
 
-  /** Один общий узел на страницу, а не по одному на каждый бейдж */
+  /**
+   * Один общий узел на страницу. Внутренний div несёт классы подсказки самого chess.com
+   * (`cc-tooltip-component` / `cc-tooltip-inner`), поэтому внешний вид берётся из темы сайта.
+   * Позиционируем сами: у сайта это делает Popover API с их собственной геометрией.
+   */
   tooltipNode() {
     let node = document.getElementById("ccd-tooltip")
+
     if (!node) {
       node = document.createElement("div")
       node.id = "ccd-tooltip"
-      node.className = "ccd-tooltip"
+      node.className = "cc-tooltip-component ccd-tooltip"
       node.hidden = true
+
+      const inner = document.createElement("div")
+      // cc-text-medium-bold — типографский класс сайта, из него приходят размер и насыщенность
+      inner.className = "cc-tooltip-inner cc-text-medium-bold ccd-tooltip-inner"
+      node.appendChild(inner)
       document.body.appendChild(node)
     }
+
+    // тему сайт переключает классом; у их подсказки он стоит на самом компоненте
+    const dark = !document.documentElement.classList.contains("light-mode") &&
+      !document.body.classList.contains("light-mode")
+    node.classList.toggle("dark-mode", dark)
+    node.classList.toggle("light-mode", !dark)
+
     return node
   },
 
@@ -214,7 +237,7 @@ CCD.ui = {
     if (!el.isConnected) return
 
     const node = this.tooltipNode()
-    node.textContent = text
+    node.querySelector(".ccd-tooltip-inner").innerHTML = text
     node.hidden = false
 
     const anchor = el.getBoundingClientRect()
@@ -244,33 +267,42 @@ CCD.ui = {
     })
   },
 
+  ESCAPES: { "&": "&amp;", "<": "&lt;", ">": "&gt;" },
+
+  /** Собираем HTML: числа побед и поражений красим, остальное экранируем */
   tooltip(stats, settings) {
+    const esc = (text) => String(text).replace(/[&<>]/g, (c) => this.ESCAPES[c])
+    const num = (value, cls, suffix = "") =>
+      '<span class="' + cls + '">' + Number(value) + suffix + "</span>"
+
     const lines = [
+      // подстановки уходят разметкой, поэтому строку не экранируем: и шаблон, и числа наши
       chrome.i18n.getMessage("tooltipRecord", [
-        String(stats.wld.win),
-        String(stats.wld.loss),
-        String(stats.wld.draw)
+        num(stats.wld.win, "ccd-t-win"),
+        num(stats.wld.loss, "ccd-t-loss"),
+        String(Number(stats.wld.draw))
       ]),
-      chrome.i18n.getMessage("tooltipWinRate", String(Math.round(stats.winRate)))
+      chrome.i18n.getMessage("tooltipWinRate", num(Math.round(stats.winRate), "ccd-t-rate", "%"))
     ]
 
     lines.push(
-      stats.accuracy === null
-        ? chrome.i18n.getMessage("tooltipNoAccuracy")
-        : chrome.i18n.getMessage("tooltipAccuracy", [
-            String(Math.round(stats.accuracy)),
-            String(stats.accGames),
-            String(stats.total)
-          ])
+      esc(
+        stats.accuracy === null
+          ? chrome.i18n.getMessage("tooltipNoAccuracy")
+          : chrome.i18n.getMessage("tooltipAccuracy", [
+              String(Math.round(stats.accuracy)),
+              String(stats.accGames),
+              String(stats.total)
+            ])
+      )
     )
 
     if (stats.device) {
-      lines.push(chrome.i18n.getMessage(stats.device === "phone" ? "devicePhone" : "devicePc"))
+      lines.push(esc(chrome.i18n.getMessage(stats.device === "phone" ? "devicePhone" : "devicePc")))
     }
-    if (stats.source === "public") lines.push(chrome.i18n.getMessage("sourceFallback"))
 
     // расшифровка идёт первой: она объясняет, почему бейдж вообще появился
-    const explain = stats.badges.length ? this.badgeLines(stats, settings) : []
+    const explain = stats.badges.length ? this.badgeLines(stats, settings).map(esc) : []
     return [...explain, ...(explain.length ? [""] : []), ...lines].join("\n")
   }
 }

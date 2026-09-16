@@ -1,11 +1,16 @@
-.ccd-badges,
+.ccd-card {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: 8px;
+  vertical-align: middle;
+  cursor: default;
+}
+
 .ccd-indicator {
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  margin-left: 8px;
-  vertical-align: middle;
-  cursor: default;
 }
 
 .ccd-badge {
@@ -40,27 +45,51 @@
 
 .ccd-score .ccd-sep {
   margin: 0 2px;
-  color: #ffffff;
-  opacity: 0.55;
+  color: #e0e0df;
 }
 
 .ccd-tooltip {
   position: fixed;
   z-index: 2147483647;
-  max-width: 320px;
-  padding: 8px 10px;
-  border-radius: 5px;
-  /* токены темы chess.com; запасные значения — цвета тёмной темы */
-  background: var(--color-bg-opaque, #302e2b);
-  color: var(--color-text-subtle, #c3c2c1);
-  font-family: "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  font-size: 12px;
-  line-height: 1.45;
-  white-space: pre-line;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
   pointer-events: none;
 }
 
 .ccd-tooltip[hidden] {
   display: none;
+}
+
+/*
+ * Запасной вид, если классы подсказки chess.com изменятся: :where() даёт нулевую
+ * специфичность, поэтому любое правило сайта перебьёт эти значения.
+ */
+:where(.ccd-tooltip-inner) {
+  display: block;
+  padding: 8px 10px;
+  border-radius: 5px;
+  background: var(--color-bg-opaque, #302e2b);
+  color: var(--color-text-subtle, #c3c2c1);
+  /* размеры настоящей подсказки chess.com: 17px / 600 */
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.35;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+}
+
+.ccd-tooltip .ccd-t-win {
+  color: #8acd38;
+}
+
+.ccd-tooltip .ccd-t-loss {
+  color: #e02828;
+}
+
+.ccd-tooltip .ccd-t-rate {
+  color: #26c2a3;
+}
+
+/* Подсказки сайта — короткие однострочные ярлыки, нам нужен многострочный текст */
+.ccd-tooltip .ccd-tooltip-inner {
+  max-width: 420px;
+  white-space: pre-line;
+  text-align: left;
 }

@@ -11,6 +11,9 @@ CCD.ui = {
   },
 
   _svgCache: new Map(),
+  // какие бейджи уже мигали: ник + бейдж. Vue часто перерисовывает строку,
+  // и без этого бейдж моргал бы заново при каждой перевставке
+  _blinked: new Set(),
 
   // Шрифт макета (Inter) вставляется из JS, а не из badges.css: путь строится через
   // chrome.runtime.getURL и не зависит от того, как браузер резолвит относительные ссылки.
@@ -144,15 +147,20 @@ CCD.ui = {
     box.appendChild(await this.indicatorNode(stats))
 
     if (target.kind === "badges") {
-      for (const badge of stats.badges) box.appendChild(await this.badgeNode(badge))
+      for (const badge of stats.badges) {
+        const key = target.username + ":" + badge
+        const first = !this._blinked.has(key)
+        this._blinked.add(key)
+        box.appendChild(await this.badgeNode(badge, first))
+      }
     }
 
     this.mount(target, box)
   },
 
-  async badgeNode(badge) {
+  async badgeNode(badge, blink) {
     const wrap = document.createElement("span")
-    wrap.className = "ccd-badge"
+    wrap.className = blink ? "ccd-badge ccd-blink" : "ccd-badge"
     wrap.innerHTML = await this.svg("badge-" + badge)
     return wrap
   },

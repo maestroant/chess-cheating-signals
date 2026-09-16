@@ -4,6 +4,8 @@
   gap: 6px;
   margin-left: 8px;
   vertical-align: middle;
+  line-height: 1;
+  overflow: visible;
   cursor: default;
 }
 
@@ -18,6 +20,27 @@
   line-height: 0;
 }
 
+/* три моргания при появлении бейджа */
+@keyframes ccd-blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.1;
+  }
+}
+
+.ccd-badge.ccd-blink {
+  animation: ccd-blink 0.8s ease-in-out 3;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ccd-badge.ccd-blink {
+    animation: none;
+  }
+}
+
 .ccd-badge svg,
 .ccd-indicator-bar svg {
   display: block;
@@ -25,7 +48,26 @@
 
 .ccd-indicator-bar {
   display: inline-flex;
+  flex: 0 0 auto;
   line-height: 0;
+}
+
+/* у chess.com есть свои правила для svg внутри строки игрока — фиксируем размер жёстко */
+.ccd-card .ccd-indicator-bar svg {
+  display: block;
+  width: 33px;
+  height: 7px;
+  min-height: 7px;
+  max-width: none;
+  max-height: none;
+  overflow: visible;
+}
+
+.ccd-card .ccd-badge svg {
+  display: block;
+  height: 12px;
+  min-height: 12px;
+  max-height: none;
 }
 
 .ccd-score {

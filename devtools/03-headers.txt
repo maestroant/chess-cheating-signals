@@ -1,0 +1,56 @@
+URL запроса
+https://www.chess.com/service/player-game-archive-v2/chesscom.game_gateway.v2.GameGatewayService/HydrateGamesByCriteria
+Метод запроса
+POST
+Код статуса
+200 OK
+
+
+:authority
+www.chess.com
+:method
+POST
+:path
+/service/player-game-archive-v2/chesscom.game_gateway.v2.GameGatewayService/HydrateGamesByCriteria
+:scheme
+https
+accept
+application/json, text/plain, */*
+accept-encoding
+gzip, deflate, br, zstd
+accept-language
+ru-RU
+cache-control
+no-cache
+connect-protocol-version
+1
+content-length
+262
+content-type
+application/json
+cookie
+<ВЫРЕЗАНО. Присутствовали куки: visitorid, me, init, MT3SESSID, CHESSCOM_REMEMBERME, COLOR_SCHEME, cf_clearance, GCLB, ACCESS_TOKEN, PHPSESSID, BUCKETING_ID, psid, CoursesAuthenticationRefreshToken, __cf_bm, ATTRIBUTION_V1>
+dnt
+1
+origin
+https://www.chess.com
+pragma
+no-cache
+priority
+u=1, i
+referer
+https://www.chess.com/games/archive/hayatahmad97
+sec-ch-ua
+"Google Chrome";v="153", "Not_A Brand";v="8", "Chromium";v="153"
+sec-ch-ua-mobile
+?0
+sec-ch-ua-platform
+"Windows"
+sec-fetch-dest
+empty
+sec-fetch-mode
+cors
+sec-fetch-site
+same-origin
+user-agent
+Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36

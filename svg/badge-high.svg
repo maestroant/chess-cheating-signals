@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="30" height="12" viewBox="0 0 30 12" fill="none">
+  <rect width="30" height="12" rx="2" fill="#B20606"/>
+  <text x="15.0" y="9" text-anchor="middle" fill="#FFFFFF"
+        font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif"
+        font-size="8" font-weight="700" letter-spacing="0.3">HIGH</text>
+</svg>

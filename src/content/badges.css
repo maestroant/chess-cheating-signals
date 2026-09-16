@@ -1,0 +1,44 @@
+.ccd-badges,
+.ccd-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: 8px;
+  vertical-align: middle;
+  cursor: default;
+}
+
+.ccd-badge {
+  display: inline-flex;
+  line-height: 0;
+}
+
+.ccd-badge svg,
+.ccd-indicator-bar svg {
+  display: block;
+}
+
+.ccd-indicator-bar {
+  display: inline-flex;
+  line-height: 0;
+}
+
+.ccd-score {
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.ccd-score .ccd-win {
+  color: #8acd38;
+}
+
+.ccd-score .ccd-loss {
+  color: #e02828;
+}
+
+.ccd-score .ccd-sep {
+  margin: 0 2px;
+  color: #ffffff;
+  opacity: 0.55;
+}

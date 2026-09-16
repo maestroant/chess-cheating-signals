@@ -1,0 +1,40 @@
+{
+  "manifest_version": 3,
+  "name": "__MSG_extName__",
+  "description": "__MSG_extDescription__",
+  "version": "0.1.0",
+  "default_locale": "en",
+  "permissions": ["storage"],
+  "host_permissions": ["https://*.chess.com/*", "https://api.chess.com/*"],
+  "action": {
+    "default_title": "__MSG_extName__",
+    "default_popup": "src/popup/popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*.chess.com/play/online*",
+        "https://*.chess.com/play/arena/*",
+        "https://*.chess.com/game/live/*",
+        "https://*.chess.com/game/daily/*",
+        "https://*.chess.com/live/game/*",
+        "https://*.chess.com/analysis/game/live/*"
+      ],
+      "js": [
+        "src/content/settings.js",
+        "src/content/api.js",
+        "src/content/analyze.js",
+        "src/content/ui.js",
+        "src/content/index.js"
+      ],
+      "css": ["src/content/badges.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["svg/*.svg"],
+      "matches": ["https://*.chess.com/*"]
+    }
+  ]
+}

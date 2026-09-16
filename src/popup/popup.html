@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <h1 data-i18n="popupTitle"></h1>
+
+    <section>
+      <h2 data-i18n="sectionWindow"></h2>
+      <label class="row">
+        <span data-i18n="labelWindowHours"></span>
+        <input type="number" id="windowHours" min="1" max="720" />
+      </label>
+      <div class="row">
+        <span data-i18n="labelTimeClasses"></span>
+        <span class="chips">
+          <label><input type="checkbox" data-class="BULLET" /><span data-i18n="classBullet"></span></label>
+          <label><input type="checkbox" data-class="BLITZ" /><span data-i18n="classBlitz"></span></label>
+          <label><input type="checkbox" data-class="RAPID" /><span data-i18n="classRapid"></span></label>
+        </span>
+      </div>
+    </section>
+
+    <section>
+      <h2 data-i18n="sectionBadges"></h2>
+
+      <label class="row badge-row">
+        <input type="checkbox" id="showLucky" />
+        <span class="badge lucky">LUCKY</span>
+        <span class="grow" data-i18n="labelLucky"></span>
+        <input type="number" id="luckyWinRate" min="1" max="100" /><span class="unit">%</span>
+      </label>
+
+      <label class="row badge-row">
+        <input type="checkbox" id="showCold" />
+        <span class="badge cold">COLD</span>
+        <span class="grow" data-i18n="labelCold"></span>
+        <input type="number" id="coldWinRate" min="0" max="100" /><span class="unit">%</span>
+      </label>
+
+      <label class="row badge-row">
+        <input type="checkbox" id="showHigh" />
+        <span class="badge high">HIGH</span>
+        <span class="grow" data-i18n="labelHigh"></span>
+        <input type="number" id="highAccuracy" min="1" max="100" /><span class="unit">%</span>
+      </label>
+
+      <label class="row badge-row">
+        <input type="checkbox" id="showNew" />
+        <span class="badge new">NEW</span>
+        <span class="grow" data-i18n="labelNew"></span>
+        <input type="number" id="newAccountMonths" min="1" max="60" />
+        <span class="unit" data-i18n="labelMonths"></span>
+      </label>
+
+      <label class="row">
+        <span class="grow" data-i18n="labelMinGames"></span>
+        <input type="number" id="minGames" min="0" max="100" />
+      </label>
+      <label class="row">
+        <span class="grow" data-i18n="labelMinAccuracyGames"></span>
+        <input type="number" id="minAccuracyGames" min="1" max="100" />
+      </label>
+    </section>
+
+    <section>
+      <h2 data-i18n="sectionOwn"></h2>
+      <label class="row">
+        <input type="checkbox" id="showOwnIndicator" />
+        <span class="grow" data-i18n="labelOwnIndicator"></span>
+      </label>
+    </section>
+
+    <footer>
+      <button id="save" data-i18n="buttonSave"></button>
+      <span id="status"></span>
+    </footer>
+
+    <script src="../content/settings.js"></script>
+    <script src="popup.js"></script>
+  </body>
+</html>

@@ -57,7 +57,12 @@ CCD.main = {
       console.log("[CCD] цели:", targets.map((t) => t.role + "=" + t.username).join(", "))
 
       for (const target of targets) {
-        if (target.kind === "indicator" && !s.showOwnIndicator) {
+        const own = target.kind === "indicator"
+        const nothingToShow = own
+          ? !s.showOwnIndicator
+          : !s.showOpponentIndicator && !s.showBadges
+
+        if (nothingToShow) {
           CCD.ui.clear(target.role)
           continue
         }

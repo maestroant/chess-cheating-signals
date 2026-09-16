@@ -95,12 +95,6 @@
   "labelMonths": {
     "message": "months"
   },
-  "sectionOwn": {
-    "message": "Your card"
-  },
-  "labelOwnIndicator": {
-    "message": "Win/loss indicator"
-  },
   "buttonSave": {
     "message": "Save"
   },
@@ -144,5 +138,14 @@
   },
   "labelShowBadges": {
     "message": "Show badges"
+  },
+  "sectionIndicator": {
+    "message": "Win/loss indicator"
+  },
+  "labelIndicatorOpponent": {
+    "message": "On opponent"
+  },
+  "labelIndicatorSelf": {
+    "message": "On your card"
   }
 }

@@ -11,6 +11,7 @@ CCD.DEFAULTS = {
   newAccountMonths: 3,    // возраст аккаунта для NEW
   timeClasses: ["BULLET", "BLITZ", "RAPID"],
   showBadges: true,
+  showOpponentIndicator: true,
   showOwnIndicator: true
 }
 
@@ -20,7 +21,11 @@ CCD.settings = {
   async get(force = false) {
     if (this._cache && !force) return this._cache
     const stored = await chrome.storage.sync.get(CCD.DEFAULTS)
-    this._cache = { ...CCD.DEFAULTS, ...stored }
+    const settings = { ...CCD.DEFAULTS, ...stored }
+    // порог COLD не может быть выше порога LUCKY, иначе оба бейджа сойдутся на одном проценте
+    settings.coldWinRate = Math.min(settings.coldWinRate, settings.luckyWinRate)
+
+    this._cache = settings
     return this._cache
   },
 

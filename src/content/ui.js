@@ -130,13 +130,17 @@ CCD.ui = {
   },
 
   /**
-   * У соперника и в профиле всегда виден счёт побед/поражений, бейджи идут за ним.
-   * На своей карточке — только счёт. Партий в окне нет — не показываем ничего.
+   * Что показываем: индикатор со счётом и бейджи — каждое включается отдельно.
+   * Бейджи бывают только у соперника и в профиле. Нечего показать — убираем всё.
    */
   async render(target, stats, settings) {
     this.ensureFont()
 
-    if (!stats.total) {
+    const own = target.kind === "indicator"
+    const withIndicator = own ? settings.showOwnIndicator : settings.showOpponentIndicator
+    const badges = own ? [] : stats.badges
+
+    if (!stats.total || (!withIndicator && !badges.length)) {
       this.clear(target.role)
       return
     }
@@ -144,15 +148,14 @@ CCD.ui = {
     const box = document.createElement("span")
     box.className = "ccd-card"
     this.attachTooltip(box, this.tooltip(stats, settings))
-    box.appendChild(await this.indicatorNode(stats))
 
-    if (target.kind === "badges") {
-      for (const badge of stats.badges) {
-        const key = target.username + ":" + badge
-        const first = !this._blinked.has(key)
-        this._blinked.add(key)
-        box.appendChild(await this.badgeNode(badge, first))
-      }
+    if (withIndicator) box.appendChild(await this.indicatorNode(stats))
+
+    for (const badge of badges) {
+      const key = target.username + ":" + badge
+      const first = !this._blinked.has(key)
+      this._blinked.add(key)
+      box.appendChild(await this.badgeNode(badge, first))
     }
 
     this.mount(target, box)

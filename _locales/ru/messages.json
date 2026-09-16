@@ -95,12 +95,6 @@
   "labelMonths": {
     "message": "мес."
   },
-  "sectionOwn": {
-    "message": "Своя карточка"
-  },
-  "labelOwnIndicator": {
-    "message": "Индикатор побед/поражений"
-  },
   "buttonSave": {
     "message": "Сохранить"
   },
@@ -144,5 +138,14 @@
   },
   "labelShowBadges": {
     "message": "Показывать бейджи"
+  },
+  "sectionIndicator": {
+    "message": "Индикатор побед/поражений"
+  },
+  "labelIndicatorOpponent": {
+    "message": "У соперника"
+  },
+  "labelIndicatorSelf": {
+    "message": "В своей карточке"
   }
 }

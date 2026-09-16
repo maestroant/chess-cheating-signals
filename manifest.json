@@ -32,6 +32,7 @@
         "src/content/index.js"
       ],
       "css": [
+        "src/tokens.css",
         "src/content/badges.css"
       ],
       "run_at": "document_idle"

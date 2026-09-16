@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="33" height="7" viewBox="0 0 33 7" fill="none">
   <clipPath id="ccd-clip"><rect width="33" height="7" rx="3.5"/></clipPath>
   <g clip-path="url(#ccd-clip)">
-    <rect width="33" height="7" fill="#E02828"/>
-    <rect id="ccd-wins" width="0" height="7" fill="#8ACD38"/>
+    <rect width="33" height="7" fill="var(--ccd-bar-loss, #e02828)"/>
+    <rect id="ccd-wins" width="0" height="7" fill="var(--ccd-bar-win, #8acd38)"/>
   </g>
 </svg>

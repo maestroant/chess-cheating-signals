@@ -19,13 +19,6 @@
   unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
 }
 
-:root {
-  --bg: #262421;
-  --panel: #302e2b;
-  --text: #e8e6e3;
-  --muted: #a5a29c;
-  --accent: #8acd38;
-}
 
 * {
   box-sizing: border-box;
@@ -35,8 +28,8 @@ body {
   width: 292px;
   margin: 0;
   padding: 10px;
-  background: var(--bg);
-  color: var(--text);
+  background: var(--ccd-ui-bg);
+  color: var(--ccd-ui-text);
   font-family: "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   font-size: 12px;
 }
@@ -51,13 +44,13 @@ h2 {
   font-size: 9px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  color: var(--muted);
+  color: var(--ccd-ui-muted);
 }
 
 section {
   margin-bottom: 8px;
   padding: 8px;
-  background: var(--panel);
+  background: var(--ccd-ui-panel);
   border-radius: 5px;
 }
 
@@ -88,18 +81,18 @@ input[type="number"] {
   width: 44px;
   padding: 2px 4px;
   font-size: 12px;
-  background: var(--bg);
-  color: var(--text);
-  border: 1px solid #4a4744;
+  background: var(--ccd-ui-bg);
+  color: var(--ccd-ui-text);
+  border: 1px solid var(--ccd-ui-border);
   border-radius: 4px;
 }
 
 input[type="checkbox"] {
-  accent-color: var(--accent);
+  accent-color: var(--ccd-ui-accent);
 }
 
 .unit {
-  color: var(--muted);
+  color: var(--ccd-ui-muted);
 }
 
 .chips {
@@ -119,21 +112,23 @@ input[type="checkbox"] {
   border-radius: 2px;
   font-size: 8px;
   font-weight: 700;
-  color: #000;
 }
 
 .badge.lucky {
-  background: #e02828;
+  background: var(--ccd-lucky);
+  color: var(--ccd-lucky-text);
 }
 .badge.new {
-  background: #e0ce28;
+  background: var(--ccd-new);
+  color: var(--ccd-new-text);
 }
 .badge.cold {
-  background: #8acd38;
+  background: var(--ccd-cold);
+  color: var(--ccd-cold-text);
 }
 .badge.high {
-  background: #b20606;
-  color: #fff;
+  background: var(--ccd-high);
+  color: var(--ccd-high-text);
 }
 
 footer {
@@ -145,8 +140,8 @@ footer {
 button {
   padding: 5px 12px;
   font-size: 12px;
-  background: var(--accent);
-  color: #1b1a18;
+  background: var(--ccd-ui-accent);
+  color: var(--ccd-ui-accent-text);
   border: 0;
   border-radius: 4px;
   font-weight: 700;
@@ -154,16 +149,16 @@ button {
 }
 
 #status {
-  color: var(--accent);
+  color: var(--ccd-ui-accent);
 }
 
 button.ghost {
   background: none;
-  color: var(--muted);
+  color: var(--ccd-ui-muted);
   font-weight: 400;
   padding: 5px 8px;
 }
 
 button.ghost:hover {
-  color: var(--text);
+  color: var(--ccd-ui-text);
 }

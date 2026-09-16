@@ -18,6 +18,10 @@
 .ccd-badge {
   display: inline-flex;
   line-height: 0;
+  /* форма задаётся ещё и здесь: если вёрстка страницы обрежет низ SVG,
+     скругление всё равно останется одинаковым сверху и снизу */
+  border-radius: 2px;
+  overflow: hidden;
 }
 
 /* три моргания при появлении бейджа */
@@ -78,16 +82,16 @@
 }
 
 .ccd-score .ccd-win {
-  color: #8acd38;
+  color: var(--ccd-win);
 }
 
 .ccd-score .ccd-loss {
-  color: #e02828;
+  color: var(--ccd-loss);
 }
 
 .ccd-score .ccd-sep {
   margin: 0 2px;
-  color: #e0e0df;
+  color: var(--ccd-sep);
 }
 
 .ccd-tooltip {
@@ -108,25 +112,25 @@
   display: block;
   padding: 8px 10px;
   border-radius: 5px;
-  background: var(--color-bg-opaque, #302e2b);
-  color: var(--color-text-subtle, #c3c2c1);
+  background: var(--ccd-tip-bg);
+  color: var(--ccd-tip-text);
   /* размеры настоящей подсказки chess.com: 17px / 600 */
   font-size: 17px;
   font-weight: 600;
   line-height: 1.35;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 6px 18px var(--ccd-tip-shadow);
 }
 
 .ccd-tooltip .ccd-t-win {
-  color: #8acd38;
+  color: var(--ccd-win);
 }
 
 .ccd-tooltip .ccd-t-loss {
-  color: #e02828;
+  color: var(--ccd-loss);
 }
 
 .ccd-tooltip .ccd-t-rate {
-  color: #26c2a3;
+  color: var(--ccd-rate);
 }
 
 /* Подсказки сайта — короткие однострочные ярлыки, нам нужен многострочный текст */

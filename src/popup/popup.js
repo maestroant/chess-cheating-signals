@@ -7,7 +7,7 @@ const NUMBERS = [
   "minGames",
   "minAccuracyGames"
 ]
-const FLAGS = ["showLucky", "showCold", "showHigh", "showNew", "showOwnIndicator"]
+const FLAGS = ["showBadges", "showOwnIndicator"]
 
 function localize() {
   for (const el of document.querySelectorAll("[data-i18n]")) {

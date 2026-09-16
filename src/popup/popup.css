@@ -32,40 +32,40 @@
 }
 
 body {
-  width: 340px;
+  width: 292px;
   margin: 0;
-  padding: 14px;
+  padding: 10px;
   background: var(--bg);
   color: var(--text);
   font-family: "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  font-size: 13px;
+  font-size: 12px;
 }
 
 h1 {
-  margin: 0 0 12px;
-  font-size: 15px;
+  margin: 0 0 8px;
+  font-size: 13px;
 }
 
 h2 {
-  margin: 0 0 8px;
-  font-size: 11px;
+  margin: 0 0 6px;
+  font-size: 9px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   color: var(--muted);
 }
 
 section {
-  margin-bottom: 14px;
-  padding: 10px;
+  margin-bottom: 8px;
+  padding: 8px;
   background: var(--panel);
-  border-radius: 6px;
+  border-radius: 5px;
 }
 
 .row {
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-bottom: 8px;
+  gap: 6px;
+  margin-bottom: 5px;
 }
 
 .row:last-child {
@@ -76,9 +76,18 @@ section {
   flex: 1;
 }
 
+.nowrap {
+  white-space: nowrap;
+}
+
+.badge-row .grow {
+  white-space: nowrap;
+}
+
 input[type="number"] {
-  width: 56px;
-  padding: 4px 6px;
+  width: 44px;
+  padding: 2px 4px;
+  font-size: 12px;
   background: var(--bg);
   color: var(--text);
   border: 1px solid #4a4744;
@@ -95,7 +104,7 @@ input[type="checkbox"] {
 
 .chips {
   display: flex;
-  gap: 10px;
+  gap: 8px;
 }
 
 .chips label {
@@ -106,9 +115,9 @@ input[type="checkbox"] {
 
 .badge {
   display: inline-block;
-  padding: 1px 5px;
+  padding: 1px 4px;
   border-radius: 2px;
-  font-size: 9px;
+  font-size: 8px;
   font-weight: 700;
   color: #000;
 }
@@ -130,15 +139,16 @@ input[type="checkbox"] {
 footer {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
 }
 
 button {
-  padding: 7px 16px;
+  padding: 5px 12px;
+  font-size: 12px;
   background: var(--accent);
   color: #1b1a18;
   border: 0;
-  border-radius: 5px;
+  border-radius: 4px;
   font-weight: 700;
   cursor: pointer;
 }
@@ -151,7 +161,7 @@ button.ghost {
   background: none;
   color: var(--muted);
   font-weight: 400;
-  padding: 7px 10px;
+  padding: 5px 8px;
 }
 
 button.ghost:hover {

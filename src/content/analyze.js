@@ -43,23 +43,23 @@ CCD.analyze = {
 
   badges(stats, s) {
     const list = []
+    if (!s.showBadges) return list
 
-    if (s.showLucky && stats.total > s.minGames && stats.winRate > s.luckyWinRate) {
+    if (stats.total > s.minGames && stats.winRate > s.luckyWinRate) {
       list.push("lucky")
     }
-    if (s.showNew && stats.profile?.createdAt) {
+    if (stats.profile?.createdAt) {
       const ageMs = Date.now() - stats.profile.createdAt
       if (ageMs < s.newAccountMonths * 30 * 24 * 3600 * 1000) list.push("new")
     }
     if (
-      s.showHigh &&
       stats.accGames >= s.minAccuracyGames &&
       stats.accuracy !== null &&
       stats.accuracy > s.highAccuracy
     ) {
       list.push("high")
     }
-    if (s.showCold && stats.total > s.minGames && stats.winRate < s.coldWinRate) {
+    if (stats.total > s.minGames && stats.winRate < s.coldWinRate) {
       list.push("cold")
     }
 

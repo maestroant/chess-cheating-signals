@@ -10,10 +10,7 @@ CCD.DEFAULTS = {
   highAccuracy: 85,       // средняя точность для HIGH
   newAccountMonths: 3,    // возраст аккаунта для NEW
   timeClasses: ["BULLET", "BLITZ", "RAPID"],
-  showLucky: true,
-  showNew: true,
-  showHigh: true,
-  showCold: true,
+  showBadges: true,
   showOwnIndicator: true
 }
 

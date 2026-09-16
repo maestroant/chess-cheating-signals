@@ -57,10 +57,10 @@
     "message": "Окно анализа"
   },
   "labelWindowHours": {
-    "message": "Часов"
+    "message": "Окно, часов"
   },
   "labelTimeClasses": {
-    "message": "Тайм-контроли"
+    "message": "Режимы"
   },
   "classBullet": {
     "message": "Пуля"
@@ -75,22 +75,22 @@
     "message": "Бейджи"
   },
   "labelLucky": {
-    "message": "LUCKY — побед больше"
+    "message": "побед больше"
   },
   "labelCold": {
-    "message": "COLD — побед меньше"
+    "message": "побед меньше"
   },
   "labelHigh": {
-    "message": "HIGH — точность выше"
+    "message": "точность выше"
   },
   "labelNew": {
-    "message": "NEW — аккаунт моложе"
+    "message": "аккаунт моложе"
   },
   "labelMinGames": {
-    "message": "Минимум партий"
+    "message": "Мин. партий"
   },
   "labelMinAccuracyGames": {
-    "message": "Минимум разобранных партий"
+    "message": "Мин. разобранных"
   },
   "labelMonths": {
     "message": "мес."
@@ -99,7 +99,7 @@
     "message": "Своя карточка"
   },
   "labelOwnIndicator": {
-    "message": "Показывать индикатор побед/поражений"
+    "message": "Индикатор побед/поражений"
   },
   "buttonSave": {
     "message": "Сохранить"
@@ -141,5 +141,8 @@
         "content": "$1"
       }
     }
+  },
+  "labelShowBadges": {
+    "message": "Показывать бейджи"
   }
 }

@@ -10,11 +10,11 @@
     <section>
       <h2 data-i18n="sectionWindow"></h2>
       <label class="row">
-        <span data-i18n="labelWindowHours"></span>
+        <span class="grow" data-i18n="labelWindowHours"></span>
         <input type="number" id="windowHours" min="1" max="720" />
       </label>
       <div class="row">
-        <span data-i18n="labelTimeClasses"></span>
+        <span class="nowrap" data-i18n="labelTimeClasses"></span>
         <span class="chips">
           <label><input type="checkbox" data-class="BULLET" /><span data-i18n="classBullet"></span></label>
           <label><input type="checkbox" data-class="BLITZ" /><span data-i18n="classBlitz"></span></label>
@@ -25,30 +25,30 @@
 
     <section>
       <h2 data-i18n="sectionBadges"></h2>
+      <label class="row">
+        <input type="checkbox" id="showBadges" />
+        <span class="grow" data-i18n="labelShowBadges"></span>
+      </label>
 
       <label class="row badge-row">
-        <input type="checkbox" id="showLucky" />
         <span class="badge lucky">LUCKY</span>
         <span class="grow" data-i18n="labelLucky"></span>
         <input type="number" id="luckyWinRate" min="1" max="100" /><span class="unit">%</span>
       </label>
 
       <label class="row badge-row">
-        <input type="checkbox" id="showCold" />
         <span class="badge cold">COLD</span>
         <span class="grow" data-i18n="labelCold"></span>
         <input type="number" id="coldWinRate" min="0" max="100" /><span class="unit">%</span>
       </label>
 
       <label class="row badge-row">
-        <input type="checkbox" id="showHigh" />
         <span class="badge high">HIGH</span>
         <span class="grow" data-i18n="labelHigh"></span>
         <input type="number" id="highAccuracy" min="1" max="100" /><span class="unit">%</span>
       </label>
 
       <label class="row badge-row">
-        <input type="checkbox" id="showNew" />
         <span class="badge new">NEW</span>
         <span class="grow" data-i18n="labelNew"></span>
         <input type="number" id="newAccountMonths" min="1" max="60" />

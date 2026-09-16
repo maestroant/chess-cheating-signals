@@ -57,10 +57,10 @@
     "message": "Analysis window"
   },
   "labelWindowHours": {
-    "message": "Hours"
+    "message": "Window, hours"
   },
   "labelTimeClasses": {
-    "message": "Time controls"
+    "message": "Modes"
   },
   "classBullet": {
     "message": "Bullet"
@@ -75,22 +75,22 @@
     "message": "Badges"
   },
   "labelLucky": {
-    "message": "LUCKY — win rate above"
+    "message": "win rate above"
   },
   "labelCold": {
-    "message": "COLD — win rate below"
+    "message": "win rate below"
   },
   "labelHigh": {
-    "message": "HIGH — accuracy above"
+    "message": "accuracy above"
   },
   "labelNew": {
-    "message": "NEW — account younger than"
+    "message": "account younger than"
   },
   "labelMinGames": {
-    "message": "Minimum games"
+    "message": "Min. games"
   },
   "labelMinAccuracyGames": {
-    "message": "Minimum reviewed games"
+    "message": "Min. reviewed"
   },
   "labelMonths": {
     "message": "months"
@@ -99,7 +99,7 @@
     "message": "Your card"
   },
   "labelOwnIndicator": {
-    "message": "Show win/loss indicator"
+    "message": "Win/loss indicator"
   },
   "buttonSave": {
     "message": "Save"
@@ -141,5 +141,8 @@
         "content": "$1"
       }
     }
+  },
+  "labelShowBadges": {
+    "message": "Show badges"
   }
 }

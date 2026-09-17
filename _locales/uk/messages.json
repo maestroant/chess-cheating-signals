@@ -1,0 +1,8 @@
+{
+  "extName": {
+    "message": "Chess Opponent Insights"
+  },
+  "extDescription": {
+    "message": "Позначає підозрілих суперників на chess.com значками за статистикою останніх годин гри."
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "extName": {
+    "message": "Chess Opponent Insights"
+  },
+  "extDescription": {
+    "message": "Markerar misstänkta motståndare på chess.com med märken utifrån deras senaste speltimmar."
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "extName": {
+    "message": "Chess Opponent Insights"
+  },
+  "extDescription": {
+    "message": "chess.com で直近の対局データをもとに、怪しい対戦相手にバッジを表示します。"
+  }
+}

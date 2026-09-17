@@ -1,0 +1,8 @@
+{
+  "extName": {
+    "message": "Chess Opponent Insights"
+  },
+  "extDescription": {
+    "message": "chess.com पर संदिग्ध प्रतिद्वंद्वियों को उनके पिछले घंटों के खेल के आधार पर बैज से चिह्नित करता है।"
+  }
+}

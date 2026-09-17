@@ -1,0 +1,8 @@
+{
+  "extName": {
+    "message": "Chess Opponent Insights"
+  },
+  "extDescription": {
+    "message": "Segnala gli avversari sospetti su chess.com con badge basati sulle loro ultime ore di gioco."
+  }
+}

@@ -221,6 +221,10 @@ CCD.ui = {
     node.classList.toggle("dark-mode", dark)
     node.classList.toggle("light-mode", !dark)
 
+    // язык и направление письма нашей подсказки не обязаны совпадать со страницей
+    node.lang = CCD.i18n.lang
+    node.dir = CCD.i18n.isRtl() ? "rtl" : "ltr"
+
     return node
   },
 
@@ -274,7 +278,7 @@ CCD.ui = {
     return stats.badges.map((badge) => {
       const key = "badge" + badge[0].toUpperCase() + badge.slice(1)
       const threshold = settings?.[this.BADGE_THRESHOLDS[badge]]
-      return chrome.i18n.getMessage(key, String(threshold ?? ""))
+      return CCD.i18n.t(key, String(threshold ?? ""))
     })
   },
 
@@ -288,27 +292,29 @@ CCD.ui = {
 
     const lines = [
       // подстановки уходят разметкой, поэтому строку не экранируем: и шаблон, и числа наши
-      chrome.i18n.getMessage("tooltipRecord", [
+      CCD.i18n.t(
+        "tooltipRecord",
         num(stats.wld.win, "ccd-t-win"),
         num(stats.wld.loss, "ccd-t-loss"),
         String(Number(stats.wld.draw))
-      ])
+      )
     ]
 
     lines.push(
       stats.accuracy === null
-        ? esc(chrome.i18n.getMessage("tooltipNoAccuracy"))
-        : chrome.i18n.getMessage("tooltipAccuracy", [
+        ? esc(CCD.i18n.t("tooltipNoAccuracy"))
+        : CCD.i18n.t(
+            "tooltipAccuracy",
             num(Math.round(stats.accuracy), "ccd-t-rate", "%"),
             String(Number(stats.accGames)),
             String(Number(stats.total))
-          ])
+          )
     )
 
     if (stats.opening) {
       // название приходит из API, поэтому экранируем его, а не строку целиком
       lines.push(
-        chrome.i18n.getMessage(
+        CCD.i18n.t(
           "tooltipOpening",
           '<span class="ccd-t-opening">' + esc(stats.opening) + "</span>"
         )
@@ -316,7 +322,7 @@ CCD.ui = {
     }
 
     if (stats.device) {
-      lines.push(esc(chrome.i18n.getMessage(stats.device === "phone" ? "devicePhone" : "devicePc")))
+      lines.push(esc(CCD.i18n.t(stats.device === "phone" ? "devicePhone" : "devicePc")))
     }
 
     // расшифровка идёт первой: она объясняет, почему бейдж вообще появился

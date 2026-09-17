@@ -25,6 +25,8 @@
         "https://*.chess.com/member/*"
       ],
       "js": [
+        "src/i18n.js",
+        "src/content/locale.js",
         "src/content/settings.js",
         "src/content/api.js",
         "src/content/analyze.js",
@@ -42,7 +44,8 @@
     {
       "resources": [
         "svg/*.svg",
-        "fonts/*.woff2"
+        "fonts/*.woff2",
+        "i18n/*.json"
       ],
       "matches": [
         "https://*.chess.com/*"

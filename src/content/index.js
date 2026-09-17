@@ -10,6 +10,7 @@ CCD.main = {
 
   init() {
     console.log("[CCD] content script загружен:", location.pathname)
+    CCD.locale.current()
     this.schedule()
 
     // Vue перерисовывает карточки и стирает наши узлы, поэтому следим за DOM
@@ -41,12 +42,18 @@ CCD.main = {
     })
   },
 
+  /** На странице говорим на языке интерфейса chess.com, а не браузера */
+  async applyLanguage() {
+    return CCD.i18n.use(CCD.locale.current())
+  },
+
   async update() {
     if (this._busy) return
     this._busy = true
 
     try {
       const s = await CCD.settings.get()
+      await this.applyLanguage()
       const targets = CCD.ui.targets()
 
       if (!targets.length) {

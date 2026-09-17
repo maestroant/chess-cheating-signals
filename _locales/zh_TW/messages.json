@@ -1,0 +1,8 @@
+{
+  "extName": {
+    "message": "Chess Opponent Insights"
+  },
+  "extDescription": {
+    "message": "根據對手最近幾小時的對局資料，在 chess.com 上用徽章標記可疑對手。"
+  }
+}

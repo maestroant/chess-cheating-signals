@@ -1,0 +1,8 @@
+{
+  "extName": {
+    "message": "Chess Opponent Insights"
+  },
+  "extDescription": {
+    "message": "Märgistab kahtlased vastased chess.comis märkidega nende viimaste mängutundide põhjal."
+  }
+}

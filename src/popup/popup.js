@@ -9,11 +9,25 @@ const NUMBERS = [
 ]
 const FLAGS = ["showBadges", "showOpponentIndicator", "showOwnIndicator"]
 
-function localize() {
+/**
+ * Попап — часть браузера, а не страницы, поэтому говорит на языке браузера.
+ * На самой странице язык берётся другой — тот, что стоит в интерфейсе chess.com.
+ */
+function browserLanguage() {
+  const ui = chrome.i18n?.getUILanguage?.() || navigator.language
+  return CCD.locale.resolve(ui)
+}
+
+async function localize(lang) {
+  await CCD.i18n.use(lang)
+
+  document.documentElement.lang = lang
+  document.documentElement.dir = CCD.i18n.isRtl(lang) ? "rtl" : "ltr"
+
   for (const el of document.querySelectorAll("[data-i18n]")) {
-    el.textContent = chrome.i18n.getMessage(el.dataset.i18n)
+    el.textContent = CCD.i18n.t(el.dataset.i18n)
   }
-  document.title = chrome.i18n.getMessage("popupTitle")
+  document.title = CCD.i18n.t("popupTitle")
 }
 
 function apply(settings) {
@@ -74,7 +88,7 @@ async function save(patch = collect()) {
   await chrome.storage.sync.set(patch)
 
   const status = document.getElementById("status")
-  status.textContent = chrome.i18n.getMessage("statusSaved")
+  status.textContent = CCD.i18n.t("statusSaved")
   setTimeout(() => (status.textContent = ""), 1500)
 
   const tabs = await chrome.tabs.query({ url: "https://*.chess.com/*" })
@@ -83,14 +97,18 @@ async function save(patch = collect()) {
   }
 }
 
-localize()
-load()
+async function init() {
+  await localize(browserLanguage())
+  await load()
 
-document.getElementById("luckyWinRate").addEventListener("change", () => syncWinRates("lucky"))
-document.getElementById("coldWinRate").addEventListener("change", () => syncWinRates("cold"))
+  document.getElementById("luckyWinRate").addEventListener("change", () => syncWinRates("lucky"))
+  document.getElementById("coldWinRate").addEventListener("change", () => syncWinRates("cold"))
 
-document.getElementById("save").addEventListener("click", () => save())
-document.getElementById("reset").addEventListener("click", () => {
-  apply(CCD.DEFAULTS)
-  save(collect())
-})
+  document.getElementById("save").addEventListener("click", () => save())
+  document.getElementById("reset").addEventListener("click", () => {
+    apply(CCD.DEFAULTS)
+    save(collect())
+  })
+}
+
+init()

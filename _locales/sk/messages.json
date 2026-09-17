@@ -1,0 +1,8 @@
+{
+  "extName": {
+    "message": "Chess Opponent Insights"
+  },
+  "extDescription": {
+    "message": "Označí podozrivých súperov na chess.com odznakmi podľa ich posledných hodín hry."
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "extName": {
+    "message": "Chess Opponent Insights"
+  },
+  "extDescription": {
+    "message": "chess.com에서 최근 몇 시간의 전적을 바탕으로 의심스러운 상대에게 배지를 표시합니다."
+  }
+}

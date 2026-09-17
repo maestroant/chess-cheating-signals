@@ -73,8 +73,10 @@ section {
   white-space: nowrap;
 }
 
+/* подписи в многословных языках длиннее английских — пусть переносятся,
+   иначе они вылезут за 292px попапа */
 .badge-row .grow {
-  white-space: nowrap;
+  min-width: 0;
 }
 
 input[type="number"] {
@@ -161,4 +163,19 @@ button.ghost {
 
 button.ghost:hover {
   color: var(--ccd-ui-text);
+}
+
+select {
+  min-width: 0;
+  padding: 2px 4px;
+  font: inherit;
+  background: var(--ccd-ui-bg);
+  color: var(--ccd-ui-text);
+  border: 1px solid var(--ccd-ui-border);
+  border-radius: 4px;
+}
+
+/* арабский, иврит, фарси, урду: строки идут справа налево */
+[dir="rtl"] body {
+  direction: rtl;
 }

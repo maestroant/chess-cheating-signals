@@ -1,0 +1,8 @@
+{
+  "extName": {
+    "message": "Chess Opponent Insights"
+  },
+  "extDescription": {
+    "message": "Označava sumnjive protivnike na chess.com bedževima na temelju njihovih zadnjih sati igre."
+  }
+}

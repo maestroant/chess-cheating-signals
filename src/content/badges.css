@@ -2,7 +2,8 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  margin-left: 8px;
+  /* logical property: на страницах справа налево отступ уходит на другую сторону */
+  margin-inline-start: 8px;
   vertical-align: middle;
   line-height: 1;
   overflow: visible;
@@ -141,5 +142,6 @@
 .ccd-tooltip .ccd-tooltip-inner {
   max-width: 420px;
   white-space: pre-line;
-  text-align: left;
+  /* start, а не left: на арабском и иврите текст должен прижиматься справа */
+  text-align: start;
 }

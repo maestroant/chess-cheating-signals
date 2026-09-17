@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Chess Cheating Signals — 440×280 · светлое дерево: тёплый градиент, тёмный текст</title>
+    <style>
+{{FILE:_tile.css}}
+      /* ─── вариант фона: светлое дерево: тёплый градиент, тёмный текст ─── */
+      .tile {
+        background: linear-gradient(130deg, #f6e8cd 0%, #e6cda2 46%, #c99a68 100%);
+        --fg: #2c241b;
+        --fg-2: #6d5b44;
+        --accent: #4d6c2b;
+        --fig-shadow: 0 18px 30px rgba(96, 62, 26, 0.42);
+        --badge-shadow: 0 2px 6px rgba(96, 62, 26, 0.28);
+      }
+      /* клетки доски тёплым по тёплому */
+      .tile::before {
+        inset: 0;
+        background-image: conic-gradient(
+          rgba(126, 86, 43, 0.14) 0 25%,
+          transparent 0 50%,
+          rgba(126, 86, 43, 0.14) 0 75%,
+          transparent 0
+        );
+        background-size: 70px 70px;
+      }
+      .tile::after {
+        left: -50px;
+        top: -60px;
+        width: 360px;
+        height: 360px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.55), transparent 66%);
+      }
+    </style>
+  </head>
+  <body>
+{{FILE:_tile.html}}
+  </body>
+</html>

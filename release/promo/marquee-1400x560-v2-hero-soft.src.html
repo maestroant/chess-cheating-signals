@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Chess Cheating Signals — 1400×560 · мягкий серо-зелёный, как секции лендинга</title>
+    <style>
+{{FILE:_hero.css}}
+      /* ─── вариант фона: мягкий серо-зелёный, как секции лендинга ─── */
+      .cover {
+        background: linear-gradient(120deg, #f4f7ef 0%, #eef2f6 52%, #e7edf3 100%);
+      }
+      .cover::before {
+        top: -240px;
+        left: -240px;
+        width: 800px;
+        height: 800px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(129, 182, 76, 0.22), transparent 68%);
+      }
+      /* карточку слегка разворачиваем, фигура стоит перед ней — как на макете */
+      .stage {
+        right: 70px;
+        transform: translateY(-50%) rotate(-2.2deg);
+      }
+      .pawn {
+        display: block;
+        width: 258px;
+        right: 26px;
+        bottom: -22px;
+      }
+      /* клетки доски намёком, как фактура секции */
+      .cover::after {
+        inset: 0;
+        background-image: conic-gradient(
+          rgba(28, 30, 33, 0.028) 0 25%,
+          transparent 0 50%,
+          rgba(28, 30, 33, 0.028) 0 75%,
+          transparent 0
+        );
+        background-size: 112px 112px;
+      }
+    </style>
+  </head>
+  <body>
+{{FILE:_hero.html}}
+  </body>
+</html>

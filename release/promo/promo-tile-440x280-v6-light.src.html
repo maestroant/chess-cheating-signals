@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Chess Cheating Signals — 440×280 · светлый, как лендинг</title>
+    <style>
+{{FILE:_tile.css}}
+      /* ─── вариант фона: светлый, как лендинг ─── */
+      .tile {
+        background: #ffffff;
+        --fg: #1c1e21;
+        --fg-2: #65676b;
+        --accent: var(--brand-dk);
+        --fig-shadow: 0 18px 32px rgba(93, 128, 52, 0.38);
+        --badge-shadow: 0 2px 6px rgba(0, 0, 0, 0.16);
+      }
+      .tile::before {
+        inset: 0;
+        background: radial-gradient(circle at 96px 50%, rgba(129, 182, 76, 0.22), transparent 62%);
+      }
+      /* тонкая сетка клеток вместо пустого белого */
+      .tile::after {
+        inset: 0;
+        background-image: conic-gradient(
+          rgba(28, 30, 33, 0.035) 0 25%,
+          transparent 0 50%,
+          rgba(28, 30, 33, 0.035) 0 75%,
+          transparent 0
+        );
+        background-size: 70px 70px;
+      }
+    </style>
+  </head>
+  <body>
+{{FILE:_tile.html}}
+  </body>
+</html>

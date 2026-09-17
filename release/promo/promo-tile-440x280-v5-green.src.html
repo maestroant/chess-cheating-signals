@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Chess Cheating Signals — 440×280 · зелёный градиент chess.com</title>
+    <style>
+{{FILE:_tile.css}}
+      /* ─── вариант фона: зелёный градиент chess.com ─── */
+      .tile {
+        background: linear-gradient(115deg, #24231e 0%, #37472a 34%, #6d9d3f 74%, #8fc75a 100%);
+        --fg: #ffffff;
+        --fg-2: rgba(255, 255, 255, 0.88);
+        --accent: #eaf7d6;
+        --badge-shadow: 0 2px 7px rgba(24, 35, 12, 0.4);
+      }
+      .tile::before {
+        inset: 0;
+        background-image: conic-gradient(
+          rgba(255, 255, 255, 0.07) 0 25%,
+          transparent 0 50%,
+          rgba(255, 255, 255, 0.07) 0 75%,
+          transparent 0
+        );
+        background-size: 70px 70px;
+      }
+      /* фигура стоит на тёмной части, иначе зелёное по зелёному */
+      .tile::after {
+        left: -90px;
+        top: -60px;
+        width: 400px;
+        height: 400px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(16, 15, 12, 0.55), transparent 68%);
+      }
+    </style>
+  </head>
+  <body>
+{{FILE:_tile.html}}
+  </body>
+</html>

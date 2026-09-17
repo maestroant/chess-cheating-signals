@@ -1,0 +1,121 @@
+/* Общая вёрстка промо-плитки. Варианты подключают этот файл и переопределяют
+   только фон и четыре переменные цвета. Размеры текста правим здесь — сразу во всех. */
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 100 900;
+  src: url({{FONT_LATIN}}) format("woff2");
+}
+
+:root {
+  /* токены лендинга и src/tokens.css */
+  --brand: #81b64c;
+  --brand-dk: #5d8034;
+  --brand-lt: #a8d76a;
+  --board: #312e2b;
+  --wood-lt: #eeddbd;
+  --wood-dk: #b58863;
+
+  /* то, что переопределяет вариант */
+  --fg: #f2f0ee;
+  --fg-2: #bdbab5;
+  --accent: var(--brand-lt);
+  --fig-shadow: 0 16px 28px rgba(0, 0, 0, 0.45);
+  --badge-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html,
+body {
+  width: 440px;
+  height: 280px;
+  overflow: hidden;
+}
+body {
+  font-family: Inter, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.tile {
+  position: relative;
+  width: 440px;
+  height: 280px;
+  overflow: hidden;
+  color: var(--fg);
+  background: var(--board);
+}
+/* два слоя под фон варианта: фактура и свет */
+.tile::before,
+.tile::after {
+  content: "";
+  position: absolute;
+}
+
+/* ─── фигура ─── */
+.figure {
+  position: absolute;
+  left: -24px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 240px;
+  z-index: 1;
+}
+.figure img {
+  display: block;
+  width: 100%;
+  filter: drop-shadow(var(--fig-shadow));
+}
+
+/* ─── текст ─── */
+.copy {
+  position: absolute;
+  z-index: 2;
+  left: 186px;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.eyebrow {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1.3px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 9px;
+}
+h1 {
+  font-size: 26px;
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: -0.8px;
+  margin-bottom: 11px;
+}
+h1 .grad {
+  color: var(--accent);
+}
+.what {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--fg-2);
+}
+.what b {
+  font-weight: 700;
+  color: var(--fg);
+}
+
+/* ─── бейджи: ровно то, что видно на карточке соперника ─── */
+.signals {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 15px;
+}
+.signals svg {
+  display: block;
+  filter: drop-shadow(var(--badge-shadow));
+}

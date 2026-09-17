@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Chess Cheating Signals — 440×280 · дерево: настоящая доска под затемнением</title>
+    <style>
+{{FILE:_tile.css}}
+      /* ─── вариант фона: дерево: настоящая доска под затемнением ─── */
+      .tile {
+        background: #2a241c url({{BOARD}}) center / cover no-repeat;
+        --fg-2: #cec6b8;
+      }
+      /* доска остаётся читаемой слева и уходит в темноту под текстом */
+      .tile::before {
+        inset: 0;
+        background: linear-gradient(
+          100deg,
+          rgba(22, 17, 11, 0.38) 0%,
+          rgba(22, 17, 11, 0.8) 40%,
+          rgba(22, 17, 11, 0.94) 100%
+        );
+      }
+      .tile::after {
+        left: -60px;
+        top: -50px;
+        width: 380px;
+        height: 380px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(129, 182, 76, 0.4), transparent 68%);
+      }
+    </style>
+  </head>
+  <body>
+{{FILE:_tile.html}}
+  </body>
+</html>

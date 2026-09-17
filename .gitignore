@@ -1,2 +1,7 @@
 graphify-out/
 devtools/
+release/*.zip
+# собранная копия плитки со встроенными шрифтом и логотипом — артефакт build.mjs
+release/promo/*.html
+!release/promo/*.src.html
+!release/promo/_*.html

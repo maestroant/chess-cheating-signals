@@ -1,0 +1,227 @@
+/* Обложка в стиле лендинга (docs/index.html): светлый фон, тёмный заголовок
+   с зелёным акцентом, справа — карточка соперника с доской. Размеры под 1400×560. */
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 100 900;
+  src: url({{FONT_LATIN}}) format("woff2");
+}
+
+:root {
+  /* токены лендинга */
+  --brand: #81b64c;
+  --brand-dk: #5d8034;
+  --board: #312e2b;
+  --win: #6ab64c;
+  --loss: #e45748;
+  --new: #ffe159;
+  --rate: #57d5ff;
+  --text: #1c1e21;
+  --sub: #65676b;
+  --bg: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html,
+body {
+  width: 1400px;
+  height: 560px;
+  overflow: hidden;
+}
+body {
+  font-family: Inter, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+}
+
+.cover {
+  position: relative;
+  width: 1400px;
+  height: 560px;
+  overflow: hidden;
+  background: var(--bg);
+}
+/* зелёное свечение справа сверху — как .hero::before на лендинге */
+.cover::before,
+.cover::after {
+  content: "";
+  position: absolute;
+}
+.cover > * {
+  position: absolute;
+  z-index: 1;
+}
+
+/* ─── шапка ─── */
+.brand {
+  left: 64px;
+  top: 52px;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  font-size: 27px;
+  font-weight: 800;
+  letter-spacing: -0.7px;
+}
+.brand img {
+  width: 46px;
+  height: 46px;
+  filter: saturate(1.1);
+}
+
+/* ─── текст ─── */
+.copy {
+  left: 64px;
+  width: 570px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+h1 {
+  font-size: 54px;
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -1.9px;
+  margin-bottom: 20px;
+}
+h1 .grad {
+  color: var(--brand-dk);
+}
+.lead {
+  font-size: 19px;
+  line-height: 1.55;
+  color: var(--sub);
+  max-width: 530px;
+}
+
+/* ─── низ слева: на чём работает ─── */
+.lockup {
+  left: 64px;
+  bottom: 48px;
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+}
+.lockup .pre {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  color: var(--sub);
+}
+.lockup .wm {
+  font-size: 42px;
+  font-weight: 800;
+  letter-spacing: -1.4px;
+  color: var(--board);
+}
+
+/* ─── карточка соперника ─── */
+.stage {
+  right: 58px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 668px;
+}
+.board {
+  background: var(--board);
+  border-radius: 18px;
+  padding: 22px;
+  color: #e8e6e3;
+  box-shadow: 0 30px 70px rgba(93, 128, 52, 0.22), 0 10px 28px rgba(0, 0, 0, 0.16);
+}
+.player {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 19px;
+  font-weight: 700;
+}
+.player .avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 5px;
+  background: #4a4744;
+  flex: none;
+}
+.player .rating {
+  font-weight: 400;
+  color: #a5a29c;
+}
+.ccd {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: 4px;
+}
+.ccd .bar {
+  width: 48px;
+  height: 10px;
+  flex: none;
+}
+.ccd .badge {
+  height: 19px;
+  width: auto;
+  flex: none;
+}
+.score {
+  font-size: 18px;
+  font-weight: 700;
+}
+.score .w,
+.tip .w {
+  color: var(--win);
+}
+.score .l,
+.tip .l {
+  color: var(--loss);
+}
+.score .sep {
+  margin: 0 2px;
+  color: #e0e0df;
+}
+
+.board-strip {
+  position: relative;
+  margin: 14px 0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.board-img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+/* подсказка поверх доски — сквозь неё видно клетки */
+.tip {
+  position: absolute;
+  left: 30px;
+  top: 24px;
+  max-width: 400px;
+  padding: 13px 16px;
+  background: rgba(30, 28, 26, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  color: #c3c2c1;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.5;
+  white-space: pre-line;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.45);
+}
+.tip .rate {
+  color: var(--rate);
+}
+.tip .opening {
+  color: var(--new);
+}
+
+/* фигура по умолчанию спрятана — вариант включает её сам */
+.pawn {
+  display: none;
+  z-index: 2;
+  filter: drop-shadow(0 26px 40px rgba(50, 70, 25, 0.35));
+}

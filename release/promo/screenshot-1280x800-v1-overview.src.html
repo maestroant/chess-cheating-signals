@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Chess Cheating Signals — 1280×800 · что видно на доске</title>
+    <style>
+{{FILE:_shot.css}}
+      /* белый фон лендинга с зелёным свечением */
+      .cover {
+        background: #ffffff;
+      }
+      .cover::before {
+        top: -280px;
+        right: -200px;
+        width: 820px;
+        height: 820px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(129, 182, 76, 0.17), transparent 70%);
+      }
+      .cover::after {
+        left: -240px;
+        bottom: -320px;
+        width: 680px;
+        height: 680px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(129, 182, 76, 0.12), transparent 70%);
+      }
+    </style>
+  </head>
+  <body>
+{{FILE:_hero.html}}
+  </body>
+</html>

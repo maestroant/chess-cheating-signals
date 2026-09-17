@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Chess Cheating Signals — 440×280 · ночь: почти чёрный с пятном света</title>
+    <style>
+{{FILE:_tile.css}}
+      /* ─── вариант фона: ночь: почти чёрный с пятном света ─── */
+      .tile {
+        background: #161513;
+        --fg-2: #a9a6a1;
+      }
+      /* один источник света прямо за фигурой */
+      .tile::before {
+        inset: 0;
+        background: radial-gradient(
+          ellipse 250px 230px at 112px 48%,
+          rgba(129, 182, 76, 0.34),
+          rgba(129, 182, 76, 0.08) 52%,
+          transparent 74%
+        );
+      }
+      /* виньетка — края уходят в чёрный */
+      .tile::after {
+        inset: 0;
+        box-shadow: inset 0 0 100px 34px rgba(0, 0, 0, 0.8);
+      }
+    </style>
+  </head>
+  <body>
+{{FILE:_tile.html}}
+  </body>
+</html>

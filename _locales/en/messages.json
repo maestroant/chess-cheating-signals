@@ -1,0 +1,8 @@
+{
+  "extName": {
+    "message": "Chess Cheating Signals"
+  },
+  "extDescription": {
+    "message": "Free. Public-data signals on your chess.com opponent: win rate, accuracy, account age. No engine, no cheat detection."
+  }
+}

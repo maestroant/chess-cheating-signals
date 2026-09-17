@@ -1,0 +1,200 @@
+/* Inter — шрифт макета. Вариативный (400-900), подмножества latin и cyrillic */
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("../../fonts/inter-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+    U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("../../fonts/inter-cyrillic.woff2") format("woff2");
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  width: 292px;
+  margin: 0;
+  padding: 10px;
+  background: var(--ccd-ui-bg);
+  color: var(--ccd-ui-text);
+  font-family: "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 12px;
+}
+
+h1 {
+  margin: 0 0 8px;
+  font-size: 13px;
+}
+
+h2 {
+  margin: 0 0 6px;
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--ccd-ui-muted);
+}
+
+section {
+  margin-bottom: 8px;
+  padding: 8px;
+  background: var(--ccd-ui-panel);
+  border-radius: 5px;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 5px;
+}
+
+.row:last-child {
+  margin-bottom: 0;
+}
+
+.grow {
+  flex: 1;
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+/* подписи в многословных языках длиннее английских — пусть переносятся,
+   иначе они вылезут за 292px попапа */
+.badge-row .grow {
+  min-width: 0;
+}
+
+input[type="number"] {
+  width: 44px;
+  padding: 2px 4px;
+  font-size: 12px;
+  background: var(--ccd-ui-bg);
+  color: var(--ccd-ui-text);
+  border: 1px solid var(--ccd-ui-border);
+  border-radius: 4px;
+}
+
+input[type="checkbox"] {
+  accent-color: var(--ccd-ui-accent);
+}
+
+.unit {
+  color: var(--ccd-ui-muted);
+}
+
+.chips {
+  display: flex;
+  gap: 8px;
+}
+
+.chips label {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.badge {
+  display: inline-block;
+  padding: 1px 4px;
+  border-radius: 2px;
+  font-size: 8px;
+  font-weight: 700;
+}
+
+.badge.lucky {
+  background: var(--ccd-lucky);
+  color: var(--ccd-lucky-text);
+}
+.badge.new {
+  background: var(--ccd-new);
+  color: var(--ccd-new-text);
+}
+.badge.cold {
+  background: var(--ccd-cold);
+  color: var(--ccd-cold-text);
+}
+.badge.high {
+  background: var(--ccd-high);
+  color: var(--ccd-high-text);
+}
+
+footer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+button {
+  padding: 5px 12px;
+  font-size: 12px;
+  background: var(--ccd-ui-accent);
+  color: var(--ccd-ui-accent-text);
+  border: 0;
+  border-radius: 4px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+#status {
+  color: var(--ccd-ui-accent);
+}
+
+button.ghost {
+  background: none;
+  color: var(--ccd-ui-muted);
+  font-weight: 400;
+  padding: 5px 8px;
+}
+
+button.ghost:hover {
+  color: var(--ccd-ui-text);
+}
+
+select {
+  min-width: 0;
+  padding: 2px 4px;
+  font: inherit;
+  background: var(--ccd-ui-bg);
+  color: var(--ccd-ui-text);
+  border: 1px solid var(--ccd-ui-border);
+  border-radius: 4px;
+}
+
+.contact {
+  /* margin целиком: у <p> остаётся браузерный нижний отступ, а он тут лишний */
+  margin: 6px 0 0;
+  padding-top: 5px;
+  border-top: 1px solid var(--ccd-ui-border);
+  font-size: 11px;
+  color: var(--ccd-ui-muted);
+  text-align: center;
+}
+
+.contact a {
+  color: var(--ccd-ui-accent);
+  text-decoration: none;
+}
+
+.contact a:hover {
+  text-decoration: underline;
+}
+
+/* арабский, иврит, фарси, урду: строки идут справа налево */
+[dir="rtl"] body {
+  direction: rtl;
+}

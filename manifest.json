@@ -1,0 +1,67 @@
+{
+  "manifest_version": 3,
+  "name": "__MSG_extName__",
+  "description": "__MSG_extDescription__",
+  "version": "0.1.0",
+  "default_locale": "en",
+  "icons": {
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
+  "permissions": [
+    "storage"
+  ],
+  "host_permissions": [
+    "https://*.chess.com/*",
+    "https://api.chess.com/*"
+  ],
+  "action": {
+    "default_title": "__MSG_extName__",
+    "default_popup": "src/popup/popup.html",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "32": "icons/icon-32.png",
+      "48": "icons/icon-48.png",
+      "128": "icons/icon-128.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*.chess.com/play/*",
+        "https://*.chess.com/game/*",
+        "https://*.chess.com/live/game/*",
+        "https://*.chess.com/analysis/*",
+        "https://*.chess.com/member/*"
+      ],
+      "js": [
+        "src/i18n.js",
+        "src/content/locale.js",
+        "src/content/settings.js",
+        "src/content/api.js",
+        "src/content/analyze.js",
+        "src/content/ui.js",
+        "src/content/index.js"
+      ],
+      "css": [
+        "src/tokens.css",
+        "src/content/badges.css"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "svg/*.svg",
+        "fonts/*.woff2",
+        "i18n/*.json"
+      ],
+      "matches": [
+        "https://*.chess.com/*"
+      ]
+    }
+  ]
+}

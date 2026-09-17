@@ -1,0 +1,8 @@
+{
+  "extName": {
+    "message": "Chess Cheating Signals"
+  },
+  "extDescription": {
+    "message": "Ilmainen. Signaalit chess.com-vastustajasta vain julkisesta datasta: voittoprosentti, tarkkuus, tilin ikä. Ei moottoria."
+  }
+}

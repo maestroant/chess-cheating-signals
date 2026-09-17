@@ -1,8 +1,8 @@
 {
   "extName": {
-    "message": "Chess Opponent Insights"
+    "message": "Chess Cheating Signals"
   },
   "extDescription": {
-    "message": "Marca els rivals sospitosos a chess.com amb distintius segons les seves darreres hores de joc."
+    "message": "Gratuït. Senyals del rival a chess.com només amb dades públiques: victòries, precisió, antiguitat del compte. Sense motor."
   }
 }

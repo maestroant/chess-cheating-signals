@@ -1,6 +1,6 @@
 {
-  "extName": "Chess Opponent Insights",
-  "extDescription": "Marca con distintivos a los rivales sospechosos en chess.com según sus últimas horas de juego.",
+  "extName": "Chess Cheating Signals",
+  "extDescription": "Gratis. Señales del rival en chess.com solo con datos públicos: victorias, precisión, antigüedad de la cuenta. Sin motor.",
   "tooltipRecord": "Victorias: $1 · Derrotas: $2 · Tablas: $3",
   "tooltipAccuracy": "Precisión media: $1 (de $2 de $3 partidas)",
   "tooltipNoAccuracy": "Sin datos de precisión: solo las partidas revisadas la tienen",

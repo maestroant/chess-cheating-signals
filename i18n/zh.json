@@ -1,6 +1,6 @@
 {
-  "extName": "Chess Opponent Insights",
-  "extDescription": "根据对手最近几小时的对局数据，在 chess.com 上用徽章标记可疑对手。",
+  "extName": "Chess Cheating Signals",
+  "extDescription": "免费。仅用公开数据显示 chess.com 对手信号：胜率、准确率、账号年龄。不使用引擎。",
   "tooltipRecord": "胜: $1 · 负: $2 · 和: $3",
   "tooltipAccuracy": "平均精确度: $1（$3 局中的 $2 局）",
   "tooltipNoAccuracy": "没有精确度数据：只有复盘过的对局才有",

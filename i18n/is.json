@@ -1,6 +1,6 @@
 {
-  "extName": "Chess Opponent Insights",
-  "extDescription": "Merkir grunsamlega andstæðinga á chess.com með merkjum út frá síðustu klukkustundum þeirra.",
+  "extName": "Chess Cheating Signals",
+  "extDescription": "Ókeypis. Merki um andstæðing á chess.com aðeins úr opinberum gögnum: vinningshlutfall, nákvæmni, aldur reiknings. Engin vél.",
   "tooltipRecord": "Sigrar: $1 · Töp: $2 · Jafntefli: $3",
   "tooltipAccuracy": "Meðalnákvæmni: $1 (af $2 af $3 skákum)",
   "tooltipNoAccuracy": "Engin nákvæmnigögn: aðeins greindar skákir hafa þau",

@@ -1,8 +1,8 @@
 {
   "extName": {
-    "message": "Chess Opponent Insights"
+    "message": "Chess Cheating Signals"
   },
   "extDescription": {
-    "message": "Đánh dấu đối thủ đáng ngờ trên chess.com bằng huy hiệu dựa trên các giờ chơi gần đây."
+    "message": "Miễn phí. Tín hiệu về đối thủ trên chess.com chỉ từ dữ liệu công khai: tỷ lệ thắng, độ chính xác, tuổi tài khoản. Không engine."
   }
 }

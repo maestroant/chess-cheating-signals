@@ -1,6 +1,6 @@
 {
-  "extName": "Chess Opponent Insights",
-  "extDescription": "Marchează adversarii suspecți pe chess.com cu insigne, pe baza ultimelor ore de joc.",
+  "extName": "Chess Cheating Signals",
+  "extDescription": "Gratuit. Semnale despre adversarul din chess.com doar din date publice: victorii, precizie, vechime cont. Fără engine.",
   "tooltipRecord": "Victorii: $1 · Înfrângeri: $2 · Remize: $3",
   "tooltipAccuracy": "Acuratețe medie: $1 (din $2 din $3 partide)",
   "tooltipNoAccuracy": "Fără date de acuratețe: le au doar partidele analizate",

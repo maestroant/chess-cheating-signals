@@ -1,6 +1,6 @@
 {
-  "extName": "Chess Opponent Insights",
-  "extDescription": "Märgistab kahtlased vastased chess.comis märkidega nende viimaste mängutundide põhjal.",
+  "extName": "Chess Cheating Signals",
+  "extDescription": "Tasuta. Signaalid chess.com-i vastasest ainult avalikest andmetest: võiduprotsent, täpsus, konto vanus. Ilma mootorita.",
   "tooltipRecord": "Võidud: $1 · Kaotused: $2 · Viigid: $3",
   "tooltipAccuracy": "Keskmine täpsus: $1 ($2 partiist $3-st)",
   "tooltipNoAccuracy": "Täpsuse andmeid pole: need on ainult analüüsitud partiidel",

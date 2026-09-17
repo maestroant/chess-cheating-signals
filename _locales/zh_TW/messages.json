@@ -1,8 +1,8 @@
 {
   "extName": {
-    "message": "Chess Opponent Insights"
+    "message": "Chess Cheating Signals"
   },
   "extDescription": {
-    "message": "根據對手最近幾小時的對局資料，在 chess.com 上用徽章標記可疑對手。"
+    "message": "免費。僅用公開資料顯示 chess.com 對手訊號：勝率、準確率、帳號年齡。不使用引擎。"
   }
 }

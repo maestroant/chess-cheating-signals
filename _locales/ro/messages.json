@@ -1,8 +1,8 @@
 {
   "extName": {
-    "message": "Chess Opponent Insights"
+    "message": "Chess Cheating Signals"
   },
   "extDescription": {
-    "message": "Marchează adversarii suspecți pe chess.com cu insigne, pe baza ultimelor ore de joc."
+    "message": "Gratuit. Semnale despre adversarul din chess.com doar din date publice: victorii, precizie, vechime cont. Fără engine."
   }
 }

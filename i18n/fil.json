@@ -1,6 +1,6 @@
 {
-  "extName": "Chess Opponent Insights",
-  "extDescription": "Minamarkahan ang kahina-hinalang kalaban sa chess.com gamit ang mga badge batay sa huling oras ng laro.",
+  "extName": "Chess Cheating Signals",
+  "extDescription": "Libre. Mga senyales sa kalaban sa chess.com mula sa pampublikong data lang: win rate, accuracy, edad ng account. Walang engine.",
   "tooltipRecord": "Panalo: $1 · Talo: $2 · Tabla: $3",
   "tooltipAccuracy": "Karaniwang katumpakan: $1 (mula sa $2 sa $3 laro)",
   "tooltipNoAccuracy": "Walang datos ng katumpakan: nasa sinuring laro lang ito",

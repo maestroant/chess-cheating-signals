@@ -1,8 +1,8 @@
 {
   "extName": {
-    "message": "Chess Opponent Insights"
+    "message": "Chess Cheating Signals"
   },
   "extDescription": {
-    "message": "Označí podozrivých súperov na chess.com odznakmi podľa ich posledných hodín hry."
+    "message": "Zadarmo. Signály o súperovi na chess.com len z verejných dát: výhry, presnosť, vek účtu. Bez enginu."
   }
 }

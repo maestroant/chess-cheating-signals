@@ -1,8 +1,8 @@
 {
   "extName": {
-    "message": "Chess Opponent Insights"
+    "message": "Chess Cheating Signals"
   },
   "extDescription": {
-    "message": "Позначає підозрілих суперників на chess.com значками за статистикою останніх годин гри."
+    "message": "Безкоштовно. Сигнали про суперника на chess.com лише з публічних даних: вінрейт, точність, вік акаунта. Без рушія."
   }
 }

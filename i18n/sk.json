@@ -1,6 +1,6 @@
 {
-  "extName": "Chess Opponent Insights",
-  "extDescription": "Označí podozrivých súperov na chess.com odznakmi podľa ich posledných hodín hry.",
+  "extName": "Chess Cheating Signals",
+  "extDescription": "Zadarmo. Signály o súperovi na chess.com len z verejných dát: výhry, presnosť, vek účtu. Bez enginu.",
   "tooltipRecord": "Výhry: $1 · Prehry: $2 · Remízy: $3",
   "tooltipAccuracy": "Priemerná presnosť: $1 (z $2 z $3 partií)",
   "tooltipNoAccuracy": "Bez údajov o presnosti: majú ju len rozobrané partie",

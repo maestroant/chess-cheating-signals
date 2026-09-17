@@ -1,6 +1,6 @@
 {
-  "extName": "Chess Opponent Insights",
-  "extDescription": "chess.com-এ সন্দেহভাজন প্রতিপক্ষকে তাদের সাম্প্রতিক ঘণ্টার খেলার ভিত্তিতে ব্যাজ দিয়ে চিহ্নিত করে।",
+  "extName": "Chess Cheating Signals",
+  "extDescription": "ফ্রি। chess.com প্রতিপক্ষের সংকেত শুধু প্রকাশ্য তথ্য থেকে: জয়ের হার, নির্ভুলতা, অ্যাকাউন্টের বয়স। কোনো ইঞ্জিন নেই।",
   "tooltipRecord": "জয়: $1 · পরাজয়: $2 · ড্র: $3",
   "tooltipAccuracy": "গড় নির্ভুলতা: $1 ($3টির মধ্যে $2টি খেলা)",
   "tooltipNoAccuracy": "নির্ভুলতার তথ্য নেই: শুধু বিশ্লেষিত খেলাগুলোতে থাকে",

@@ -1,6 +1,6 @@
 {
-  "extName": "Chess Opponent Insights",
-  "extDescription": "Duidt verdachte tegenstanders op chess.com aan met badges op basis van hun laatste speeluren.",
+  "extName": "Chess Cheating Signals",
+  "extDescription": "Gratis. Signalen over je chess.com-tegenstander uit publieke data: winratio, nauwkeurigheid, accountleeftijd. Geen engine.",
   "tooltipRecord": "Winst: $1 · Verlies: $2 · Remise: $3",
   "tooltipAccuracy": "Gemiddelde nauwkeurigheid: $1 (uit $2 van $3 partijen)",
   "tooltipNoAccuracy": "Geen nauwkeurigheidsgegevens: enkel geanalyseerde partijen hebben die",

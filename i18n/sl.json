@@ -1,6 +1,6 @@
 {
-  "extName": "Chess Opponent Insights",
-  "extDescription": "Označi sumljive nasprotnike na chess.com z značkami glede na njihove zadnje ure igranja.",
+  "extName": "Chess Cheating Signals",
+  "extDescription": "Brezplačno. Signali o nasprotniku na chess.com le iz javnih podatkov: zmage, natančnost, starost računa. Brez motorja.",
   "tooltipRecord": "Zmage: $1 · Porazi: $2 · Remiji: $3",
   "tooltipAccuracy": "Povprečna natančnost: $1 (iz $2 od $3 partij)",
   "tooltipNoAccuracy": "Ni podatkov o natančnosti: imajo jo le analizirane partije",

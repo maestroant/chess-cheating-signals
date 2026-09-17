@@ -1,8 +1,8 @@
 {
   "extName": {
-    "message": "Chess Opponent Insights"
+    "message": "Chess Cheating Signals"
   },
   "extDescription": {
-    "message": "chess.com-এ সন্দেহভাজন প্রতিপক্ষকে তাদের সাম্প্রতিক ঘণ্টার খেলার ভিত্তিতে ব্যাজ দিয়ে চিহ্নিত করে।"
+    "message": "ফ্রি। chess.com প্রতিপক্ষের সংকেত শুধু প্রকাশ্য তথ্য থেকে: জয়ের হার, নির্ভুলতা, অ্যাকাউন্টের বয়স। কোনো ইঞ্জিন নেই।"
   }
 }

@@ -1,8 +1,8 @@
 {
   "extName": {
-    "message": "Chess Opponent Insights"
+    "message": "Chess Cheating Signals"
   },
   "extDescription": {
-    "message": "Minamarkahan ang kahina-hinalang kalaban sa chess.com gamit ang mga badge batay sa huling oras ng laro."
+    "message": "Libre. Mga senyales sa kalaban sa chess.com mula sa pampublikong data lang: win rate, accuracy, edad ng account. Walang engine."
   }
 }

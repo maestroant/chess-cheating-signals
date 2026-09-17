@@ -1,6 +1,6 @@
 {
-  "extName": "Chess Opponent Insights",
-  "extDescription": "Signale les adversaires suspects sur chess.com par des badges basés sur leurs dernières heures de jeu.",
+  "extName": "Chess Cheating Signals",
+  "extDescription": "Gratuit. Signaux sur l'adversaire chess.com, données publiques uniquement : victoires, précision, âge du compte. Sans moteur.",
   "tooltipRecord": "Victoires : $1 · Défaites : $2 · Nulles : $3",
   "tooltipAccuracy": "Précision moyenne : $1 (sur $2 des $3 parties)",
   "tooltipNoAccuracy": "Pas de données de précision : seules les parties analysées en ont",

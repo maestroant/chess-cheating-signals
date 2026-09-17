@@ -1,6 +1,6 @@
 {
-  "extName": "Chess Opponent Insights",
-  "extDescription": "Отбелязва подозрителни съперници в chess.com със значки според последните им часове игра.",
+  "extName": "Chess Cheating Signals",
+  "extDescription": "Безплатно. Сигнали за съперника в chess.com само от публични данни: победи, точност, възраст на профила. Без енджин.",
   "tooltipRecord": "Победи: $1 · Загуби: $2 · Ремита: $3",
   "tooltipAccuracy": "Средна точност: $1 (от $2 от $3 партии)",
   "tooltipNoAccuracy": "Няма данни за точност: имат я само анализираните партии",

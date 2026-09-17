@@ -1,6 +1,6 @@
 {
-  "extName": "Chess Opponent Insights",
-  "extDescription": "Позначає підозрілих суперників на chess.com значками за статистикою останніх годин гри.",
+  "extName": "Chess Cheating Signals",
+  "extDescription": "Безкоштовно. Сигнали про суперника на chess.com лише з публічних даних: вінрейт, точність, вік акаунта. Без рушія.",
   "tooltipRecord": "Перемоги: $1 · Поразки: $2 · Нічиї: $3",
   "tooltipAccuracy": "Середня точність: $1 (за $2 з $3 партій)",
   "tooltipNoAccuracy": "Немає даних про точність: вона є лише в розібраних партій",

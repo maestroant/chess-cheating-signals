@@ -1,8 +1,8 @@
 {
   "extName": {
-    "message": "Chess Opponent Insights"
+    "message": "Chess Cheating Signals"
   },
   "extDescription": {
-    "message": "chess.com üzerinde şüpheli rakipleri son saatlerdeki oyunlarına göre rozetlerle işaretler."
+    "message": "Ücretsiz. chess.com rakibi hakkında yalnızca açık verilerden sinyaller: kazanma oranı, isabet, hesap yaşı. Motor yok."
   }
 }

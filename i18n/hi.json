@@ -1,6 +1,6 @@
 {
-  "extName": "Chess Opponent Insights",
-  "extDescription": "chess.com पर संदिग्ध प्रतिद्वंद्वियों को उनके पिछले घंटों के खेल के आधार पर बैज से चिह्नित करता है।",
+  "extName": "Chess Cheating Signals",
+  "extDescription": "मुफ़्त. chess.com प्रतिद्वंद्वी के संकेत केवल सार्वजनिक डेटा से: जीत दर, सटीकता, खाते की उम्र. कोई इंजन नहीं.",
   "tooltipRecord": "जीत: $1 · हार: $2 · ड्रॉ: $3",
   "tooltipAccuracy": "औसत सटीकता: $1 ($3 में से $2 गेम)",
   "tooltipNoAccuracy": "सटीकता का डेटा नहीं: यह केवल विश्लेषित गेम में होता है",

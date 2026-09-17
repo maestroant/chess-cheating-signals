@@ -1,8 +1,8 @@
 {
   "extName": {
-    "message": "Chess Opponent Insights"
+    "message": "Chess Cheating Signals"
   },
   "extDescription": {
-    "message": "Oznacza podejrzanych przeciwników na chess.com odznakami na podstawie ich ostatnich godzin gry."
+    "message": "Za darmo. Sygnały o przeciwniku na chess.com tylko z danych publicznych: wygrane, celność, wiek konta. Bez silnika."
   }
 }

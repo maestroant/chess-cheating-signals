@@ -1,6 +1,6 @@
 {
-  "extName": "Chess Opponent Insights",
-  "extDescription": "chess.com-da şübhəli rəqibləri son saatlardakı oyunlarına görə nişanlarla işarələyir.",
+  "extName": "Chess Cheating Signals",
+  "extDescription": "Pulsuz. chess.com rəqibi barədə yalnız açıq məlumatdan siqnallar: qələbə faizi, dəqiqlik, hesab yaşı. Mühərrik yoxdur.",
   "tooltipRecord": "Qələbə: $1 · Məğlubiyyət: $2 · Heç-heçə: $3",
   "tooltipAccuracy": "Orta dəqiqlik: $1 ($3 oyundan $2-si)",
   "tooltipNoAccuracy": "Dəqiqlik məlumatı yoxdur: yalnız təhlil edilmiş oyunlarda var",

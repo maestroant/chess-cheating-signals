@@ -1,6 +1,6 @@
 {
-  "extName": "Chess Opponent Insights",
-  "extDescription": "chess.com-da şübheli garşydaşlary soňky sagatlardaky oýunlaryna görä nyşanlar bilen belleýär.",
+  "extName": "Chess Cheating Signals",
+  "extDescription": "Mugt. chess.com garşydaşy barada diňe açyk maglumatdan signallar: ýeňiş paýy, takyklyk, hasabyň ýaşy. Hereketlendirijisiz.",
   "tooltipRecord": "Ýeňiş: $1 · Ýeňliş: $2 · Deňlik: $3",
   "tooltipAccuracy": "Ortaça takyklyk: $1 ($3 oýundan $2)",
   "tooltipNoAccuracy": "Takyklyk maglumaty ýok: diňe seljerilen oýunlarda bar",

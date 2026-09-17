@@ -1,6 +1,6 @@
 {
-  "extName": "Chess Opponent Insights",
-  "extDescription": "Jelvényekkel jelöli a gyanús ellenfeleket a chess.comon az elmúlt órák játszmái alapján.",
+  "extName": "Chess Cheating Signals",
+  "extDescription": "Ingyenes. Jelzések a chess.com-ellenfélről csak nyilvános adatokból: győzelmi arány, pontosság, fiók kora. Motor nélkül.",
   "tooltipRecord": "Győzelmek: $1 · Vereségek: $2 · Döntetlenek: $3",
   "tooltipAccuracy": "Átlagos pontosság: $1 ($3 játszmából $2)",
   "tooltipNoAccuracy": "Nincs pontossági adat: csak az elemzett játszmáknak van",

@@ -1,8 +1,8 @@
 {
   "extName": {
-    "message": "Chess Opponent Insights"
+    "message": "Chess Cheating Signals"
   },
   "extDescription": {
-    "message": "chess.com で直近の対局データをもとに、怪しい対戦相手にバッジを表示します。"
+    "message": "無料。chess.com の対戦相手の指標を公開データのみから表示：勝率・精度・アカウント作成日。エンジンは使いません。"
   }
 }

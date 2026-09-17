@@ -1,8 +1,8 @@
 {
   "extName": {
-    "message": "Chess Opponent Insights"
+    "message": "Chess Cheating Signals"
   },
   "extDescription": {
-    "message": "Menandai lawan yang mencurigakan di chess.com dengan lencana berdasarkan jam-jam terakhir permainannya."
+    "message": "Gratis. Sinyal tentang lawan di chess.com hanya dari data publik: rasio kemenangan, akurasi, usia akun. Tanpa engine."
   }
 }

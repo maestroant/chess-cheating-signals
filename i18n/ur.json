@@ -1,6 +1,6 @@
 {
-  "extName": "Chess Opponent Insights",
-  "extDescription": "chess.com پر مشکوک حریفوں کو ان کے حالیہ گھنٹوں کے کھیل کی بنیاد پر بیجز سے نشان زد کرتا ہے۔",
+  "extName": "Chess Cheating Signals",
+  "extDescription": "مفت۔ chess.com حریف کے اشارے صرف عوامی ڈیٹا سے: جیت کی شرح، درستگی، اکاؤنٹ کی عمر۔ کوئی انجن نہیں۔",
   "tooltipRecord": "جیت: $1 · ہار: $2 · برابر: $3",
   "tooltipAccuracy": "اوسط درستگی: $1 ($3 میں سے $2 گیمز)",
   "tooltipNoAccuracy": "درستگی کا ڈیٹا نہیں: صرف تجزیہ شدہ گیمز میں ہوتا ہے",

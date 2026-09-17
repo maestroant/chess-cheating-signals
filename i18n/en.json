@@ -1,6 +1,6 @@
 {
-  "extName": "Chess Opponent Insights",
-  "extDescription": "Flags suspicious opponents on chess.com with badges based on their last hours of play.",
+  "extName": "Chess Cheating Signals",
+  "extDescription": "Free. Public-data signals on your chess.com opponent: win rate, accuracy, account age. No engine, no cheat detection.",
   "tooltipRecord": "Wins: $1 · Losses: $2 · Draws: $3",
   "tooltipAccuracy": "Average accuracy: $1 (from $2 of $3 games)",
   "tooltipNoAccuracy": "No accuracy data: only reviewed games have it",

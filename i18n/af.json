@@ -1,6 +1,6 @@
 {
-  "extName": "Chess Opponent Insights",
-  "extDescription": "Merk verdagte teenstanders op chess.com met kentekens op grond van hul afgelope ure se spel.",
+  "extName": "Chess Cheating Signals",
+  "extDescription": "Gratis. Seine oor jou chess.com-teenstander uit openbare data: wenkoers, akkuraatheid, rekeningouderdom. Geen enjin.",
   "tooltipRecord": "Oorwinnings: $1 · Verliese: $2 · Gelykop: $3",
   "tooltipAccuracy": "Gemiddelde akkuraatheid: $1 (uit $2 van $3 partye)",
   "tooltipNoAccuracy": "Geen akkuraatheidsdata nie: net ontleedde partye het dit",

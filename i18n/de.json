@@ -1,6 +1,6 @@
 {
-  "extName": "Chess Opponent Insights",
-  "extDescription": "Markiert verdächtige Gegner auf chess.com mit Abzeichen anhand ihrer letzten Spielstunden.",
+  "extName": "Chess Cheating Signals",
+  "extDescription": "Kostenlos. Signale zum chess.com-Gegner nur aus öffentlichen Daten: Siegquote, Genauigkeit, Kontoalter. Keine Engine.",
   "tooltipRecord": "Siege: $1 · Niederlagen: $2 · Remis: $3",
   "tooltipAccuracy": "Durchschnittliche Genauigkeit: $1 (aus $2 von $3 Partien)",
   "tooltipNoAccuracy": "Keine Genauigkeitsdaten: nur analysierte Partien haben sie",

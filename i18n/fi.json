@@ -1,6 +1,6 @@
 {
-  "extName": "Chess Opponent Insights",
-  "extDescription": "Merkitsee epäilyttävät vastustajat chess.comissa merkeillä heidän viime tuntien peliensä perusteella.",
+  "extName": "Chess Cheating Signals",
+  "extDescription": "Ilmainen. Signaalit chess.com-vastustajasta vain julkisesta datasta: voittoprosentti, tarkkuus, tilin ikä. Ei moottoria.",
   "tooltipRecord": "Voitot: $1 · Tappiot: $2 · Tasapelit: $3",
   "tooltipAccuracy": "Keskimääräinen tarkkuus: $1 ($2 pelistä $3:sta)",
   "tooltipNoAccuracy": "Ei tarkkuustietoja: ne ovat vain analysoiduissa peleissä",

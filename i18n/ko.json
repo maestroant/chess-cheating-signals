@@ -1,6 +1,6 @@
 {
-  "extName": "Chess Opponent Insights",
-  "extDescription": "chess.com에서 최근 몇 시간의 전적을 바탕으로 의심스러운 상대에게 배지를 표시합니다.",
+  "extName": "Chess Cheating Signals",
+  "extDescription": "무료. chess.com 상대 신호를 공개 데이터만으로 표시: 승률, 정확도, 계정 생성 시기. 엔진을 쓰지 않습니다.",
   "tooltipRecord": "승: $1 · 패: $2 · 무: $3",
   "tooltipAccuracy": "평균 정확도: $1 ($3판 중 $2판)",
   "tooltipNoAccuracy": "정확도 데이터 없음: 분석된 대국에만 있습니다",

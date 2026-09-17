@@ -1,6 +1,6 @@
 {
-  "extName": "Chess Opponent Insights",
-  "extDescription": "يميّز الخصوم المشبوهين على chess.com بشارات بناءً على ساعات لعبهم الأخيرة.",
+  "extName": "Chess Cheating Signals",
+  "extDescription": "مجاني. إشارات عن خصمك على chess.com من بيانات عامة فقط: نسبة الفوز، الدقة، عمر الحساب. بدون محرك.",
   "tooltipRecord": "انتصارات: $1 · هزائم: $2 · تعادل: $3",
   "tooltipAccuracy": "متوسط الدقة: $1 (من $2 من أصل $3 مباريات)",
   "tooltipNoAccuracy": "لا توجد بيانات دقة: المباريات المحللة فقط لديها ذلك",

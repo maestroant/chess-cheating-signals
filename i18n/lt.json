@@ -1,6 +1,6 @@
 {
-  "extName": "Chess Opponent Insights",
-  "extDescription": "Pažymi įtartinus varžovus chess.com ženkleliais pagal paskutines jų žaidimo valandas.",
+  "extName": "Chess Cheating Signals",
+  "extDescription": "Nemokama. Signalai apie varžovą chess.com tik iš viešų duomenų: pergalės, tikslumas, paskyros amžius. Be variklio.",
   "tooltipRecord": "Pergalės: $1 · Pralaimėjimai: $2 · Lygiosios: $3",
   "tooltipAccuracy": "Vidutinis tikslumas: $1 (iš $2 iš $3 partijų)",
   "tooltipNoAccuracy": "Nėra tikslumo duomenų: juos turi tik išanalizuotos partijos",

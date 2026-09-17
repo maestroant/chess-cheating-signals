@@ -1,6 +1,6 @@
 {
-  "extName": "Chess Opponent Insights",
-  "extDescription": "Assinala adversários suspeitos no chess.com com emblemas baseados nas suas últimas horas de jogo.",
+  "extName": "Chess Cheating Signals",
+  "extDescription": "Grátis. Sinais do adversário no chess.com só com dados públicos: vitórias, precisão, idade da conta. Sem motor.",
   "tooltipRecord": "Vitórias: $1 · Derrotas: $2 · Empates: $3",
   "tooltipAccuracy": "Precisão média: $1 (em $2 de $3 partidas)",
   "tooltipNoAccuracy": "Sem dados de precisão: só as partidas analisadas a têm",

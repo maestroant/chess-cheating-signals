@@ -1,8 +1,8 @@
 {
   "extName": {
-    "message": "Chess Opponent Insights"
+    "message": "Chess Cheating Signals"
   },
   "extDescription": {
-    "message": "حریفان مشکوک را در chess.com بر اساس ساعت‌های اخیر بازی‌شان با نشان مشخص می‌کند."
+    "message": "رایگان. سیگنال‌های حریف در chess.com فقط از داده‌های عمومی: نرخ برد، دقت، سن حساب. بدون موتور."
   }
 }

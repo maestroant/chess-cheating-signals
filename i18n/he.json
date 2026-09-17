@@ -1,6 +1,6 @@
 {
-  "extName": "Chess Opponent Insights",
-  "extDescription": "מסמן יריבים חשודים ב-chess.com בתגים לפי שעות המשחק האחרונות שלהם.",
+  "extName": "Chess Cheating Signals",
+  "extDescription": "חינם. אותות על היריב ב-chess.com מנתונים ציבוריים בלבד: אחוז ניצחונות, דיוק, גיל החשבון. בלי מנוע.",
   "tooltipRecord": "ניצחונות: $1 · הפסדים: $2 · תיקו: $3",
   "tooltipAccuracy": "דיוק ממוצע: $1 (מתוך $2 מ-$3 משחקים)",
   "tooltipNoAccuracy": "אין נתוני דיוק: רק למשחקים שנותחו יש",

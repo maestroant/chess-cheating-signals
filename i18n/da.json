@@ -1,6 +1,6 @@
 {
-  "extName": "Chess Opponent Insights",
-  "extDescription": "Markerer mistænkelige modstandere på chess.com med mærker ud fra deres seneste spilletimer.",
+  "extName": "Chess Cheating Signals",
+  "extDescription": "Gratis. Signaler om din chess.com-modstander kun fra offentlige data: sejrsrate, præcision, kontoalder. Ingen engine.",
   "tooltipRecord": "Sejre: $1 · Nederlag: $2 · Remis: $3",
   "tooltipAccuracy": "Gennemsnitlig præcision: $1 (ud af $2 af $3 partier)",
   "tooltipNoAccuracy": "Ingen præcisionsdata: kun analyserede partier har dem",

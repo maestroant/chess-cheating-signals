@@ -1,6 +1,6 @@
 {
-  "extName": "Chess Opponent Insights",
-  "extDescription": "Menandakan lawan yang mencurigakan di chess.com dengan lencana berdasarkan jam permainan terkini.",
+  "extName": "Chess Cheating Signals",
+  "extDescription": "Percuma. Isyarat tentang lawan di chess.com hanya daripada data awam: kadar kemenangan, ketepatan, usia akaun. Tanpa enjin.",
   "tooltipRecord": "Menang: $1 · Kalah: $2 · Seri: $3",
   "tooltipAccuracy": "Ketepatan purata: $1 (daripada $2 daripada $3 permainan)",
   "tooltipNoAccuracy": "Tiada data ketepatan: hanya permainan yang dianalisis memilikinya",

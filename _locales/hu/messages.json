@@ -1,8 +1,8 @@
 {
   "extName": {
-    "message": "Chess Opponent Insights"
+    "message": "Chess Cheating Signals"
   },
   "extDescription": {
-    "message": "Jelvényekkel jelöli a gyanús ellenfeleket a chess.comon az elmúlt órák játszmái alapján."
+    "message": "Ingyenes. Jelzések a chess.com-ellenfélről csak nyilvános adatokból: győzelmi arány, pontosság, fiók kora. Motor nélkül."
   }
 }

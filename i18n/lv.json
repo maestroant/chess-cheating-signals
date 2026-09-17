@@ -1,6 +1,6 @@
 {
-  "extName": "Chess Opponent Insights",
-  "extDescription": "Atzīmē aizdomīgus pretiniekus chess.com ar nozīmītēm, balstoties uz viņu pēdējām spēles stundām.",
+  "extName": "Chess Cheating Signals",
+  "extDescription": "Bez maksas. Signāli par pretinieku chess.com tikai no publiskiem datiem: uzvaras, precizitāte, konta vecums. Bez dzinēja.",
   "tooltipRecord": "Uzvaras: $1 · Zaudējumi: $2 · Neizšķirti: $3",
   "tooltipAccuracy": "Vidējā precizitāte: $1 (no $2 no $3 partijām)",
   "tooltipNoAccuracy": "Nav precizitātes datu: tie ir tikai analizētajām partijām",

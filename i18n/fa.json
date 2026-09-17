@@ -1,6 +1,6 @@
 {
-  "extName": "Chess Opponent Insights",
-  "extDescription": "حریفان مشکوک را در chess.com بر اساس ساعت‌های اخیر بازی‌شان با نشان مشخص می‌کند.",
+  "extName": "Chess Cheating Signals",
+  "extDescription": "رایگان. سیگنال‌های حریف در chess.com فقط از داده‌های عمومی: نرخ برد، دقت، سن حساب. بدون موتور.",
   "tooltipRecord": "برد: $1 · باخت: $2 · تساوی: $3",
   "tooltipAccuracy": "دقت میانگین: $1 (از $2 از $3 بازی)",
   "tooltipNoAccuracy": "داده دقت وجود ندارد: فقط بازی‌های تحلیل‌شده آن را دارند",

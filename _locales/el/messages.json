@@ -1,8 +1,8 @@
 {
   "extName": {
-    "message": "Chess Opponent Insights"
+    "message": "Chess Cheating Signals"
   },
   "extDescription": {
-    "message": "Επισημαίνει ύποπτους αντιπάλους στο chess.com με σήματα βάσει των τελευταίων ωρών παιχνιδιού τους."
+    "message": "Δωρεάν. Σήματα για τον αντίπαλο στο chess.com μόνο από δημόσια δεδομένα: νίκες, ακρίβεια, ηλικία λογαριασμού. Χωρίς μηχανή."
   }
 }

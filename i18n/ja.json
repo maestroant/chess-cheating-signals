@@ -1,6 +1,6 @@
 {
-  "extName": "Chess Opponent Insights",
-  "extDescription": "chess.com で直近の対局データをもとに、怪しい対戦相手にバッジを表示します。",
+  "extName": "Chess Cheating Signals",
+  "extDescription": "無料。chess.com の対戦相手の指標を公開データのみから表示：勝率・精度・アカウント作成日。エンジンは使いません。",
   "tooltipRecord": "勝ち: $1 · 負け: $2 · 引き分け: $3",
   "tooltipAccuracy": "平均正確度: $1（$3局中$2局）",
   "tooltipNoAccuracy": "正確度のデータなし: 解析済みの対局にのみあります",

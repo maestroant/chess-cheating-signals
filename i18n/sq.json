@@ -1,6 +1,6 @@
 {
-  "extName": "Chess Opponent Insights",
-  "extDescription": "Shënon kundërshtarët e dyshimtë në chess.com me stema sipas orëve të fundit të lojës.",
+  "extName": "Chess Cheating Signals",
+  "extDescription": "Falas. Sinjale për kundërshtarin në chess.com vetëm nga të dhëna publike: fitore, saktësi, mosha e llogarisë. Pa motor.",
   "tooltipRecord": "Fitore: $1 · Humbje: $2 · Barazime: $3",
   "tooltipAccuracy": "Saktësia mesatare: $1 (nga $2 prej $3 partive)",
   "tooltipNoAccuracy": "Pa të dhëna saktësie: i kanë vetëm partitë e analizuara",

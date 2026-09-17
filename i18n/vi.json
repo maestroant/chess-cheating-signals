@@ -1,6 +1,6 @@
 {
-  "extName": "Chess Opponent Insights",
-  "extDescription": "Đánh dấu đối thủ đáng ngờ trên chess.com bằng huy hiệu dựa trên các giờ chơi gần đây.",
+  "extName": "Chess Cheating Signals",
+  "extDescription": "Miễn phí. Tín hiệu về đối thủ trên chess.com chỉ từ dữ liệu công khai: tỷ lệ thắng, độ chính xác, tuổi tài khoản. Không engine.",
   "tooltipRecord": "Thắng: $1 · Thua: $2 · Hòa: $3",
   "tooltipAccuracy": "Độ chính xác trung bình: $1 (từ $2 trong $3 ván)",
   "tooltipNoAccuracy": "Không có dữ liệu độ chính xác: chỉ ván đã phân tích mới có",

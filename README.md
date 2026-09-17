@@ -12,6 +12,10 @@ tier, no server of its own.
 ![Languages](https://img.shields.io/badge/Languages-55-blueviolet)
 ![No tracking](https://img.shields.io/badge/Tracking-none-brightgreen)
 
+**[Website](https://maestroant.github.io/chess-cheating-signals/)** ·
+[Privacy Policy](https://maestroant.github.io/chess-cheating-signals/privacy.html) ·
+[Chrome Web Store](https://chromewebstore.google.com/detail/fnpboablfdjolmlogkmochacdlpeeacc)
+
 ![Badges on an opponent's card on chess.com, with the details tooltip open](docs/assets/screenshot-overview.png)
 
 ## The signals

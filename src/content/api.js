@@ -10,7 +10,6 @@ CCD.api = {
   TTL_MS: 60000,
 
   _cache: new Map(), // ник в нижнем регистре -> { ts, payload }
-  _needsPlayerId: null, // выясняется на первом запросе
 
   /**
    * Партии игрока начиная с sinceMs. Возвращает { games, profile, source }.
@@ -25,7 +24,8 @@ CCD.api = {
     try {
       payload = await this._internal(username, sinceMs)
     } catch (err) {
-      console.warn("[CCD] внутренний эндпоинт недоступен, откат на публичный API:", err)
+      // err.message, а не err: объект показывает стек, а нужно само сообщение
+      console.warn("[CCD] внутренний эндпоинт недоступен, откат на публичный API:", err.message)
       payload = await this._public(username, sinceMs)
     }
 
@@ -73,28 +73,34 @@ CCD.api = {
       "[CCD] блоки ответа:", Object.keys(first).join(", "),
       "| дебют:", first.openingMetadata?.ecoFamilyName ?? "НЕТ",
       "| точность:", first.analysisMetadata?.whitePlayerMetadata?.accuracy ?? "НЕТ",
-      "| профиль:", first.playerMetadata?.whitePlayerMetadata?.username ?? "НЕТ",
-      "| playerId в запросе:", this._needsPlayerId === true ? "да" : "нет"
+      "| профиль:", first.playerMetadata?.whitePlayerMetadata?.username ?? "НЕТ"
     )
   },
 
   async _hydrate(username, page) {
-    // Сначала пробуем без playerId; если сервер его требует, достаём uuid и повторяем
-    if (this._needsPlayerId !== true) {
-      const res = await this._post({ username, page })
-      if (res.ok) {
-        this._needsPlayerId = false
-        const raw = await res.json()
-        this._logShape(raw)
-        return raw
-      }
-      if (this._needsPlayerId === false) throw new Error("HTTP " + res.status)
-      this._needsPlayerId = true
-    }
+    // Сам сайт всегда шлёт playerId (см. devtools/01-request-payload.json), поэтому
+    // достаём его сразу: запрос без него сервер отвергает с 400.
+    const playerId = await this._resolveUuid(username).catch((err) => {
+      console.warn("[CCD] uuid не достался для", username + ":", err.message)
+      return null
+    })
 
-    const playerId = await this._resolveUuid(username)
-    const res = await this._post({ username, playerId, page })
-    if (!res.ok) throw new Error("HTTP " + res.status)
+    const res = await this._post(playerId ? { username, playerId, page } : { username, page })
+    if (!res.ok) {
+      // сохранённый uuid мог устареть или оказаться мусором — иначе он валил бы
+      // запросы бесконечно, ведь кэш в storage.local переживает перезагрузку
+      if (playerId) await this._forgetUuid(username)
+
+      // у Connect-RPC причина лежит в теле ответа — без неё 400 не отладить
+      const detail = (await res.text().catch(() => "")).slice(0, 300)
+      // отдельной строкой: так ответ сервера видно целиком, даже если сообщение обрежут
+      console.warn("[CCD] ответ эндпоинта:", res.status, detail || "(пустое тело)")
+      throw new Error(
+        "HTTP " + res.status +
+        (playerId ? " (playerId: " + playerId + ")" : " (без playerId)") +
+        (detail ? " " + detail : "")
+      )
+    }
 
     const raw = await res.json()
     this._logShape(raw)
@@ -118,29 +124,47 @@ CCD.api = {
     })
   },
 
-  /** uuid игрока из HTML профиля; кэшируется навсегда — он не меняется */
+  /** uuid игрока; кэшируется навсегда — он не меняется */
   async _resolveUuid(username) {
     const key = "ccd:uuid:" + username.toLowerCase()
     const stored = await chrome.storage.local.get(key)
     if (stored[key]) return stored[key]
 
     // на странице профиля uuid лежит прямо в data-атрибутах — качать HTML не нужно
-    const onPage = document.querySelector("[data-username][data-user-uuid]")
-    if (onPage?.getAttribute("data-username")?.toLowerCase() === username.toLowerCase()) {
-      const uuid = onPage.getAttribute("data-user-uuid")
-      await chrome.storage.local.set({ [key]: uuid })
-      return uuid
+    const uuid =
+      this._uuidFromDocument(document, username) || (await this._uuidFromProfile(username))
+    if (!uuid) throw new Error("нет data-user-uuid в профиле " + username)
+    if (!this.UUID_RE.test(uuid)) throw new Error("не похоже на uuid: " + uuid)
+
+    await chrome.storage.local.set({ [key]: uuid })
+    return uuid
+  },
+
+  UUID_RE: /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i,
+
+  _forgetUuid(username) {
+    return chrome.storage.local.remove("ccd:uuid:" + username.toLowerCase())
+  },
+
+  /** uuid из готового документа: ищем узел, который подписан нужным ником */
+  _uuidFromDocument(doc, username) {
+    const lower = username.toLowerCase()
+    for (const el of doc.querySelectorAll("[data-username][data-user-uuid]")) {
+      if (el.getAttribute("data-username")?.toLowerCase() === lower) {
+        return el.getAttribute("data-user-uuid")
+      }
     }
+    return null
+  },
 
+  async _uuidFromProfile(username) {
     const url = "https://www.chess.com/member/" + encodeURIComponent(username.toLowerCase())
-    const html = await (await fetch(url, { credentials: "include" })).text()
-    const match = html.match(
-      /profile-header-container[^>]*data-username="([^"]+)"[^>]*data-user-id="([^"]+)"[^>]*data-user-uuid="([^"]+)"/i
-    )
-    if (!match) throw new Error("uuid не найден для " + username)
+    const res = await fetch(url, { credentials: "include" })
+    if (!res.ok) throw new Error("профиль " + username + ": HTTP " + res.status)
 
-    await chrome.storage.local.set({ [key]: match[3] })
-    return match[3]
+    // разбираем разметку, а не регулярку: порядок атрибутов chess.com уже менял
+    const doc = new DOMParser().parseFromString(await res.text(), "text/html")
+    return this._uuidFromDocument(doc, username)
   },
 
   RESULTS: {

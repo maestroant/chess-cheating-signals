@@ -120,7 +120,9 @@ Vue перерисовывает строку и стирает вставлен
 ветка `master`, папка `/docs`**. Адрес получится `https://<аккаунт>.github.io/<репозиторий>/` —
 его же стоит указать в поле «Сайт» карточки Chrome Web Store и в `homepage_url` манифеста.
 
-Ссылки на репозиторий в лендинге ведут на `maestroant/chess-cheating-signals`.
+Ссылки на репозиторий в лендинге ведут на `maestroant/chess-cheating-signals`, кнопки
+«Add to Chrome» — на `chromewebstore.google.com/detail/fnpboablfdjolmlogkmochacdlpeeacc`
+(ID расширения в Chrome Web Store).
 
 Публикуется не `master`, а ветка-снимок `public`: без `devtools/`, `SPEC.md`, `RESEARCH.md`
 и `src/content/api.js`, с отдельным README и лицензией MIT. Пуш — `git push origin public:main`.

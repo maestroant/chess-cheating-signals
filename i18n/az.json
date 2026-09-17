@@ -11,15 +11,15 @@
   "badgeNew": "NEW — Yeni hesab: $1 aydan gənc",
   "badgeHigh": "HIGH — Yüksək dəqiqlik: orta hesabla $1%-dən yuxarı",
   "badgeCold": "COLD — Pis seriya: $1%-dən az qələbə",
-  "popupTitle": "Rəqibin nişanları",
+  "popupTitle": "Chess Cheating Signals parametrləri",
   "sectionWindow": "Təhlil pəncərəsi",
   "labelWindowHours": "Pəncərə, saat",
   "labelTimeClasses": "Rejimlər",
   "classBullet": "Bullet",
   "classBlitz": "Blitz",
   "classRapid": "Rapid",
-  "sectionBadges": "Nişanlar",
-  "labelShowBadges": "Nişanları göstər",
+  "sectionBadges": "Siqnallar",
+  "labelShowBadges": "Siqnalları göstər",
   "labelLucky": "qələbə çox",
   "labelCold": "qələbə az",
   "labelHigh": "dəqiqlik yuxarı",
@@ -32,5 +32,6 @@
   "labelIndicatorSelf": "Öz kartında",
   "buttonSave": "Yadda saxla",
   "statusSaved": "Yadda saxlanıldı",
-  "buttonReset": "Standart"
+  "buttonReset": "Standart",
+  "statusCopied": "Kopyalandı"
 }

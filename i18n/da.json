@@ -11,15 +11,15 @@
   "badgeNew": "NEW — Ny konto: yngre end $1 måneder",
   "badgeHigh": "HIGH — Høj præcision: over $1% i gennemsnit",
   "badgeCold": "COLD — Dårlig stime: færre end $1% sejre",
-  "popupTitle": "Modstanderens mærker",
+  "popupTitle": "Indstillinger for Chess Cheating Signals",
   "sectionWindow": "Analysevindue",
   "labelWindowHours": "Vindue, timer",
   "labelTimeClasses": "Tilstande",
   "classBullet": "Bullet",
   "classBlitz": "Blitz",
   "classRapid": "Rapid",
-  "sectionBadges": "Mærker",
-  "labelShowBadges": "Vis mærker",
+  "sectionBadges": "Signaler",
+  "labelShowBadges": "Vis signaler",
   "labelLucky": "sejre over",
   "labelCold": "sejre under",
   "labelHigh": "præcision over",
@@ -32,5 +32,6 @@
   "labelIndicatorSelf": "På eget kort",
   "buttonSave": "Gem",
   "statusSaved": "Gemt",
-  "buttonReset": "Standard"
+  "buttonReset": "Standard",
+  "statusCopied": "Kopieret"
 }

@@ -11,15 +11,15 @@
   "badgeNew": "NEW — Bagong account: wala pang $1 buwan",
   "badgeHigh": "HIGH — Mataas na katumpakan: lampas $1% sa karaniwan",
   "badgeCold": "COLD — Malas na serye: wala pang $1% panalo",
-  "popupTitle": "Mga badge ng kalaban",
+  "popupTitle": "Mga setting ng Chess Cheating Signals",
   "sectionWindow": "Saklaw ng pagsusuri",
   "labelWindowHours": "Saklaw, oras",
   "labelTimeClasses": "Mga mode",
   "classBullet": "Bullet",
   "classBlitz": "Blitz",
   "classRapid": "Rapid",
-  "sectionBadges": "Mga badge",
-  "labelShowBadges": "Ipakita ang mga badge",
+  "sectionBadges": "Mga senyales",
+  "labelShowBadges": "Ipakita ang mga senyales",
   "labelLucky": "panalo higit sa",
   "labelCold": "panalo kulang sa",
   "labelHigh": "katumpakan higit sa",
@@ -32,5 +32,6 @@
   "labelIndicatorSelf": "Sa sariling card",
   "buttonSave": "I-save",
   "statusSaved": "Na-save",
-  "buttonReset": "Default"
+  "buttonReset": "Default",
+  "statusCopied": "Nakopya"
 }

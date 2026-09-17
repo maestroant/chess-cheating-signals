@@ -11,15 +11,15 @@
   "badgeNew": "NEW — Compte nou: menys de $1 mesos",
   "badgeHigh": "HIGH — Precisió alta: més del $1% de mitjana",
   "badgeCold": "COLD — Mala ratxa: menys del $1% de victòries",
-  "popupTitle": "Distintius del rival",
+  "popupTitle": "Configuració de Chess Cheating Signals",
   "sectionWindow": "Finestra d’anàlisi",
   "labelWindowHours": "Finestra, hores",
   "labelTimeClasses": "Modes",
   "classBullet": "Bullet",
   "classBlitz": "Blitz",
   "classRapid": "Ràpides",
-  "sectionBadges": "Distintius",
-  "labelShowBadges": "Mostra els distintius",
+  "sectionBadges": "Senyals",
+  "labelShowBadges": "Mostra els senyals",
   "labelLucky": "victòries per sobre de",
   "labelCold": "victòries per sota de",
   "labelHigh": "precisió per sobre de",
@@ -32,5 +32,6 @@
   "labelIndicatorSelf": "A la teva fitxa",
   "buttonSave": "Desa",
   "statusSaved": "Desat",
-  "buttonReset": "Per defecte"
+  "buttonReset": "Per defecte",
+  "statusCopied": "Copiat"
 }

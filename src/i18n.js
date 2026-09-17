@@ -91,18 +91,13 @@ CCD.i18n = {
   async use(lang) {
     if (this.lang === lang && Object.keys(this.messages).length) return this.messages
 
-    const base = await this.dict(this.FALLBACK).catch((err) => {
-      console.warn("[CCD] не читается английский словарь:", err)
-      return {}
-    })
+    // словарь может не прочитаться: тогда в интерфейсе останутся ключи вместо строк
+    const base = await this.dict(this.FALLBACK).catch(() => ({}))
 
     const translated =
       lang === this.FALLBACK
         ? {}
-        : await this.dict(lang).catch((err) => {
-            console.warn("[CCD] нет перевода для", lang, err)
-            return {}
-          })
+        : await this.dict(lang).catch(() => ({}))
 
     this.lang = lang
     this.messages = { ...base, ...translated }

@@ -11,15 +11,15 @@
   "badgeNew": "NEW — Neues Konto: jünger als $1 Monate",
   "badgeHigh": "HIGH — Hohe Genauigkeit: über $1% im Schnitt",
   "badgeCold": "COLD — Pechsträhne: weniger als $1% Siege",
-  "popupTitle": "Gegner-Abzeichen",
+  "popupTitle": "Chess Cheating Signals – Einstellungen",
   "sectionWindow": "Analysezeitraum",
   "labelWindowHours": "Zeitraum, Stunden",
   "labelTimeClasses": "Modi",
   "classBullet": "Bullet",
   "classBlitz": "Blitz",
   "classRapid": "Schnellschach",
-  "sectionBadges": "Abzeichen",
-  "labelShowBadges": "Abzeichen anzeigen",
+  "sectionBadges": "Signale",
+  "labelShowBadges": "Signale anzeigen",
   "labelLucky": "Siegquote über",
   "labelCold": "Siegquote unter",
   "labelHigh": "Genauigkeit über",
@@ -32,5 +32,6 @@
   "labelIndicatorSelf": "Auf eigener Karte",
   "buttonSave": "Speichern",
   "statusSaved": "Gespeichert",
-  "buttonReset": "Standard"
+  "buttonReset": "Standard",
+  "statusCopied": "Kopiert"
 }

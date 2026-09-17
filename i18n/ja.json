@@ -11,15 +11,15 @@
   "badgeNew": "NEW — 新規アカウント: 作成から $1 か月未満",
   "badgeHigh": "HIGH — 高精度: 平均 $1% 超",
   "badgeCold": "COLD — 不調: 勝率 $1% 未満",
-  "popupTitle": "対戦相手のバッジ",
+  "popupTitle": "Chess Cheating Signals の設定",
   "sectionWindow": "分析期間",
   "labelWindowHours": "期間（時間）",
   "labelTimeClasses": "モード",
   "classBullet": "バレット",
   "classBlitz": "ブリッツ",
   "classRapid": "ラピッド",
-  "sectionBadges": "バッジ",
-  "labelShowBadges": "バッジを表示",
+  "sectionBadges": "シグナル",
+  "labelShowBadges": "シグナルを表示",
   "labelLucky": "勝率が上",
   "labelCold": "勝率が下",
   "labelHigh": "正確度が上",
@@ -32,5 +32,6 @@
   "labelIndicatorSelf": "自分のカードに表示",
   "buttonSave": "保存",
   "statusSaved": "保存しました",
-  "buttonReset": "初期値"
+  "buttonReset": "初期値",
+  "statusCopied": "コピーしました"
 }

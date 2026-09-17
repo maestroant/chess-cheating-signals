@@ -11,15 +11,15 @@
   "badgeNew": "NEW — Nov račun: mlajši od $1 mes.",
   "badgeHigh": "HIGH — Visoka natančnost: povprečno nad $1%",
   "badgeCold": "COLD — Slaba serija: manj kot $1% zmag",
-  "popupTitle": "Značke nasprotnika",
+  "popupTitle": "Nastavitve Chess Cheating Signals",
   "sectionWindow": "Okno analize",
   "labelWindowHours": "Okno, ure",
   "labelTimeClasses": "Načini",
   "classBullet": "Bullet",
   "classBlitz": "Blitz",
   "classRapid": "Rapid",
-  "sectionBadges": "Značke",
-  "labelShowBadges": "Prikaži značke",
+  "sectionBadges": "Signali",
+  "labelShowBadges": "Prikaži signale",
   "labelLucky": "zmage nad",
   "labelCold": "zmage pod",
   "labelHigh": "natančnost nad",
@@ -32,5 +32,6 @@
   "labelIndicatorSelf": "Na svoji kartici",
   "buttonSave": "Shrani",
   "statusSaved": "Shranjeno",
-  "buttonReset": "Privzeto"
+  "buttonReset": "Privzeto",
+  "statusCopied": "Kopirano"
 }

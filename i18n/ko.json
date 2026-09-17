@@ -11,15 +11,15 @@
   "badgeNew": "NEW — 신규 계정: $1개월 미만",
   "badgeHigh": "HIGH — 높은 정확도: 평균 $1% 초과",
   "badgeCold": "COLD — 부진: 승률 $1% 미만",
-  "popupTitle": "상대 배지",
+  "popupTitle": "Chess Cheating Signals 설정",
   "sectionWindow": "분석 기간",
   "labelWindowHours": "기간(시간)",
   "labelTimeClasses": "모드",
   "classBullet": "불릿",
   "classBlitz": "블리츠",
   "classRapid": "래피드",
-  "sectionBadges": "배지",
-  "labelShowBadges": "배지 표시",
+  "sectionBadges": "신호",
+  "labelShowBadges": "신호 표시",
   "labelLucky": "승률 초과",
   "labelCold": "승률 미만",
   "labelHigh": "정확도 초과",
@@ -32,5 +32,6 @@
   "labelIndicatorSelf": "내 카드에",
   "buttonSave": "저장",
   "statusSaved": "저장됨",
-  "buttonReset": "기본값"
+  "buttonReset": "기본값",
+  "statusCopied": "복사됨"
 }

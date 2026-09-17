@@ -11,15 +11,15 @@
   "badgeNew": "NEW — নতুন অ্যাকাউন্ট: $1 মাসের কম",
   "badgeHigh": "HIGH — উচ্চ নির্ভুলতা: গড়ে $1%-এর বেশি",
   "badgeCold": "COLD — খারাপ ধারা: $1%-এর কম জয়",
-  "popupTitle": "প্রতিপক্ষের ব্যাজ",
+  "popupTitle": "Chess Cheating Signals সেটিংস",
   "sectionWindow": "বিশ্লেষণের সময়সীমা",
   "labelWindowHours": "সময়সীমা, ঘণ্টা",
   "labelTimeClasses": "মোড",
   "classBullet": "Bullet",
   "classBlitz": "Blitz",
   "classRapid": "Rapid",
-  "sectionBadges": "ব্যাজ",
-  "labelShowBadges": "ব্যাজ দেখাও",
+  "sectionBadges": "সংকেত",
+  "labelShowBadges": "সংকেত দেখান",
   "labelLucky": "জয় এর বেশি",
   "labelCold": "জয় এর কম",
   "labelHigh": "নির্ভুলতা এর বেশি",
@@ -32,5 +32,6 @@
   "labelIndicatorSelf": "নিজের কার্ডে",
   "buttonSave": "সংরক্ষণ",
   "statusSaved": "সংরক্ষিত",
-  "buttonReset": "ডিফল্ট"
+  "buttonReset": "ডিফল্ট",
+  "statusCopied": "কপি হয়েছে"
 }

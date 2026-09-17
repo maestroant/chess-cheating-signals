@@ -11,15 +11,15 @@
   "badgeNew": "NEW — حساب جديد: أقل من $1 أشهر",
   "badgeHigh": "HIGH — دقة عالية: أعلى من $1% في المتوسط",
   "badgeCold": "COLD — سلسلة سيئة: أقل من $1% انتصارات",
-  "popupTitle": "شارات الخصم",
+  "popupTitle": "إعدادات Chess Cheating Signals",
   "sectionWindow": "نافذة التحليل",
   "labelWindowHours": "النافذة، ساعات",
   "labelTimeClasses": "الأنماط",
   "classBullet": "رصاصة",
   "classBlitz": "خاطف",
   "classRapid": "سريع",
-  "sectionBadges": "الشارات",
-  "labelShowBadges": "إظهار الشارات",
+  "sectionBadges": "الإشارات",
+  "labelShowBadges": "إظهار الإشارات",
   "labelLucky": "انتصارات أكثر من",
   "labelCold": "انتصارات أقل من",
   "labelHigh": "دقة أعلى من",
@@ -32,5 +32,6 @@
   "labelIndicatorSelf": "في بطاقتك",
   "buttonSave": "حفظ",
   "statusSaved": "تم الحفظ",
-  "buttonReset": "الافتراضي"
+  "buttonReset": "الافتراضي",
+  "statusCopied": "تم النسخ"
 }

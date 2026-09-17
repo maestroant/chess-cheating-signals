@@ -11,15 +11,15 @@
   "badgeNew": "NEW — Uus konto: noorem kui $1 kuud",
   "badgeHigh": "HIGH — Kõrge täpsus: keskmiselt üle $1%",
   "badgeCold": "COLD — Halb seeria: alla $1% võite",
-  "popupTitle": "Vastase märgid",
+  "popupTitle": "Chess Cheating Signals seaded",
   "sectionWindow": "Analüüsi aken",
   "labelWindowHours": "Aken, tundi",
   "labelTimeClasses": "Režiimid",
   "classBullet": "Bullet",
   "classBlitz": "Blitz",
   "classRapid": "Rapid",
-  "sectionBadges": "Märgid",
-  "labelShowBadges": "Näita märke",
+  "sectionBadges": "Signaalid",
+  "labelShowBadges": "Näita signaale",
   "labelLucky": "võite üle",
   "labelCold": "võite alla",
   "labelHigh": "täpsus üle",
@@ -32,5 +32,6 @@
   "labelIndicatorSelf": "Oma kaardil",
   "buttonSave": "Salvesta",
   "statusSaved": "Salvestatud",
-  "buttonReset": "Vaikeväärtused"
+  "buttonReset": "Vaikeväärtused",
+  "statusCopied": "Kopeeritud"
 }

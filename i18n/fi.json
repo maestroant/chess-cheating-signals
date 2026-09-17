@@ -11,15 +11,15 @@
   "badgeNew": "NEW — Uusi tili: alle $1 kk vanha",
   "badgeHigh": "HIGH — Korkea tarkkuus: keskimäärin yli $1%",
   "badgeCold": "COLD — Huono putki: alle $1% voittoja",
-  "popupTitle": "Vastustajan merkit",
+  "popupTitle": "Chess Cheating Signals -asetukset",
   "sectionWindow": "Analyysijakso",
   "labelWindowHours": "Jakso, tuntia",
   "labelTimeClasses": "Tilat",
   "classBullet": "Bullet",
   "classBlitz": "Blitz",
   "classRapid": "Rapid",
-  "sectionBadges": "Merkit",
-  "labelShowBadges": "Näytä merkit",
+  "sectionBadges": "Signaalit",
+  "labelShowBadges": "Näytä signaalit",
   "labelLucky": "voittoja yli",
   "labelCold": "voittoja alle",
   "labelHigh": "tarkkuus yli",
@@ -32,5 +32,6 @@
   "labelIndicatorSelf": "Omassa kortissa",
   "buttonSave": "Tallenna",
   "statusSaved": "Tallennettu",
-  "buttonReset": "Oletukset"
+  "buttonReset": "Oletukset",
+  "statusCopied": "Kopioitu"
 }

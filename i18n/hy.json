@@ -11,15 +11,15 @@
   "badgeNew": "NEW — Նոր հաշիվ՝ $1 ամսից փոքր",
   "badgeHigh": "HIGH — Բարձր ճշգրտություն՝ միջինը $1%-ից բարձր",
   "badgeCold": "COLD — Անհաջող շարք՝ հաղթանակները $1%-ից քիչ",
-  "popupTitle": "Մրցակցի կրծքանշանները",
+  "popupTitle": "Chess Cheating Signals-ի կարգավորումներ",
   "sectionWindow": "Վերլուծության պատուհան",
   "labelWindowHours": "Պատուհան, ժամ",
   "labelTimeClasses": "Ռեժիմներ",
   "classBullet": "Bullet",
   "classBlitz": "Blitz",
   "classRapid": "Rapid",
-  "sectionBadges": "Կրծքանշաններ",
-  "labelShowBadges": "Ցուցադրել կրծքանշանները",
+  "sectionBadges": "Ազդանշաններ",
+  "labelShowBadges": "Ցուցադրել ազդանշանները",
   "labelLucky": "հաղթանակներն ավելի",
   "labelCold": "հաղթանակները քիչ",
   "labelHigh": "ճշգրտությունը բարձր",
@@ -32,5 +32,6 @@
   "labelIndicatorSelf": "Իմ քարտում",
   "buttonSave": "Պահպանել",
   "statusSaved": "Պահպանվեց",
-  "buttonReset": "Կանխադրված"
+  "buttonReset": "Կանխադրված",
+  "statusCopied": "Պատճենվեց"
 }

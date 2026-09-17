@@ -11,15 +11,15 @@
   "badgeNew": "NEW — Nieuw account: jonger dan $1 maanden",
   "badgeHigh": "HIGH — Hoge nauwkeurigheid: boven $1% gemiddeld",
   "badgeCold": "COLD — Slechte reeks: minder dan $1% winst",
-  "popupTitle": "Badges van tegenstander",
+  "popupTitle": "Instellingen van Chess Cheating Signals",
   "sectionWindow": "Analyseperiode",
   "labelWindowHours": "Periode, uren",
   "labelTimeClasses": "Modi",
   "classBullet": "Bullet",
   "classBlitz": "Blitz",
   "classRapid": "Rapid",
-  "sectionBadges": "Badges",
-  "labelShowBadges": "Badges tonen",
+  "sectionBadges": "Signalen",
+  "labelShowBadges": "Signalen tonen",
   "labelLucky": "winst boven",
   "labelCold": "winst onder",
   "labelHigh": "nauwkeurigheid boven",
@@ -32,5 +32,6 @@
   "labelIndicatorSelf": "Op eigen kaart",
   "buttonSave": "Opslaan",
   "statusSaved": "Opgeslagen",
-  "buttonReset": "Standaard"
+  "buttonReset": "Standaard",
+  "statusCopied": "Gekopieerd"
 }

@@ -11,15 +11,15 @@
   "badgeNew": "NEW — 新帳戶：註冊不足 $1 個月",
   "badgeHigh": "HIGH — 高精確度：平均高於 $1%",
   "badgeCold": "COLD — 狀態低迷：勝率低於 $1%",
-  "popupTitle": "對手徽章",
+  "popupTitle": "Chess Cheating Signals 設定",
   "sectionWindow": "分析時段",
   "labelWindowHours": "時段（小時）",
   "labelTimeClasses": "模式",
   "classBullet": "子彈",
   "classBlitz": "閃電",
   "classRapid": "快速",
-  "sectionBadges": "徽章",
-  "labelShowBadges": "顯示徽章",
+  "sectionBadges": "訊號",
+  "labelShowBadges": "顯示訊號",
   "labelLucky": "勝率高於",
   "labelCold": "勝率低於",
   "labelHigh": "精確度高於",
@@ -32,5 +32,6 @@
   "labelIndicatorSelf": "顯示在自己",
   "buttonSave": "儲存",
   "statusSaved": "已儲存",
-  "buttonReset": "預設值"
+  "buttonReset": "預設值",
+  "statusCopied": "已複製"
 }

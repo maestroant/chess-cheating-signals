@@ -11,15 +11,15 @@
   "badgeNew": "NEW — Täze hasap: $1 aýdan ýaş",
   "badgeHigh": "HIGH — Ýokary takyklyk: ortaça $1%-den ýokary",
   "badgeCold": "COLD — Şowsuz: $1%-den az ýeňiş",
-  "popupTitle": "Garşydaşyň nyşanlary",
+  "popupTitle": "Chess Cheating Signals sazlamalary",
   "sectionWindow": "Seljeriş penjiresi",
   "labelWindowHours": "Penjire, sagat",
   "labelTimeClasses": "Tertipler",
   "classBullet": "Bullet",
   "classBlitz": "Blitz",
   "classRapid": "Rapid",
-  "sectionBadges": "Nyşanlar",
-  "labelShowBadges": "Nyşanlary görkez",
+  "sectionBadges": "Signallar",
+  "labelShowBadges": "Signallary görkez",
   "labelLucky": "ýeňiş köp",
   "labelCold": "ýeňiş az",
   "labelHigh": "takyklyk ýokary",
@@ -32,5 +32,6 @@
   "labelIndicatorSelf": "Öz kartyňda",
   "buttonSave": "Ýatda sakla",
   "statusSaved": "Ýatda saklandy",
-  "buttonReset": "Deslapky"
+  "buttonReset": "Deslapky",
+  "statusCopied": "Göçürildi"
 }

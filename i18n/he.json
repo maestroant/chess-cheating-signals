@@ -11,15 +11,15 @@
   "badgeNew": "NEW — חשבון חדש: צעיר מ-$1 חודשים",
   "badgeHigh": "HIGH — דיוק גבוה: מעל $1% בממוצע",
   "badgeCold": "COLD — רצף גרוע: פחות מ-$1% ניצחונות",
-  "popupTitle": "תגי היריב",
+  "popupTitle": "הגדרות Chess Cheating Signals",
   "sectionWindow": "חלון הניתוח",
   "labelWindowHours": "חלון, שעות",
   "labelTimeClasses": "מצבים",
   "classBullet": "בוליט",
   "classBlitz": "בליץ",
   "classRapid": "רפיד",
-  "sectionBadges": "תגים",
-  "labelShowBadges": "הצג תגים",
+  "sectionBadges": "אותות",
+  "labelShowBadges": "הצג אותות",
   "labelLucky": "ניצחונות מעל",
   "labelCold": "ניצחונות מתחת",
   "labelHigh": "דיוק מעל",
@@ -32,5 +32,6 @@
   "labelIndicatorSelf": "בכרטיס שלך",
   "buttonSave": "שמור",
   "statusSaved": "נשמר",
-  "buttonReset": "ברירת מחדל"
+  "buttonReset": "ברירת מחדל",
+  "statusCopied": "הועתק"
 }

@@ -11,15 +11,15 @@
   "badgeNew": "NEW — حساب جدید: کمتر از $1 ماه",
   "badgeHigh": "HIGH — دقت بالا: به‌طور میانگین بیش از $1%",
   "badgeCold": "COLD — دوره بد: کمتر از $1% برد",
-  "popupTitle": "نشان‌های حریف",
+  "popupTitle": "تنظیمات Chess Cheating Signals",
   "sectionWindow": "بازه تحلیل",
   "labelWindowHours": "بازه، ساعت",
   "labelTimeClasses": "حالت‌ها",
   "classBullet": "گلوله",
   "classBlitz": "برق‌آسا",
   "classRapid": "سریع",
-  "sectionBadges": "نشان‌ها",
-  "labelShowBadges": "نمایش نشان‌ها",
+  "sectionBadges": "سیگنال‌ها",
+  "labelShowBadges": "نمایش سیگنال‌ها",
   "labelLucky": "برد بیش از",
   "labelCold": "برد کمتر از",
   "labelHigh": "دقت بیش از",
@@ -32,5 +32,6 @@
   "labelIndicatorSelf": "روی کارت خودت",
   "buttonSave": "ذخیره",
   "statusSaved": "ذخیره شد",
-  "buttonReset": "پیش‌فرض"
+  "buttonReset": "پیش‌فرض",
+  "statusCopied": "کپی شد"
 }

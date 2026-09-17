@@ -11,15 +11,15 @@
   "badgeNew": "NEW — Cont nou: mai recent de $1 luni",
   "badgeHigh": "HIGH — Acuratețe ridicată: peste $1% în medie",
   "badgeCold": "COLD — Serie slabă: sub $1% victorii",
-  "popupTitle": "Insignele adversarului",
+  "popupTitle": "Setări Chess Cheating Signals",
   "sectionWindow": "Fereastra de analiză",
   "labelWindowHours": "Fereastră, ore",
   "labelTimeClasses": "Moduri",
   "classBullet": "Bullet",
   "classBlitz": "Blitz",
   "classRapid": "Rapid",
-  "sectionBadges": "Insigne",
-  "labelShowBadges": "Arată insignele",
+  "sectionBadges": "Semnale",
+  "labelShowBadges": "Arată semnalele",
   "labelLucky": "victorii peste",
   "labelCold": "victorii sub",
   "labelHigh": "acuratețe peste",
@@ -32,5 +32,6 @@
   "labelIndicatorSelf": "Pe cartonașul tău",
   "buttonSave": "Salvează",
   "statusSaved": "Salvat",
-  "buttonReset": "Implicit"
+  "buttonReset": "Implicit",
+  "statusCopied": "Copiat"
 }

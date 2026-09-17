@@ -11,15 +11,15 @@
   "badgeNew": "NEW — Yeni hesap: $1 aydan genç",
   "badgeHigh": "HIGH — Yüksek doğruluk: ortalama $1% üzeri",
   "badgeCold": "COLD — Kötü seri: galibiyet oranı $1% altı",
-  "popupTitle": "Rakip rozetleri",
+  "popupTitle": "Chess Cheating Signals ayarları",
   "sectionWindow": "Analiz penceresi",
   "labelWindowHours": "Pencere, saat",
   "labelTimeClasses": "Modlar",
   "classBullet": "Bullet",
   "classBlitz": "Blitz",
   "classRapid": "Rapid",
-  "sectionBadges": "Rozetler",
-  "labelShowBadges": "Rozetleri göster",
+  "sectionBadges": "Sinyaller",
+  "labelShowBadges": "Sinyalleri göster",
   "labelLucky": "galibiyet üstü",
   "labelCold": "galibiyet altı",
   "labelHigh": "doğruluk üstü",
@@ -32,5 +32,6 @@
   "labelIndicatorSelf": "Kendi kartında",
   "buttonSave": "Kaydet",
   "statusSaved": "Kaydedildi",
-  "buttonReset": "Varsayılan"
+  "buttonReset": "Varsayılan",
+  "statusCopied": "Kopyalandı"
 }

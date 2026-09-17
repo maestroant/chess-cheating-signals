@@ -11,15 +11,15 @@
   "badgeNew": "NEW — Llogari e re: më e re se $1 muaj",
   "badgeHigh": "HIGH — Saktësi e lartë: mbi $1% mesatarisht",
   "badgeCold": "COLD — Seri e keqe: nën $1% fitore",
-  "popupTitle": "Stemat e kundërshtarit",
+  "popupTitle": "Cilësimet e Chess Cheating Signals",
   "sectionWindow": "Dritarja e analizës",
   "labelWindowHours": "Dritarja, orë",
   "labelTimeClasses": "Modalitetet",
   "classBullet": "Bullet",
   "classBlitz": "Blitz",
   "classRapid": "Rapid",
-  "sectionBadges": "Stema",
-  "labelShowBadges": "Shfaq stemat",
+  "sectionBadges": "Sinjalet",
+  "labelShowBadges": "Shfaq sinjalet",
   "labelLucky": "fitore mbi",
   "labelCold": "fitore nën",
   "labelHigh": "saktësi mbi",
@@ -32,5 +32,6 @@
   "labelIndicatorSelf": "Në kartën tënde",
   "buttonSave": "Ruaj",
   "statusSaved": "U ruajt",
-  "buttonReset": "Parazgjedhje"
+  "buttonReset": "Parazgjedhje",
+  "statusCopied": "U kopjua"
 }

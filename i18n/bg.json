@@ -11,15 +11,15 @@
   "badgeNew": "NEW — Нов профил: по-млад от $1 мес.",
   "badgeHigh": "HIGH — Висока точност: средно над $1%",
   "badgeCold": "COLD — Лоша серия: по-малко от $1% победи",
-  "popupTitle": "Значки на съперника",
+  "popupTitle": "Настройки на Chess Cheating Signals",
   "sectionWindow": "Прозорец на анализа",
   "labelWindowHours": "Прозорец, часове",
   "labelTimeClasses": "Режими",
   "classBullet": "Булет",
   "classBlitz": "Блиц",
   "classRapid": "Рапид",
-  "sectionBadges": "Значки",
-  "labelShowBadges": "Показвай значки",
+  "sectionBadges": "Сигнали",
+  "labelShowBadges": "Показвай сигнали",
   "labelLucky": "победи над",
   "labelCold": "победи под",
   "labelHigh": "точност над",
@@ -32,5 +32,6 @@
   "labelIndicatorSelf": "В твоята карта",
   "buttonSave": "Запази",
   "statusSaved": "Запазено",
-  "buttonReset": "По подразбиране"
+  "buttonReset": "По подразбиране",
+  "statusCopied": "Копирано"
 }

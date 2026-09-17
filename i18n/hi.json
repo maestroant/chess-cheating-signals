@@ -11,15 +11,15 @@
   "badgeNew": "NEW — नया खाता: $1 महीने से कम",
   "badgeHigh": "HIGH — उच्च सटीकता: औसतन $1% से ऊपर",
   "badgeCold": "COLD — खराब दौर: $1% से कम जीत",
-  "popupTitle": "प्रतिद्वंद्वी के बैज",
+  "popupTitle": "Chess Cheating Signals सेटिंग्स",
   "sectionWindow": "विश्लेषण अवधि",
   "labelWindowHours": "अवधि, घंटे",
   "labelTimeClasses": "मोड",
   "classBullet": "Bullet",
   "classBlitz": "Blitz",
   "classRapid": "Rapid",
-  "sectionBadges": "बैज",
-  "labelShowBadges": "बैज दिखाएँ",
+  "sectionBadges": "संकेत",
+  "labelShowBadges": "संकेत दिखाएँ",
   "labelLucky": "जीत इससे ऊपर",
   "labelCold": "जीत इससे नीचे",
   "labelHigh": "सटीकता इससे ऊपर",
@@ -32,5 +32,6 @@
   "labelIndicatorSelf": "अपने कार्ड पर",
   "buttonSave": "सहेजें",
   "statusSaved": "सहेजा गया",
-  "buttonReset": "डिफ़ॉल्ट"
+  "buttonReset": "डिफ़ॉल्ट",
+  "statusCopied": "कॉपी हो गया"
 }

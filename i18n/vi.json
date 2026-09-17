@@ -11,15 +11,15 @@
   "badgeNew": "NEW — Tài khoản mới: dưới $1 tháng",
   "badgeHigh": "HIGH — Độ chính xác cao: trung bình trên $1%",
   "badgeCold": "COLD — Chuỗi tệ: thắng dưới $1%",
-  "popupTitle": "Huy hiệu đối thủ",
+  "popupTitle": "Cài đặt Chess Cheating Signals",
   "sectionWindow": "Khoảng phân tích",
   "labelWindowHours": "Khoảng, giờ",
   "labelTimeClasses": "Chế độ",
   "classBullet": "Bullet",
   "classBlitz": "Blitz",
   "classRapid": "Rapid",
-  "sectionBadges": "Huy hiệu",
-  "labelShowBadges": "Hiện huy hiệu",
+  "sectionBadges": "Tín hiệu",
+  "labelShowBadges": "Hiện tín hiệu",
   "labelLucky": "thắng trên",
   "labelCold": "thắng dưới",
   "labelHigh": "chính xác trên",
@@ -32,5 +32,6 @@
   "labelIndicatorSelf": "Trên thẻ của bạn",
   "buttonSave": "Lưu",
   "statusSaved": "Đã lưu",
-  "buttonReset": "Mặc định"
+  "buttonReset": "Mặc định",
+  "statusCopied": "Đã sao chép"
 }

@@ -11,15 +11,15 @@
   "badgeNew": "NEW — Jauns konts: jaunāks par $1 mēn.",
   "badgeHigh": "HIGH — Augsta precizitāte: vidēji virs $1%",
   "badgeCold": "COLD — Neveiksmes sērija: mazāk nekā $1% uzvaru",
-  "popupTitle": "Pretinieka nozīmītes",
+  "popupTitle": "Chess Cheating Signals iestatījumi",
   "sectionWindow": "Analīzes logs",
   "labelWindowHours": "Logs, stundas",
   "labelTimeClasses": "Režīmi",
   "classBullet": "Bullet",
   "classBlitz": "Blitz",
   "classRapid": "Rapid",
-  "sectionBadges": "Nozīmītes",
-  "labelShowBadges": "Rādīt nozīmītes",
+  "sectionBadges": "Signāli",
+  "labelShowBadges": "Rādīt signālus",
   "labelLucky": "uzvaru vairāk nekā",
   "labelCold": "uzvaru mazāk nekā",
   "labelHigh": "precizitāte virs",
@@ -32,5 +32,6 @@
   "labelIndicatorSelf": "Savā kartītē",
   "buttonSave": "Saglabāt",
   "statusSaved": "Saglabāts",
-  "buttonReset": "Noklusējums"
+  "buttonReset": "Noklusējums",
+  "statusCopied": "Nokopēts"
 }

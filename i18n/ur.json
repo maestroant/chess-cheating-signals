@@ -11,15 +11,15 @@
   "badgeNew": "NEW — نیا اکاؤنٹ: $1 ماہ سے کم",
   "badgeHigh": "HIGH — اعلیٰ درستگی: اوسطاً $1% سے زیادہ",
   "badgeCold": "COLD — خراب سلسلہ: $1% سے کم جیت",
-  "popupTitle": "حریف کے بیجز",
+  "popupTitle": "Chess Cheating Signals کی ترتیبات",
   "sectionWindow": "تجزیے کا دورانیہ",
   "labelWindowHours": "دورانیہ، گھنٹے",
   "labelTimeClasses": "موڈز",
   "classBullet": "Bullet",
   "classBlitz": "Blitz",
   "classRapid": "Rapid",
-  "sectionBadges": "بیجز",
-  "labelShowBadges": "بیجز دکھائیں",
+  "sectionBadges": "اشارے",
+  "labelShowBadges": "اشارے دکھائیں",
   "labelLucky": "جیت زیادہ از",
   "labelCold": "جیت کم از",
   "labelHigh": "درستگی زیادہ از",
@@ -32,5 +32,6 @@
   "labelIndicatorSelf": "اپنے کارڈ پر",
   "buttonSave": "محفوظ کریں",
   "statusSaved": "محفوظ ہو گیا",
-  "buttonReset": "ڈیفالٹ"
+  "buttonReset": "ڈیفالٹ",
+  "statusCopied": "کاپی ہو گیا"
 }

@@ -11,15 +11,15 @@
   "badgeNew": "NEW — Nuwe rekening: jonger as $1 maande",
   "badgeHigh": "HIGH — Hoë akkuraatheid: bo $1% gemiddeld",
   "badgeCold": "COLD — Slegte reeks: minder as $1% oorwinnings",
-  "popupTitle": "Teenstander se kentekens",
+  "popupTitle": "Chess Cheating Signals-instellings",
   "sectionWindow": "Ontledingsvenster",
   "labelWindowHours": "Venster, ure",
   "labelTimeClasses": "Modusse",
   "classBullet": "Bullet",
   "classBlitz": "Blitz",
   "classRapid": "Rapid",
-  "sectionBadges": "Kentekens",
-  "labelShowBadges": "Wys kentekens",
+  "sectionBadges": "Seine",
+  "labelShowBadges": "Wys seine",
   "labelLucky": "oorwinnings bo",
   "labelCold": "oorwinnings onder",
   "labelHigh": "akkuraatheid bo",
@@ -32,5 +32,6 @@
   "labelIndicatorSelf": "Op eie kaart",
   "buttonSave": "Stoor",
   "statusSaved": "Gestoor",
-  "buttonReset": "Verstek"
+  "buttonReset": "Verstek",
+  "statusCopied": "Gekopieer"
 }

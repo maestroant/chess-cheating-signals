@@ -175,6 +175,25 @@ select {
   border-radius: 4px;
 }
 
+.contact {
+  /* margin целиком: у <p> остаётся браузерный нижний отступ, а он тут лишний */
+  margin: 6px 0 0;
+  padding-top: 5px;
+  border-top: 1px solid var(--ccd-ui-border);
+  font-size: 11px;
+  color: var(--ccd-ui-muted);
+  text-align: center;
+}
+
+.contact a {
+  color: var(--ccd-ui-accent);
+  text-decoration: none;
+}
+
+.contact a:hover {
+  text-decoration: underline;
+}
+
 /* арабский, иврит, фарси, урду: строки идут справа налево */
 [dir="rtl"] body {
   direction: rtl;

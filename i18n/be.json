@@ -11,15 +11,15 @@
   "badgeNew": "NEW — Навічок: акаўнт маладзейшы за $1 мес.",
   "badgeHigh": "HIGH — Высокая дакладнасць: у сярэднім вышэй за $1%",
   "badgeCold": "COLD — Не шанцуе: перамог менш за $1%",
-  "popupTitle": "Значкі саперніка",
+  "popupTitle": "Налады Chess Cheating Signals",
   "sectionWindow": "Акно аналізу",
   "labelWindowHours": "Акно, гадзін",
   "labelTimeClasses": "Рэжымы",
   "classBullet": "Куля",
   "classBlitz": "Бліц",
   "classRapid": "Рапід",
-  "sectionBadges": "Значкі",
-  "labelShowBadges": "Паказваць значкі",
+  "sectionBadges": "Сігналы",
+  "labelShowBadges": "Паказваць сігналы",
   "labelLucky": "перамог больш за",
   "labelCold": "перамог менш за",
   "labelHigh": "дакладнасць вышэй за",
@@ -32,5 +32,6 @@
   "labelIndicatorSelf": "У сваёй картцы",
   "buttonSave": "Захаваць",
   "statusSaved": "Захавана",
-  "buttonReset": "Па змаўчанні"
+  "buttonReset": "Па змаўчанні",
+  "statusCopied": "Скапіравана"
 }

@@ -11,15 +11,15 @@
   "badgeNew": "NEW — Új fiók: $1 hónapnál fiatalabb",
   "badgeHigh": "HIGH — Magas pontosság: átlagosan $1% felett",
   "badgeCold": "COLD — Rossz sorozat: kevesebb mint $1% győzelem",
-  "popupTitle": "Ellenfél jelvényei",
+  "popupTitle": "Chess Cheating Signals beállításai",
   "sectionWindow": "Elemzési ablak",
   "labelWindowHours": "Ablak, óra",
   "labelTimeClasses": "Módok",
   "classBullet": "Bullet",
   "classBlitz": "Blitz",
   "classRapid": "Rapid",
-  "sectionBadges": "Jelvények",
-  "labelShowBadges": "Jelvények mutatása",
+  "sectionBadges": "Jelzések",
+  "labelShowBadges": "Jelzések mutatása",
   "labelLucky": "győzelem felett",
   "labelCold": "győzelem alatt",
   "labelHigh": "pontosság felett",
@@ -32,5 +32,6 @@
   "labelIndicatorSelf": "Saját kártyán",
   "buttonSave": "Mentés",
   "statusSaved": "Mentve",
-  "buttonReset": "Alapértelmezett"
+  "buttonReset": "Alapértelmezett",
+  "statusCopied": "Másolva"
 }

@@ -23,9 +23,8 @@ CCD.api = {
     let payload
     try {
       payload = await this._internal(username, sinceMs)
-    } catch (err) {
-      // err.message, а не err: объект показывает стек, а нужно само сообщение
-      console.warn("[CCD] внутренний эндпоинт недоступен, откат на публичный API:", err.message)
+    } catch {
+      // откат на публичный API — штатный путь, поэтому молча, без шума в консоли
       payload = await this._public(username, sinceMs)
     }
 
@@ -64,10 +63,7 @@ CCD.api = {
     this._shapeLogged = true
 
     const first = raw?.hydratedGames?.[0]
-    if (!first) {
-      console.warn("[CCD] ответ без партий:", raw)
-      return
-    }
+    if (!first) return
 
     console.log(
       "[CCD] блоки ответа:", Object.keys(first).join(", "),
@@ -80,21 +76,31 @@ CCD.api = {
   async _hydrate(username, page) {
     // Сам сайт всегда шлёт playerId (см. devtools/01-request-payload.json), поэтому
     // достаём его сразу: запрос без него сервер отвергает с 400.
-    const playerId = await this._resolveUuid(username).catch((err) => {
-      console.warn("[CCD] uuid не достался для", username + ":", err.message)
+    // uuid может не найтись: чужой профиль, изменённая разметка. Тогда пробуем без него
+    const playerId = await this._resolveUuid(username).catch((e) => {
+      // раньше здесь было молчаливое `() => null`, и отказ выглядел как
+      // «просто нет uuid»: причина (429, изменённая разметка, сеть) пропадала,
+      // а дальше всё честно валилось в публичный API и выглядело исправным
+      console.warn("[CCD] uuid не достался для " + username + ":", e.message)
       return null
     })
 
     const res = await this._post(playerId ? { username, playerId, page } : { username, page })
     if (!res.ok) {
       // сохранённый uuid мог устареть или оказаться мусором — иначе он валил бы
-      // запросы бесконечно, ведь кэш в storage.local переживает перезагрузку
-      if (playerId) await this._forgetUuid(username)
+      // запросы бесконечно, ведь кэш в storage.local переживает перезагрузку.
+      // Но об uuid говорит только 400: на 429 и 5xx сервер сообщает о себе, а не
+      // о нём. Пока забывали на любой не-ok, один отказ стирал кэш, и следующий
+      // проход шёл качать HTML профиля — то есть ровно туда, откуда прилетел
+      // отказ. Так один 429 превращался в бесконечную череду новых.
+      if (playerId && res.status === 400) await this._forgetUuid(username)
+
+      // 429 с любого адреса chess.com — просьба притормозить целиком: лимит
+      // считается по IP, а не по эндпоинту.
+      if (res.status === 429) await this._pauseProfile(res.headers.get("retry-after"))
 
       // у Connect-RPC причина лежит в теле ответа — без неё 400 не отладить
       const detail = (await res.text().catch(() => "")).slice(0, 300)
-      // отдельной строкой: так ответ сервера видно целиком, даже если сообщение обрежут
-      console.warn("[CCD] ответ эндпоинта:", res.status, detail || "(пустое тело)")
       throw new Error(
         "HTTP " + res.status +
         (playerId ? " (playerId: " + playerId + ")" : " (без playerId)") +
@@ -142,6 +148,23 @@ CCD.api = {
 
   UUID_RE: /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i,
 
+  /**
+   * Пауза после 429. Retry-After приходит и числом секунд, и датой по RFC —
+   * принимаем оба, а когда заголовка нет (chess.com шлёт его не всегда), берём
+   * свои 10 минут. Потолок в час — чтобы кривая дата не выключила расширение.
+   */
+  _pauseProfile(retryAfter) {
+    const secs = Number(retryAfter)
+    const fromHeader =
+      Number.isFinite(secs) && secs > 0 ? secs * 1000 : Date.parse(retryAfter) - Date.now()
+    const ms = fromHeader > 0 ? fromHeader : this.COOLDOWN_MS
+
+    console.warn("[CCD] chess.com просит паузу:", Math.round(Math.min(ms, this.MAX_COOLDOWN_MS) / 1000), "с")
+    return chrome.storage.local.set({
+      [this.COOLDOWN_KEY]: Date.now() + Math.min(ms, this.MAX_COOLDOWN_MS)
+    })
+  },
+
   _forgetUuid(username) {
     return chrome.storage.local.remove("ccd:uuid:" + username.toLowerCase())
   },
@@ -157,9 +180,36 @@ CCD.api = {
     return null
   },
 
+  // Обе метки живут в storage.local, а не в памяти: цикл запросов перезапускала
+  // как раз навигация, а её переменная модуля не переживает.
+  COOLDOWN_KEY: "ccd:profile-cooldown", // до какого времени не трогаем chess.com
+  TRIED_KEY: "ccd:profile-tried:",      // когда последний раз качали профиль ника
+  COOLDOWN_MS: 600000,                  // 10 минут, если сервер не сказал иначе
+  MAX_COOLDOWN_MS: 3600000,
+  RETRY_MS: 120000,
+
   async _uuidFromProfile(username) {
+    const triedKey = this.TRIED_KEY + username.toLowerCase()
+    const saved = await chrome.storage.local.get([this.COOLDOWN_KEY, triedKey])
+    const now = Date.now()
+
+    // 429 — это просьба остановиться, а не повод повторить. Без паузы запрос
+    // уходил на каждый update(), то есть на каждую перерисовку DOM.
+    if (now < (saved[this.COOLDOWN_KEY] || 0)) {
+      throw new Error("профиль " + username + ": пауза после 429")
+    }
+
+    // Страница профиля весит около мегабайта, и промах по ней (разметку
+    // поменяли, uuid не нашёлся) повторялся бы с той же частотой, ничего не
+    // меняя. Отметку ставим до запроса: неудачная попытка — тоже попытка.
+    if (now - (saved[triedKey] || 0) < this.RETRY_MS) {
+      throw new Error("профиль " + username + ": недавно уже пробовали")
+    }
+    await chrome.storage.local.set({ [triedKey]: now })
+
     const url = "https://www.chess.com/member/" + encodeURIComponent(username.toLowerCase())
     const res = await fetch(url, { credentials: "include" })
+    if (res.status === 429) await this._pauseProfile(res.headers.get("retry-after"))
     if (!res.ok) throw new Error("профиль " + username + ": HTTP " + res.status)
 
     // разбираем разметку, а не регулярку: порядок атрибутов chess.com уже менял

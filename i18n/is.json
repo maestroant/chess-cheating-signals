@@ -11,7 +11,7 @@
   "badgeNew": "NEW — Nýr aðgangur: yngri en $1 mánaða",
   "badgeHigh": "HIGH — Mikil nákvæmni: yfir $1% að meðaltali",
   "badgeCold": "COLD — Slæm runa: færri en $1% sigrar",
-  "popupTitle": "Merki andstæðings",
+  "popupTitle": "Stillingar Chess Cheating Signals",
   "sectionWindow": "Greiningargluggi",
   "labelWindowHours": "Gluggi, klst.",
   "labelTimeClasses": "Tímaflokkar",
@@ -32,5 +32,6 @@
   "labelIndicatorSelf": "Á eigin korti",
   "buttonSave": "Vista",
   "statusSaved": "Vistað",
-  "buttonReset": "Sjálfgefið"
+  "buttonReset": "Sjálfgefið",
+  "statusCopied": "Afritað"
 }

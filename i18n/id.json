@@ -11,15 +11,15 @@
   "badgeNew": "NEW — Akun baru: kurang dari $1 bulan",
   "badgeHigh": "HIGH — Akurasi tinggi: di atas $1% rata-rata",
   "badgeCold": "COLD — Sedang seret: kurang dari $1% kemenangan",
-  "popupTitle": "Lencana lawan",
+  "popupTitle": "Pengaturan Chess Cheating Signals",
   "sectionWindow": "Jendela analisis",
   "labelWindowHours": "Jendela, jam",
   "labelTimeClasses": "Mode",
   "classBullet": "Bullet",
   "classBlitz": "Blitz",
   "classRapid": "Rapid",
-  "sectionBadges": "Lencana",
-  "labelShowBadges": "Tampilkan lencana",
+  "sectionBadges": "Sinyal",
+  "labelShowBadges": "Tampilkan sinyal",
   "labelLucky": "menang di atas",
   "labelCold": "menang di bawah",
   "labelHigh": "akurasi di atas",
@@ -32,5 +32,6 @@
   "labelIndicatorSelf": "Di kartu sendiri",
   "buttonSave": "Simpan",
   "statusSaved": "Tersimpan",
-  "buttonReset": "Bawaan"
+  "buttonReset": "Bawaan",
+  "statusCopied": "Disalin"
 }

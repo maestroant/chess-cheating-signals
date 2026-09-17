@@ -11,15 +11,15 @@
   "badgeNew": "NEW — Nový účet: mladší ako $1 mes.",
   "badgeHigh": "HIGH — Vysoká presnosť: v priemere nad $1%",
   "badgeCold": "COLD — Slabá séria: menej ako $1% výhier",
-  "popupTitle": "Odznaky súpera",
+  "popupTitle": "Nastavenia Chess Cheating Signals",
   "sectionWindow": "Okno analýzy",
   "labelWindowHours": "Okno, hodiny",
   "labelTimeClasses": "Režimy",
   "classBullet": "Bullet",
   "classBlitz": "Blitz",
   "classRapid": "Rapid",
-  "sectionBadges": "Odznaky",
-  "labelShowBadges": "Zobraziť odznaky",
+  "sectionBadges": "Signály",
+  "labelShowBadges": "Zobrazovať signály",
   "labelLucky": "výhry nad",
   "labelCold": "výhry pod",
   "labelHigh": "presnosť nad",
@@ -32,5 +32,6 @@
   "labelIndicatorSelf": "Na vlastnej karte",
   "buttonSave": "Uložiť",
   "statusSaved": "Uložené",
-  "buttonReset": "Predvolené"
+  "buttonReset": "Predvolené",
+  "statusCopied": "Skopírované"
 }

@@ -11,15 +11,15 @@
   "badgeNew": "NEW — Akaun baharu: kurang daripada $1 bulan",
   "badgeHigh": "HIGH — Ketepatan tinggi: melebihi $1% purata",
   "badgeCold": "COLD — Sedang lembap: kurang daripada $1% kemenangan",
-  "popupTitle": "Lencana lawan",
+  "popupTitle": "Tetapan Chess Cheating Signals",
   "sectionWindow": "Tetingkap analisis",
   "labelWindowHours": "Tetingkap, jam",
   "labelTimeClasses": "Mod",
   "classBullet": "Bullet",
   "classBlitz": "Blitz",
   "classRapid": "Rapid",
-  "sectionBadges": "Lencana",
-  "labelShowBadges": "Tunjukkan lencana",
+  "sectionBadges": "Isyarat",
+  "labelShowBadges": "Tunjukkan isyarat",
   "labelLucky": "menang melebihi",
   "labelCold": "menang kurang daripada",
   "labelHigh": "ketepatan melebihi",
@@ -32,5 +32,6 @@
   "labelIndicatorSelf": "Pada kad sendiri",
   "buttonSave": "Simpan",
   "statusSaved": "Disimpan",
-  "buttonReset": "Lalai"
+  "buttonReset": "Lalai",
+  "statusCopied": "Disalin"
 }

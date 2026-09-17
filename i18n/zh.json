@@ -11,15 +11,15 @@
   "badgeNew": "NEW — 新账号：注册不足 $1 个月",
   "badgeHigh": "HIGH — 高精确度：平均高于 $1%",
   "badgeCold": "COLD — 状态低迷：胜率低于 $1%",
-  "popupTitle": "对手徽章",
+  "popupTitle": "Chess Cheating Signals 设置",
   "sectionWindow": "分析时间窗",
   "labelWindowHours": "时间窗（小时）",
   "labelTimeClasses": "模式",
   "classBullet": "子弹",
   "classBlitz": "闪电",
   "classRapid": "快速",
-  "sectionBadges": "徽章",
-  "labelShowBadges": "显示徽章",
+  "sectionBadges": "信号",
+  "labelShowBadges": "显示信号",
   "labelLucky": "胜率高于",
   "labelCold": "胜率低于",
   "labelHigh": "精确度高于",
@@ -32,5 +32,6 @@
   "labelIndicatorSelf": "显示在自己",
   "buttonSave": "保存",
   "statusSaved": "已保存",
-  "buttonReset": "默认值"
+  "buttonReset": "默认值",
+  "statusCopied": "已复制"
 }

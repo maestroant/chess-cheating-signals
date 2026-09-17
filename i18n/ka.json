@@ -11,15 +11,15 @@
   "badgeNew": "NEW — ახალი ანგარიში: $1 თვეზე ნაკლები",
   "badgeHigh": "HIGH — მაღალი სიზუსტე: საშუალოდ $1%-ზე მეტი",
   "badgeCold": "COLD — ცუდი სერია: მოგება $1%-ზე ნაკლები",
-  "popupTitle": "მოწინააღმდეგის ნიშნები",
+  "popupTitle": "Chess Cheating Signals-ის პარამეტრები",
   "sectionWindow": "ანალიზის ფანჯარა",
   "labelWindowHours": "ფანჯარა, საათი",
   "labelTimeClasses": "რეჟიმები",
   "classBullet": "Bullet",
   "classBlitz": "Blitz",
   "classRapid": "Rapid",
-  "sectionBadges": "ნიშნები",
-  "labelShowBadges": "ნიშნების ჩვენება",
+  "sectionBadges": "სიგნალები",
+  "labelShowBadges": "სიგნალების ჩვენება",
   "labelLucky": "მოგება მეტია",
   "labelCold": "მოგება ნაკლებია",
   "labelHigh": "სიზუსტე მეტია",
@@ -32,5 +32,6 @@
   "labelIndicatorSelf": "ჩემს ბარათზე",
   "buttonSave": "შენახვა",
   "statusSaved": "შენახულია",
-  "buttonReset": "ნაგულისხმევი"
+  "buttonReset": "ნაგულისხმევი",
+  "statusCopied": "დაკოპირდა"
 }

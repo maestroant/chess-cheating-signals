@@ -97,12 +97,60 @@ async function save(patch = collect()) {
   }
 }
 
+const SUPPORT_EMAIL = "support@fbextractor.com"
+
+let copiedTimer = null
+
+/** Запасной путь, когда вкладку открыть не удалось: адрес хотя бы окажется в буфере */
+async function copyEmail(link) {
+  try {
+    await navigator.clipboard.writeText(SUPPORT_EMAIL)
+  } catch {
+    // clipboard API может быть недоступен, если попап потерял фокус — старый путь работает всегда
+    const area = document.createElement("textarea")
+    area.value = SUPPORT_EMAIL
+    document.body.append(area)
+    area.select()
+    document.execCommand("copy")
+    area.remove()
+  }
+
+  link.textContent = CCD.i18n.t("statusCopied")
+  clearTimeout(copiedTimer)
+  // восстанавливаем из константы, а не из текста ссылки: два быстрых клика
+  // иначе закрепили бы подтверждение вместо адреса
+  copiedTimer = setTimeout(() => (link.textContent = SUPPORT_EMAIL), 1500)
+}
+
+/**
+ * Chrome не выполняет переход по mailto: из попапа, поэтому адрес открывается
+ * вкладкой — на самом переходе его подхватывает почтовый клиент.
+ *
+ * Пустую вкладку после передачи протокола Chrome закрывает сам. Прибрать её из
+ * попапа всё равно нельзя: открытие вкладки закрывает попап, а вместе с ним
+ * умирает и весь его JS, включая отложенные таймеры.
+ */
+async function openMail(link) {
+  try {
+    await chrome.tabs.create({ url: "mailto:" + SUPPORT_EMAIL })
+  } catch {
+    await copyEmail(link)
+  }
+}
+
 async function init() {
   await localize(browserLanguage())
   await load()
 
   document.getElementById("luckyWinRate").addEventListener("change", () => syncWinRates("lucky"))
   document.getElementById("coldWinRate").addEventListener("change", () => syncWinRates("cold"))
+
+  const contact = document.getElementById("contact")
+  contact.addEventListener("click", (event) => {
+    // переход по ссылке из попапа всё равно не состоится — открываем вкладкой сами
+    event.preventDefault()
+    openMail(contact)
+  })
 
   document.getElementById("save").addEventListener("click", () => save())
   document.getElementById("reset").addEventListener("click", () => {

@@ -11,15 +11,15 @@
   "badgeNew": "NEW — Fresh account: less than $1 months old",
   "badgeHigh": "HIGH — High accuracy: above $1% on average",
   "badgeCold": "COLD — Cold streak: fewer than $1% wins",
-  "popupTitle": "Opponent badges",
+  "popupTitle": "Chess Cheating Signals settings",
   "sectionWindow": "Analysis window",
   "labelWindowHours": "Window, hours",
   "labelTimeClasses": "Modes",
   "classBullet": "Bullet",
   "classBlitz": "Blitz",
   "classRapid": "Rapid",
-  "sectionBadges": "Badges",
-  "labelShowBadges": "Show badges",
+  "sectionBadges": "Signals",
+  "labelShowBadges": "Show signals",
   "labelLucky": "win rate above",
   "labelCold": "win rate below",
   "labelHigh": "accuracy above",
@@ -32,5 +32,6 @@
   "labelIndicatorSelf": "On your card",
   "buttonSave": "Save",
   "statusSaved": "Saved",
-  "buttonReset": "Defaults"
+  "buttonReset": "Defaults",
+  "statusCopied": "Copied"
 }

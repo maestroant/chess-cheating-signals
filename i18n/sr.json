@@ -11,15 +11,15 @@
   "badgeNew": "NEW — Нов налог: млађи од $1 мес.",
   "badgeHigh": "HIGH — Висока прецизност: просечно изнад $1%",
   "badgeCold": "COLD — Лош низ: мање од $1% победа",
-  "popupTitle": "Беџеви противника",
+  "popupTitle": "Подешавања Chess Cheating Signals",
   "sectionWindow": "Прозор анализе",
   "labelWindowHours": "Прозор, сати",
   "labelTimeClasses": "Режими",
   "classBullet": "Булет",
   "classBlitz": "Блиц",
   "classRapid": "Рапид",
-  "sectionBadges": "Беџеви",
-  "labelShowBadges": "Прикажи беџеве",
+  "sectionBadges": "Сигнали",
+  "labelShowBadges": "Прикажи сигнале",
   "labelLucky": "победе изнад",
   "labelCold": "победе испод",
   "labelHigh": "прецизност изнад",
@@ -32,5 +32,6 @@
   "labelIndicatorSelf": "На својој картици",
   "buttonSave": "Сачувај",
   "statusSaved": "Сачувано",
-  "buttonReset": "Подразумевано"
+  "buttonReset": "Подразумевано",
+  "statusCopied": "Копирано"
 }

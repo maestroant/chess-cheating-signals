@@ -56,10 +56,8 @@ CCD.main = {
       await this.applyLanguage()
       const targets = CCD.ui.targets()
 
-      if (!targets.length) {
-        console.warn("[CCD] карточки игроков не найдены:", location.pathname)
-        return
-      }
+      // карточек может не быть вовсе — страница со списком партий, например
+      if (!targets.length) return
 
       console.log("[CCD] цели:", targets.map((t) => t.role + "=" + t.username).join(", "))
 
@@ -91,8 +89,8 @@ CCD.main = {
           )
 
           await CCD.ui.render(target, stats, s)
-        } catch (err) {
-          console.warn("[CCD] не удалось обновить", target.username, err)
+        } catch {
+          // партии не пришли — снимаем бейджи, чтобы не оставить на карточке устаревшие
           CCD.ui.clear(target.role)
         }
       }

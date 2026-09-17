@@ -5,3 +5,5 @@ release/*.zip
 release/promo/*.html
 !release/promo/*.src.html
 !release/promo/_*.html
+# SVG для Figma — пересобирается из тех же исходников
+release/figma/

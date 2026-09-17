@@ -1,0 +1,75 @@
+{
+  "_": "Маркетинговые строки макетов. Подписи карточки соперника сюда не входят — они берутся из i18n/<код>.json токеном {{I18N:ключ|аргументы}}, теми же переводами, что видит пользователь в расширении. Коды локалей — как в _locales.",
+
+  "en": {
+    "headline1": "See who you are",
+    "headline2": "actually playing",
+    "lead": "Reads your opponent's last hours of play and puts a badge on their card: a win streak, a brand-new account, suspiciously high accuracy.",
+    "lockupPre": "Works right inside",
+    "you": "You"
+  },
+
+  "ru": {
+    "headline1": "Узнайте, с кем",
+    "headline2": "вы играете",
+    "lead": "Читает последние часы игры соперника и ставит бейдж на его карточку: серия побед, свежий аккаунт, подозрительно высокая точность.",
+    "lockupPre": "Работает прямо внутри",
+    "you": "Вы"
+  },
+
+  "uk": {
+    "headline1": "Дізнайтеся, з ким",
+    "headline2": "ви граєте",
+    "lead": "Читає останні години гри суперника і ставить бейдж на його картку: серія перемог, свіжий акаунт, підозріло висока точність.",
+    "lockupPre": "Працює просто всередині",
+    "you": "Ви"
+  },
+
+  "hi": {
+    "headline1": "देखिए, असल में आप",
+    "headline2": "किसके ख़िलाफ़ हैं",
+    "lead": "प्रतिद्वंद्वी के पिछले कुछ घंटों का खेल पढ़कर उसके कार्ड पर बैज लगाता है: जीत की लय, नया खाता, संदिग्ध रूप से ऊँची सटीकता।",
+    "lockupPre": "यहाँ काम करता है:",
+    "you": "आप"
+  },
+
+  "id": {
+    "headline1": "Lihat siapa lawan",
+    "headline2": "Anda sebenarnya",
+    "lead": "Membaca beberapa jam terakhir permainan lawan dan menempelkan badge di kartunya: rentetan kemenangan, akun baru, akurasi mencurigakan.",
+    "lockupPre": "Bekerja langsung di",
+    "you": "Anda"
+  },
+
+  "de": {
+    "headline1": "Sieh, gegen wen",
+    "headline2": "du spielst",
+    "lead": "Liest die letzten Stunden deines Gegners und setzt ein Badge auf seine Karte: Siegesserie, neues Konto, auffällig hohe Genauigkeit.",
+    "lockupPre": "Läuft direkt in",
+    "you": "Du"
+  },
+
+  "es": {
+    "headline1": "Mira contra quién",
+    "headline2": "juegas de verdad",
+    "lead": "Lee las últimas horas de juego del rival y pone una insignia en su tarjeta: racha de victorias, cuenta nueva, precisión sospechosamente alta.",
+    "lockupPre": "Funciona dentro de",
+    "you": "Tú"
+  },
+
+  "fr": {
+    "headline1": "Voyez contre qui",
+    "headline2": "vous jouez",
+    "lead": "Lit les dernières heures de jeu de l'adversaire et pose un badge sur sa carte : série de victoires, compte récent, précision étonnamment haute.",
+    "lockupPre": "Fonctionne dans",
+    "you": "Vous"
+  },
+
+  "pt_BR": {
+    "headline1": "Veja contra quem",
+    "headline2": "você joga mesmo",
+    "lead": "Lê as últimas horas de jogo do adversário e põe um selo no cartão dele: sequência de vitórias, conta nova, precisão suspeitamente alta.",
+    "lockupPre": "Funciona dentro do",
+    "you": "Você"
+  }
+}

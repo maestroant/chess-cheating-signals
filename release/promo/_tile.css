@@ -36,7 +36,8 @@ body {
   overflow: hidden;
 }
 body {
-  font-family: Inter, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-family: Inter, "Nirmala UI", "Noto Sans Devanagari", "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 

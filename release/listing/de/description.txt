@@ -1,0 +1,26 @@
+Sieh vor dem ersten Zug, gegen wen du wirklich spielst.
+
+Chess Cheating Signals liest die beendeten Partien deines Gegners aus den letzten Stunden und setzt ein kleines Badge direkt auf seine Karte bei chess.com. Ohne Anmeldung, ohne Konto, ohne Bezahlversion.
+
+WAS DU SIEHST
+• Sieg-Niederlage-Leiste mit Punktestand — auf der Karte des Gegners und auf deiner eigenen
+• LUCKY — Glückssträhne: mehr als 70% Siege
+• NEW — neues Konto: jünger als 3 Monate
+• HIGH — hohe Genauigkeit: über 85% im Schnitt
+• COLD — Pechsträhne: weniger als 30% Siege
+
+Fahre über die Karte, und du siehst die Details: Siege, Niederlagen und Remis, die durchschnittliche Genauigkeit und aus wie vielen Partien sie stammt, die letzte Eröffnung und ob die letzte Partie am Handy gespielt wurde.
+
+ALLES EINSTELLBAR
+Das Analysefenster (standardmäßig 12 Stunden), alle Schwellenwerte, die Mindestzahl an Partien, welche Modi zählen (Bullet, Blitz, Rapid), welche Badges erscheinen und ob der Indikator auf deiner eigenen Karte angezeigt wird. Eine Schaltfläche stellt die Standardwerte wieder her.
+
+DATENSCHUTZ
+Die Erweiterung hat keinen eigenen Server. Sie liest nur den öffentlichen Partienverlauf, den chess.com ohnehin zeigt, direkt aus deinem Browser, und speichert nichts außer deinen Einstellungen. Keine Analytik, keine Konten — es verlässt nichts deinen Rechner.
+
+WAS ES NICHT IST
+Das ist keine Cheat-Erkennung. Die Erweiterung startet keine Engine, schlägt keine Züge vor, automatisiert nichts und kann dir nicht sagen, ob jemand betrügt — sie zeigt nur, wie seine letzten Partien aussehen. Die Schlüsse ziehst du selbst.
+
+Funktioniert auf den Partie-, Analyse- und Profilseiten von chess.com. Die Oberfläche folgt der Sprache von chess.com selbst — 55 Sprachen werden unterstützt.
+
+Quellcode: github.com/maestroant/chess-cheating-signals
+Nicht mit Chess.com verbunden und nicht von Chess.com unterstützt.

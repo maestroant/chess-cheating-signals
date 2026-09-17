@@ -1,0 +1,26 @@
+Mira contra quién juegas en realidad, antes de tu primera jugada.
+
+Chess Cheating Signals lee las partidas terminadas de tu rival en las últimas horas y coloca una pequeña insignia directamente en su tarjeta en chess.com. Sin registro, sin cuenta, sin versión de pago.
+
+LO QUE VES
+• Barra de victorias y derrotas con el marcador, en la tarjeta del rival y en la tuya
+• LUCKY — en racha: más del 70% de victorias
+• NEW — cuenta nueva: menos de 3 meses
+• HIGH — precisión alta: más del 85% de media
+• COLD — mala racha: menos del 30% de victorias
+
+Pasa el cursor por la tarjeta para ver el detalle: victorias, derrotas y tablas, la precisión media y de cuántas partidas sale, la última apertura y si la última partida se jugó desde el móvil.
+
+TODO ES CONFIGURABLE
+La ventana de análisis (12 horas por defecto), todos los umbrales, el mínimo de partidas, los modos que cuentan (bullet, blitz, rápidas), qué insignias se muestran y si aparece el indicador en tu propia tarjeta. Un botón devuelve todo a los valores iniciales.
+
+PRIVACIDAD
+La extensión no tiene servidor propio. Lee solo el historial público de partidas que chess.com ya muestra, directamente desde tu navegador, y no guarda nada más que tus ajustes. Sin analíticas, sin cuentas: nada sale de tu equipo.
+
+LO QUE NO ES
+Esto no es un detector de trampas. No ejecuta ningún motor, no sugiere jugadas, no automatiza nada y no puede decirte si alguien hace trampas: solo muestra qué aspecto tienen sus partidas recientes. Las conclusiones las sacas tú.
+
+Funciona en las páginas de partida, análisis y perfil de chess.com. La interfaz sigue el idioma del propio chess.com: 55 idiomas admitidos.
+
+Código fuente: github.com/maestroant/chess-cheating-signals
+No está afiliada a Chess.com ni cuenta con su respaldo.

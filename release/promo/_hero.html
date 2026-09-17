@@ -5,16 +5,13 @@
   </div>
 
   <div class="copy">
-    <h1>See who you are<br /><span class="grad">actually playing</span></h1>
-    <p class="lead">
-      Reads your opponent's last hours of play and puts a badge on their card: a win streak,
-      a brand-new account, suspiciously high accuracy.
-    </p>
+    <h1>{{T:headline1}}<br /><span class="grad">{{T:headline2}}</span></h1>
+    <p class="lead">{{T:lead}}</p>
   </div>
 
   <!-- свободный низ слева: на чём работает расширение -->
   <div class="lockup">
-    <span class="pre">Works right inside</span>
+    <span class="pre">{{T:lockupPre}}</span>
     <span class="wm">chess.com</span>
   </div>
 
@@ -54,19 +51,19 @@
 
       <div class="board-strip">
         <img class="board-img" src={{BOARD}} alt="" />
-        <div class="tip">LUCKY — On a roll: more than 70% wins
-NEW — Fresh account: less than 3 months old
-HIGH — High accuracy: above 85% on average
+        <div class="tip">{{I18N:badgeLucky|70}}
+{{I18N:badgeNew|3}}
+{{I18N:badgeHigh|85}}
 
-Wins: <span class="w">5</span> · Losses: <span class="l">2</span> · Draws: 0
-Average accuracy: <span class="rate">91%</span> (from 4 of 7 games)
-Last opening: <span class="opening">London System</span>
-Last played on a phone</div>
+{{I18N:tooltipRecord|<span class="w">5</span>|<span class="l">2</span>|0}}
+{{I18N:tooltipAccuracy|<span class="rate">91%</span>|4|7}}
+{{I18N:tooltipOpening|<span class="opening">London System</span>}}
+{{I18N:devicePhone}}</div>
       </div>
 
       <div class="player">
         <span class="avatar"></span>
-        <span class="nm">You</span>
+        <span class="nm">{{T:you}}</span>
         <span class="rating">(1502)</span>
         <span class="ccd">
           <svg class="bar" viewBox="0 0 33 7" fill="none" aria-hidden="true">

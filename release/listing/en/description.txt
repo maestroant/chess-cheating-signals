@@ -1,0 +1,26 @@
+See who you are actually playing — before your first move.
+
+Chess Cheating Signals reads your opponent's finished games from the last few hours and puts a small badge right on their card on chess.com. No sign-up, no account, no paid tier.
+
+WHAT YOU SEE
+• A win/loss bar with the score — on your opponent's card and on your own
+• LUCKY — on a roll: more than 70% wins
+• NEW — fresh account: less than 3 months old
+• HIGH — high accuracy: above 85% on average
+• COLD — cold streak: fewer than 30% wins
+
+Hover the card for the details: wins, losses and draws, average accuracy and how many games it was measured from, the last opening, and whether the last game was played on a phone.
+
+EVERYTHING IS ADJUSTABLE
+The analysis window (12 hours by default), every threshold, the minimum number of games, which modes count (bullet, blitz, rapid), which badges to show, and whether to show the indicator on your own card. One button restores the defaults.
+
+PRIVACY
+The extension has no server of its own. It reads only the public game history that chess.com already shows, straight from your browser, and stores nothing but your settings. No analytics, no accounts, nothing leaves your machine.
+
+WHAT IT IS NOT
+This is not cheat detection. It runs no engine, suggests no moves, automates nothing, and it cannot tell you whether someone is cheating — it only shows what their recent games look like. The conclusions are yours to draw.
+
+Works on chess.com game, analysis and profile pages. The interface follows the language of chess.com itself — 55 languages supported.
+
+Source code: github.com/maestroant/chess-cheating-signals
+Not affiliated with or endorsed by Chess.com.

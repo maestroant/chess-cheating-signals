@@ -33,7 +33,8 @@ body {
   overflow: hidden;
 }
 body {
-  font-family: Inter, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-family: Inter, "Nirmala UI", "Noto Sans Devanagari", "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif;
   color: var(--text);
   -webkit-font-smoothing: antialiased;
 }
@@ -99,22 +100,22 @@ h1 .grad {
 /* ─── низ слева: на чём работает ─── */
 .lockup {
   left: 66px;
-  bottom: 74px;
+  bottom: 66px;
   display: flex;
   align-items: baseline;
   gap: 14px;
 }
 .lockup .pre {
-  font-size: 14px;
+  font-size: 17px;
   font-weight: 700;
-  letter-spacing: 1.6px;
+  letter-spacing: 1.9px;
   text-transform: uppercase;
   color: var(--sub);
 }
 .lockup .wm {
-  font-size: 42px;
+  font-size: 54px;
   font-weight: 800;
-  letter-spacing: -1.4px;
+  letter-spacing: -1.8px;
   color: var(--board);
 }
 
@@ -220,9 +221,9 @@ h1 .grad {
 /* фигура по умолчанию спрятана — вариант включает её сам */
 .pawn {
   display: block;
-  width: 310px;
-  right: 10px;
-  bottom: -8px;
+  width: 312px;
+  right: 14px;
+  bottom: 34px;
   z-index: 2;
   filter: drop-shadow(0 26px 40px rgba(50, 70, 25, 0.35));
 }

@@ -1,0 +1,26 @@
+Lihat siapa lawan Anda sebenarnya — sebelum langkah pertama.
+
+Chess Cheating Signals membaca partai lawan yang sudah selesai dalam beberapa jam terakhir dan menempelkan badge kecil langsung di kartunya di chess.com. Tanpa pendaftaran, tanpa akun, tanpa versi berbayar.
+
+APA YANG ANDA LIHAT
+• Bilah menang/kalah beserta skor — di kartu lawan dan di kartu Anda sendiri
+• LUCKY — sedang panas: lebih dari 70% kemenangan
+• NEW — akun baru: kurang dari 3 bulan
+• HIGH — akurasi tinggi: di atas 85% rata-rata
+• COLD — sedang seret: kurang dari 30% kemenangan
+
+Arahkan kursor ke kartu untuk rinciannya: menang, kalah dan seri, akurasi rata-rata dan dari berapa partai akurasi itu dihitung, pembukaan terakhir, serta apakah partai terakhir dimainkan dari ponsel.
+
+SEMUA BISA DIATUR
+Rentang analisis (bawaannya 12 jam), semua ambang batas, jumlah partai minimum, mode yang dihitung (bullet, blitz, rapid), badge mana yang ditampilkan, dan apakah indikator muncul di kartu Anda sendiri. Satu tombol mengembalikan semuanya ke setelan awal.
+
+PRIVASI
+Ekstensi ini tidak punya server sendiri. Ia hanya membaca riwayat partai publik yang memang sudah ditampilkan chess.com, langsung dari peramban Anda, dan tidak menyimpan apa pun selain setelan Anda. Tanpa analitik, tanpa akun — tidak ada data yang keluar dari perangkat Anda.
+
+APA YANG BUKAN
+Ini bukan pendeteksi kecurangan. Ekstensi ini tidak menjalankan engine, tidak menyarankan langkah, tidak mengotomatiskan apa pun, dan tidak bisa memberi tahu apakah seseorang curang — ia hanya menunjukkan seperti apa partai-partai terakhirnya. Kesimpulan ada di tangan Anda.
+
+Bekerja di halaman partai, analisis, dan profil chess.com. Bahasa antarmuka mengikuti bahasa chess.com itu sendiri — 55 bahasa didukung.
+
+Kode sumber: github.com/maestroant/chess-cheating-signals
+Tidak berafiliasi dengan dan tidak didukung oleh Chess.com.

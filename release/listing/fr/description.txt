@@ -1,0 +1,26 @@
+Voyez contre qui vous jouez vraiment, avant votre premier coup.
+
+Chess Cheating Signals lit les parties terminées de votre adversaire sur les dernières heures et pose un petit badge directement sur sa carte, sur chess.com. Sans inscription, sans compte, sans version payante.
+
+CE QUE VOUS VOYEZ
+• Une barre victoires/défaites avec le score, sur la carte de l'adversaire et sur la vôtre
+• LUCKY — en forme : plus de 70% de victoires
+• NEW — compte récent : moins de 3 mois
+• HIGH — précision élevée : plus de 85% en moyenne
+• COLD — mauvaise passe : moins de 30% de victoires
+
+Survolez la carte pour le détail : victoires, défaites et nulles, la précision moyenne et le nombre de parties sur lequel elle est calculée, la dernière ouverture, et si la dernière partie a été jouée au téléphone.
+
+TOUT EST RÉGLABLE
+La fenêtre d'analyse (12 heures par défaut), chaque seuil, le nombre minimal de parties, les cadences prises en compte (bullet, blitz, rapide), les badges à afficher et l'indicateur sur votre propre carte. Un bouton rétablit les valeurs d'origine.
+
+CONFIDENTIALITÉ
+L'extension n'a pas de serveur. Elle lit uniquement l'historique public des parties que chess.com affiche déjà, directement depuis votre navigateur, et ne conserve que vos réglages. Aucune analytique, aucun compte : rien ne quitte votre machine.
+
+CE QUE CE N'EST PAS
+Ce n'est pas un détecteur de triche. L'extension n'exécute aucun moteur, ne suggère aucun coup, n'automatise rien et ne peut pas dire si quelqu'un triche : elle montre seulement à quoi ressemblent ses parties récentes. Les conclusions vous appartiennent.
+
+Fonctionne sur les pages de partie, d'analyse et de profil de chess.com. L'interface suit la langue de chess.com — 55 langues prises en charge.
+
+Code source : github.com/maestroant/chess-cheating-signals
+Sans lien avec Chess.com, et non approuvée par Chess.com.

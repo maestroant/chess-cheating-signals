@@ -140,8 +140,3 @@ The Inter font is distributed under the SIL Open Font License 1.1 and is not cov
 Not affiliated with, endorsed by, or connected to Chess.com. All trademarks belong to their
 respective owners.
 
-## Another extension by the author
-
-[**FB Extractor Pro**](https://fbextractor.com) — exports Facebook groups and their members to CSV
-or XLSX in one click, with no API keys and no setup, free plan included.
-[Chrome Web Store](https://chromewebstore.google.com/detail/fb-extractor/nlchcmccgileneicfgpeeljlojiolhob)

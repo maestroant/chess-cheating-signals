@@ -31,5 +31,19 @@ CCD.settings = {
 
   invalidate() {
     this._cache = null
+  },
+
+  /**
+   * Настройки меняются и мимо попапа: его сообщение не дойдёт до вкладки со
+   * старой копией скрипта, а sendMessage там отказывает молча. Кэш при этом
+   * живёт до перезагрузки страницы — и человек видит старую картинку, хотя
+   * галку давно поставил. Слушаем само хранилище: оно меняется всегда.
+   */
+  watch(onChange) {
+    chrome.storage.onChanged.addListener((changes, area) => {
+      if (area !== "sync") return
+      this.invalidate()
+      onChange()
+    })
   }
 }

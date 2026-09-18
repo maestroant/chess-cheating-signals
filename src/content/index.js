@@ -19,11 +19,25 @@ CCD.main = {
 
     chrome.runtime.onMessage.addListener((msg) => {
       if (msg?.action !== "settings-updated") return
-      CCD.settings.invalidate()
-      CCD.api._cache.clear()
-      document.querySelectorAll("[data-ccd-role]").forEach((el) => el.remove())
-      this.schedule(0)
+      this.refresh()
     })
+
+    // тот же сброс по самому хранилищу: сообщение выше — лишь быстрый путь,
+    // а дойти оно может и не до всех вкладок
+    CCD.settings.watch(() => this.refresh())
+  },
+
+  /**
+   * Настройки изменились. Просто перерисовать мало: карточку никто не тронет,
+   * пока на ней висит наш узел с тем же ником — isStale() считает её свежей.
+   * Поэтому сносим нарисованное и собираем заново.
+   */
+  refresh() {
+    if (this._stopped) return
+    CCD.settings.invalidate()
+    CCD.api._cache.clear()
+    document.querySelectorAll("[data-ccd-role]").forEach((el) => el.remove())
+    this.schedule(0)
   },
 
   /**

@@ -227,3 +227,27 @@ h1 .grad {
   z-index: 2;
   filter: drop-shadow(0 26px 40px rgba(50, 70, 25, 0.35));
 }
+
+/* знак поддержки Украины */
+.support {
+  display: flex;
+  right: 54px;
+  top: 68px;
+  align-items: center;
+  gap: 9px;
+}
+.support-icon {
+  display: block;
+  width: 30px;
+  height: 30px;
+}
+.support span {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #4b4f55;
+  letter-spacing: 0;
+}
+/* на русской локали знака нет */
+.cover[data-locale="ru"] .support {
+  display: none;
+}

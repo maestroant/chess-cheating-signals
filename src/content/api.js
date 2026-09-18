@@ -80,8 +80,10 @@ CCD.api = {
     const playerId = await this._resolveUuid(username).catch((e) => {
       // раньше здесь было молчаливое `() => null`, и отказ выглядел как
       // «просто нет uuid»: причина (429, изменённая разметка, сеть) пропадала,
-      // а дальше всё честно валилось в публичный API и выглядело исправным
-      console.warn("[CCD] uuid не достался для " + username + ":", e.message)
+      // а дальше всё честно валилось в публичный API и выглядело исправным.
+      // Но собственная пауза — не диагноз, а ожидаемое состояние: она молчит,
+      // иначе одно и то же предупреждение идёт на каждую перерисовку DOM
+      if (!e.quiet) console.warn("[CCD] uuid не достался для " + username + ":", e.message)
       return null
     })
 
@@ -169,6 +171,13 @@ CCD.api = {
     return chrome.storage.local.remove("ccd:uuid:" + username.toLowerCase())
   },
 
+  /** Отказ по собственному тормозу: ждать — штатно, поэтому в консоль не идёт */
+  _quiet(message) {
+    const e = new Error(message)
+    e.quiet = true
+    return e
+  },
+
   /** uuid из готового документа: ищем узел, который подписан нужным ником */
   _uuidFromDocument(doc, username) {
     const lower = username.toLowerCase()
@@ -196,14 +205,14 @@ CCD.api = {
     // 429 — это просьба остановиться, а не повод повторить. Без паузы запрос
     // уходил на каждый update(), то есть на каждую перерисовку DOM.
     if (now < (saved[this.COOLDOWN_KEY] || 0)) {
-      throw new Error("профиль " + username + ": пауза после 429")
+      throw this._quiet("профиль " + username + ": пауза после 429")
     }
 
     // Страница профиля весит около мегабайта, и промах по ней (разметку
     // поменяли, uuid не нашёлся) повторялся бы с той же частотой, ничего не
     // меняя. Отметку ставим до запроса: неудачная попытка — тоже попытка.
     if (now - (saved[triedKey] || 0) < this.RETRY_MS) {
-      throw new Error("профиль " + username + ": недавно уже пробовали")
+      throw this._quiet("профиль " + username + ": недавно уже пробовали")
     }
     await chrome.storage.local.set({ [triedKey]: now })
 

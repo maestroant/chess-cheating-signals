@@ -14,10 +14,8 @@ CCD.main = {
     this.schedule()
 
     // Vue перерисовывает карточки и стирает наши узлы, поэтому следим за DOM
-    new MutationObserver(() => this.schedule(this.RECHECK_DELAY, true)).observe(
-      document.documentElement,
-      { childList: true, subtree: true }
-    )
+    this._observer = new MutationObserver(() => this.schedule(this.RECHECK_DELAY, true))
+    this._observer.observe(document.documentElement, { childList: true, subtree: true })
 
     chrome.runtime.onMessage.addListener((msg) => {
       if (msg?.action !== "settings-updated") return
@@ -28,7 +26,27 @@ CCD.main = {
     })
   },
 
+  /**
+   * Жив ли ещё наш контекст. Расширение перезагрузили, а эта копия скрипта
+   * осталась на уже открытой странице: chrome.* здесь бросает «Extension context
+   * invalidated», render() падает, и catch ниже снимает вполне живые бейджи на
+   * каждую перерисовку Vue. Данных такому скрипту не видать уже никогда.
+   */
+  alive() {
+    return Boolean(chrome.runtime?.id)
+  },
+
+  /** Уходим тихо и оставляем нарисованное на месте: его обновит перезагрузка страницы */
+  stop() {
+    if (this._stopped) return
+    this._stopped = true
+    clearTimeout(this._timer)
+    this._observer?.disconnect()
+    console.log("[CCD] расширение перезагружено — обновите страницу")
+  },
+
   schedule(delay = this.LOAD_DELAY, onlyIfStale = false) {
+    if (this._stopped) return
     if (onlyIfStale && !this.isStale()) return
     clearTimeout(this._timer)
     this._timer = setTimeout(() => this.update(), delay)
@@ -48,7 +66,8 @@ CCD.main = {
   },
 
   async update() {
-    if (this._busy) return
+    if (this._busy || this._stopped) return
+    if (!this.alive()) return this.stop()
     this._busy = true
 
     try {
@@ -90,7 +109,9 @@ CCD.main = {
 
           await CCD.ui.render(target, stats, s)
         } catch {
-          // партии не пришли — снимаем бейджи, чтобы не оставить на карточке устаревшие
+          // партии не пришли — снимаем бейджи, чтобы не оставить на карточке устаревшие.
+          // Но мёртвый контекст — не повод: там падает не запрос, а chrome.*
+          if (!this.alive()) return this.stop()
           CCD.ui.clear(target.role)
         }
       }

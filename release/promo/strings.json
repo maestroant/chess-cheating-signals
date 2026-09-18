@@ -6,6 +6,7 @@
     "headline2": "actually playing",
     "lead": "Reads your opponent's last hours of play and puts a badge on their card: a win streak, a brand-new account, suspiciously high accuracy.",
     "lockupPre": "Works right inside",
+    "support": "Stand with Ukraine",
     "you": "You"
   },
 
@@ -14,6 +15,7 @@
     "headline2": "вы играете",
     "lead": "Читает последние часы игры соперника и ставит бейдж на его карточку: серия побед, свежий аккаунт, подозрительно высокая точность.",
     "lockupPre": "Работает прямо внутри",
+    "support": "",
     "you": "Вы"
   },
 
@@ -22,6 +24,7 @@
     "headline2": "ви граєте",
     "lead": "Читає останні години гри суперника і ставить бейдж на його картку: серія перемог, свіжий акаунт, підозріло висока точність.",
     "lockupPre": "Працює просто всередині",
+    "support": "Разом з Україною",
     "you": "Ви"
   },
 
@@ -30,6 +33,7 @@
     "headline2": "किसके ख़िलाफ़ हैं",
     "lead": "प्रतिद्वंद्वी के पिछले कुछ घंटों का खेल पढ़कर उसके कार्ड पर बैज लगाता है: जीत की लय, नया खाता, संदिग्ध रूप से ऊँची सटीकता।",
     "lockupPre": "यहाँ काम करता है:",
+    "support": "यूक्रेन के साथ",
     "you": "आप"
   },
 
@@ -38,6 +42,7 @@
     "headline2": "Anda sebenarnya",
     "lead": "Membaca beberapa jam terakhir permainan lawan dan menempelkan badge di kartunya: rentetan kemenangan, akun baru, akurasi mencurigakan.",
     "lockupPre": "Bekerja langsung di",
+    "support": "Bersama Ukraina",
     "you": "Anda"
   },
 
@@ -46,6 +51,7 @@
     "headline2": "du spielst",
     "lead": "Liest die letzten Stunden deines Gegners und setzt ein Badge auf seine Karte: Siegesserie, neues Konto, auffällig hohe Genauigkeit.",
     "lockupPre": "Läuft direkt in",
+    "support": "Solidarität mit der Ukraine",
     "you": "Du"
   },
 
@@ -54,6 +60,7 @@
     "headline2": "juegas de verdad",
     "lead": "Lee las últimas horas de juego del rival y pone una insignia en su tarjeta: racha de victorias, cuenta nueva, precisión sospechosamente alta.",
     "lockupPre": "Funciona dentro de",
+    "support": "Con Ucrania",
     "you": "Tú"
   },
 
@@ -62,6 +69,7 @@
     "headline2": "vous jouez",
     "lead": "Lit les dernières heures de jeu de l'adversaire et pose un badge sur sa carte : série de victoires, compte récent, précision étonnamment haute.",
     "lockupPre": "Fonctionne dans",
+    "support": "Avec l’Ukraine",
     "you": "Vous"
   },
 
@@ -70,6 +78,7 @@
     "headline2": "você joga mesmo",
     "lead": "Lê as últimas horas de jogo do adversário e põe um selo no cartão dele: sequência de vitórias, conta nova, precisão suspeitamente alta.",
     "lockupPre": "Funciona dentro do",
+    "support": "Com a Ucrânia",
     "you": "Você"
   }
 }

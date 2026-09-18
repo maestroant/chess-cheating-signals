@@ -56,6 +56,7 @@ function localize(html, loc) {
   const strings = i18nOf(loc);
   const fallback = i18nOf("en");
   return html
+    .split("{{LOCALE}}").join(loc)
     .replace(/\{\{T:(\w+)\}\}/g, (_, key) => dict[key] ?? STRINGS.en[key] ?? "")
     .replace(/\{\{I18N:([^}]+)\}\}/g, (_, expr) => {
       const [key, ...args] = expr.split("|");

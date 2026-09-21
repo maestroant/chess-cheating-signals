@@ -180,7 +180,7 @@ select {
   margin: 6px 0 0;
   padding-top: 5px;
   border-top: 1px solid var(--ccd-ui-border);
-  /* два значка в ряд: почта и репозиторий */
+  /* три значка в ряд: почта, репозиторий, сайт */
   display: flex;
   justify-content: center;
   gap: 14px;

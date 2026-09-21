@@ -116,9 +116,12 @@ Vue перерисовывает строку и стирает вставлен
 `docs/index.html` — одностраничный лендинг: что показывают бейджи, что расширение читает
 и чего не делает. Самодостаточный HTML, без сборки и без ассетов из репозитория.
 
-Включается бесплатно через GitHub Pages: **Settings → Pages → Source: Deploy from a branch →
-ветка `master`, папка `/docs`**. Адрес получится `https://<аккаунт>.github.io/<репозиторий>/` —
-его же стоит указать в поле «Сайт» карточки Chrome Web Store и в `homepage_url` манифеста.
+Хостится бесплатно на Vercel: проект `chess-signals`, Root Directory — `docs`, команды сборки
+нет, production branch — `main`. Адрес: **https://chess-signals.vercel.app**. Каждый пуш ветки
+`public` в `main` деплоится автоматически.
+
+До этого пробовались GitHub Pages (адрес с ником), is-a.dev (отказ: корневые поддомены только
+про разработку ПО) и Cloudflare Workers (адрес с ником аккаунта). Возвращаться не к чему.
 
 Ссылки на репозиторий в лендинге ведут на `maestroant/chess-cheating-signals`, кнопки
 «Add to Chrome» — на `chromewebstore.google.com/detail/fnpboablfdjolmlogkmochacdlpeeacc`

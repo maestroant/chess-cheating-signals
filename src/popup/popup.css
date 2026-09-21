@@ -180,18 +180,22 @@ select {
   margin: 6px 0 0;
   padding-top: 5px;
   border-top: 1px solid var(--ccd-ui-border);
-  font-size: 11px;
+  /* два значка в ряд: почта и репозиторий */
+  display: flex;
+  justify-content: center;
+  gap: 14px;
   color: var(--ccd-ui-muted);
-  text-align: center;
 }
 
+/* inline-flex, иначе строчный бокс оставит под значком зазор под базовую линию */
 .contact a {
-  color: var(--ccd-ui-accent);
+  display: inline-flex;
+  color: inherit;
   text-decoration: none;
 }
 
 .contact a:hover {
-  text-decoration: underline;
+  color: var(--ccd-ui-accent);
 }
 
 /* арабский, иврит, фарси, урду: строки идут справа налево */

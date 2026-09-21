@@ -13,6 +13,17 @@ CCD.analyze = {
       (g) => g.endedAt >= since && s.timeClasses.includes(g.timeClass)
     )
 
+    // видно, куда делись партии: за окно по времени или под отсев по тайм-контролю
+    if (games.length !== payload.games.length) {
+      const classes = {}
+      for (const g of payload.games) classes[g.timeClass] = (classes[g.timeClass] || 0) + 1
+      console.log(
+        "[CCD] отсев:", payload.games.length, "→", games.length,
+        "| в ответе:", JSON.stringify(classes),
+        "| учитываем:", s.timeClasses.join(",")
+      )
+    }
+
     const wld = { win: 0, loss: 0, draw: 0 }
     let accSum = 0
     let accGames = 0

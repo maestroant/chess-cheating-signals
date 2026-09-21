@@ -18,15 +18,25 @@ CCD.api = {
   async playerGames(username, sinceMs) {
     const key = username.toLowerCase()
     const hit = this._cache.get(key)
-    if (hit && Date.now() - hit.ts < this.TTL_MS) return hit.payload
+    if (hit && Date.now() - hit.ts < this.TTL_MS) {
+      console.log("[CCD] " + username + ": из кэша,", hit.payload.games.length, "партий")
+      return hit.payload
+    }
 
     let payload
     try {
       payload = await this._internal(username, sinceMs)
-    } catch {
-      // откат на публичный API — штатный путь, поэтому молча, без шума в консоли
+    } catch (e) {
+      // откат на публичный API — штатный путь, но причину теперь показываем:
+      // именно здесь теряются партии, когда chess.com просит паузу
+      console.warn("[CCD] " + username + ": внутренний API мимо —", e.message, "→ идём в публичный")
       payload = await this._public(username, sinceMs)
     }
+
+    console.log(
+      "[CCD] " + username + ":", payload.games.length, "партий из", payload.source,
+      "| профиль:", payload.profile?.username || "нет"
+    )
 
     this._cache.set(key, { ts: Date.now(), payload })
     return payload
@@ -289,7 +299,10 @@ CCD.api = {
       const res = await fetch(
         "https://api.chess.com/pub/player/" + user + "/games/" + year + "/" + month
       )
-      if (!res.ok) continue
+      if (!res.ok) {
+        console.warn("[CCD] " + username + ": публичный API " + year + "/" + month + " — HTTP " + res.status)
+        continue
+      }
       const data = await res.json()
       for (const game of data.games ?? []) {
         const normalized = this._normalizePublic(game, username)

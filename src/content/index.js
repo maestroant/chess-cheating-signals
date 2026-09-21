@@ -9,7 +9,10 @@ CCD.main = {
   _busy: false,
 
   init() {
-    console.log("[CCD] content script загружен:", location.pathname)
+    console.log(
+      "[CCD] content script загружен:", location.pathname,
+      "| версия:", chrome.runtime.getManifest().version
+    )
     CCD.locale.current()
     this.schedule()
 
@@ -87,12 +90,30 @@ CCD.main = {
     try {
       const s = await CCD.settings.get()
       await this.applyLanguage()
+
+      console.log(
+        "[CCD] проход:", location.pathname,
+        "| окно:", s.windowHours + " ч",
+        "| свой индикатор:", s.showOwnIndicator,
+        "| индикатор соперника:", s.showOpponentIndicator,
+        "| бейджи:", s.showBadges
+      )
+      CCD.ui.dumpRows()
+
       const targets = CCD.ui.targets()
 
       // карточек может не быть вовсе — страница со списком партий, например
-      if (!targets.length) return
+      if (!targets.length) {
+        console.log("[CCD] целей нет: ни строк игроков с ником, ни шапки профиля")
+        return
+      }
 
-      console.log("[CCD] цели:", targets.map((t) => t.role + "=" + t.username).join(", "))
+      // строк на доске должно быть ровно две: роль назначается по порядку в DOM,
+      // и любой посторонний .cc-user-block-component сдвигает её на чужую карточку
+      console.log(
+        "[CCD] цели:", targets.map((t) => t.role + "=" + t.username).join(", "),
+        "| строк на странице:", CCD.ui.rows().length
+      )
 
       for (const target of targets) {
         const own = target.kind === "indicator"
@@ -101,6 +122,10 @@ CCD.main = {
           : !s.showOpponentIndicator && !s.showBadges
 
         if (nothingToShow) {
+          console.log(
+            "[CCD] " + target.role + " " + target.username + ": выключено в настройках —",
+            own ? "showOwnIndicator" : "showOpponentIndicator + showBadges"
+          )
           CCD.ui.clear(target.role)
           continue
         }
@@ -122,10 +147,13 @@ CCD.main = {
           )
 
           await CCD.ui.render(target, stats, s)
-        } catch {
+        } catch (e) {
           // партии не пришли — снимаем бейджи, чтобы не оставить на карточке устаревшие.
           // Но мёртвый контекст — не повод: там падает не запрос, а chrome.*
           if (!this.alive()) return this.stop()
+          // под этот catch попадает всё: отказ API, осечка fetch по svg, промах i18n.
+          // Пока он молчал, любая из причин выглядела одинаково — «бейджей просто нет»
+          console.warn("[CCD] " + target.role + " " + target.username + ": не нарисовали —", e)
           CCD.ui.clear(target.role)
         }
       }

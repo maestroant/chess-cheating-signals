@@ -113,6 +113,28 @@ CCD.ui = {
     return [...document.querySelectorAll(this.SELECTORS.row)]
   },
 
+  /**
+   * Строки игроков как их видит расширение — для консоли. Роль здесь считается
+   * так же, как в _boardTargets(): по порядку в DOM. Если строк не две, видно сразу,
+   * какая лишняя и чей ник уехал в чужую роль.
+   */
+  dumpRows() {
+    const rows = this.rows()
+    console.log("[CCD] строк .cc-user-block-component:", rows.length)
+
+    rows.forEach((row, i) => {
+      const box = row.getBoundingClientRect()
+      console.log(
+        "[CCD]   #" + i,
+        i < 2 ? "→ " + ["opponent", "self"][i] : "→ не учитывается (берём только первые две)",
+        "ник:", row.querySelector(this.SELECTORS.username)?.textContent?.trim() || "НЕТ",
+        "| размер:", Math.round(box.width) + "x" + Math.round(box.height),
+        "| сверху:", Math.round(box.top),
+        "| наш узел:", row.querySelector("[data-ccd-role]")?.dataset.ccdRole || "нет"
+      )
+    })
+  },
+
   /** Наш элемент для роли, если уже вставлен */
   mounted(role) {
     return document.querySelector('[data-ccd-role="' + role + '"]')
@@ -122,11 +144,27 @@ CCD.ui = {
     document.querySelectorAll('[data-ccd-role="' + role + '"]').forEach((el) => el.remove())
   },
 
+  /**
+   * Якорь мы взяли до запросов к chess.com, а они идут секундами: Vue успевает
+   * перерисовать строку, и тот div уже не на странице. Вставка в него проходит
+   * без ошибок, но на экране ничего нет — узел уехал в отсоединённое поддерево.
+   * Поэтому берём строку заново; её может не оказаться вовсе — тогда false.
+   */
   mount(target, node) {
+    const anchor = target.anchor.isConnected
+      ? target.anchor
+      : this.targets().find((t) => t.role === target.role && t.username === target.username)?.anchor
+
+    if (!anchor) return false
+    if (anchor !== target.anchor) {
+      console.warn("[CCD] " + target.role + " " + target.username + ": строку перерисовали, вставляем в новую")
+    }
+
     this.clear(target.role)
     node.dataset.ccdRole = target.role
     node.dataset.ccdUser = target.username
-    target.anchor.appendChild(node)
+    anchor.appendChild(node)
+    return true
   },
 
   /**
@@ -141,6 +179,10 @@ CCD.ui = {
     const badges = own ? [] : stats.badges
 
     if (!stats.total || (!withIndicator && !badges.length)) {
+      console.log(
+        "[CCD] " + target.role + " " + target.username + ": нечего рисовать —",
+        !stats.total ? "нет партий в окне" : "индикатор и бейджи выключены"
+      )
       this.clear(target.role)
       return
     }
@@ -158,7 +200,17 @@ CCD.ui = {
       box.appendChild(await this.badgeNode(badge, first))
     }
 
-    this.mount(target, box)
+    if (!this.mount(target, box)) {
+      console.warn("[CCD] " + target.role + " " + target.username + ": строка исчезла со страницы, рисовать некуда")
+      return
+    }
+
+    console.log(
+      "[CCD] " + target.role + " " + target.username + ": нарисовано —",
+      withIndicator ? "индикатор" : "без индикатора",
+      "| бейджи:", badges.join(",") || "нет",
+      "| видно:", box.getBoundingClientRect().width > 0
+    )
   },
 
   async badgeNode(badge, blink) {

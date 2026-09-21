@@ -86,10 +86,7 @@ function collect() {
 
 async function save(patch = collect()) {
   await chrome.storage.sync.set(patch)
-
-  const status = document.getElementById("status")
-  status.textContent = CCD.i18n.t("statusSaved")
-  setTimeout(() => (status.textContent = ""), 1500)
+  flash("statusSaved")
 
   const tabs = await chrome.tabs.query({ url: "https://*.chess.com/*" })
   for (const tab of tabs) {
@@ -99,10 +96,21 @@ async function save(patch = collect()) {
 
 const SUPPORT_EMAIL = "support@fbextractor.com"
 
-let copiedTimer = null
+let flashTimer = null
+
+/**
+ * Короткое сообщение в общей строке состояния. Раньше подтверждение о копировании
+ * писалось в саму ссылку, но теперь там значок, а не текст: textContent стёр бы его.
+ */
+function flash(key) {
+  const status = document.getElementById("status")
+  status.textContent = CCD.i18n.t(key)
+  clearTimeout(flashTimer)
+  flashTimer = setTimeout(() => (status.textContent = ""), 1500)
+}
 
 /** Запасной путь, когда вкладку открыть не удалось: адрес хотя бы окажется в буфере */
-async function copyEmail(link) {
+async function copyEmail() {
   try {
     await navigator.clipboard.writeText(SUPPORT_EMAIL)
   } catch {
@@ -115,11 +123,7 @@ async function copyEmail(link) {
     area.remove()
   }
 
-  link.textContent = CCD.i18n.t("statusCopied")
-  clearTimeout(copiedTimer)
-  // восстанавливаем из константы, а не из текста ссылки: два быстрых клика
-  // иначе закрепили бы подтверждение вместо адреса
-  copiedTimer = setTimeout(() => (link.textContent = SUPPORT_EMAIL), 1500)
+  flash("statusCopied")
 }
 
 /**
@@ -130,11 +134,11 @@ async function copyEmail(link) {
  * попапа всё равно нельзя: открытие вкладки закрывает попап, а вместе с ним
  * умирает и весь его JS, включая отложенные таймеры.
  */
-async function openMail(link) {
+async function openMail() {
   try {
     await chrome.tabs.create({ url: "mailto:" + SUPPORT_EMAIL })
   } catch {
-    await copyEmail(link)
+    await copyEmail()
   }
 }
 
@@ -145,11 +149,10 @@ async function init() {
   document.getElementById("luckyWinRate").addEventListener("change", () => syncWinRates("lucky"))
   document.getElementById("coldWinRate").addEventListener("change", () => syncWinRates("cold"))
 
-  const contact = document.getElementById("contact")
-  contact.addEventListener("click", (event) => {
+  document.getElementById("contact").addEventListener("click", (event) => {
     // переход по ссылке из попапа всё равно не состоится — открываем вкладкой сами
     event.preventDefault()
-    openMail(contact)
+    openMail()
   })
 
   document.getElementById("save").addEventListener("click", () => save())

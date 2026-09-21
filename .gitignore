@@ -1,0 +1,6 @@
+graphify-out/
+devtools/
+release/
+SPEC.md
+RESEARCH.md
+src/content/api.js

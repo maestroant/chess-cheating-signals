@@ -1,0 +1,135 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../tokens.css" />
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <h1 data-i18n="popupTitle"></h1>
+
+    <section>
+      <h2 data-i18n="sectionWindow"></h2>
+      <label class="row">
+        <span class="grow" data-i18n="labelWindowHours"></span>
+        <input type="number" id="windowHours" min="1" max="720" />
+      </label>
+      <div class="row">
+        <span class="nowrap" data-i18n="labelTimeClasses"></span>
+        <span class="chips">
+          <label><input type="checkbox" data-class="BULLET" /><span data-i18n="classBullet"></span></label>
+          <label><input type="checkbox" data-class="BLITZ" /><span data-i18n="classBlitz"></span></label>
+          <label><input type="checkbox" data-class="RAPID" /><span data-i18n="classRapid"></span></label>
+        </span>
+      </div>
+    </section>
+
+    <section>
+      <h2 data-i18n="sectionBadges"></h2>
+      <label class="row">
+        <input type="checkbox" id="showBadges" />
+        <span class="grow" data-i18n="labelShowBadges"></span>
+      </label>
+
+      <label class="row badge-row">
+        <span class="badge lucky">LUCKY</span>
+        <span class="grow" data-i18n="labelLucky"></span>
+        <input type="number" id="luckyWinRate" min="1" max="100" /><span class="unit">%</span>
+      </label>
+
+      <label class="row badge-row">
+        <span class="badge cold">COLD</span>
+        <span class="grow" data-i18n="labelCold"></span>
+        <input type="number" id="coldWinRate" min="0" max="100" /><span class="unit">%</span>
+      </label>
+
+      <label class="row badge-row">
+        <span class="badge high">HIGH</span>
+        <span class="grow" data-i18n="labelHigh"></span>
+        <input type="number" id="highAccuracy" min="1" max="100" /><span class="unit">%</span>
+      </label>
+
+      <label class="row badge-row">
+        <span class="badge new">NEW</span>
+        <span class="grow" data-i18n="labelNew"></span>
+        <input type="number" id="newAccountMonths" min="1" max="60" />
+        <span class="unit" data-i18n="labelMonths"></span>
+      </label>
+
+      <label class="row">
+        <span class="grow" data-i18n="labelMinGames"></span>
+        <input type="number" id="minGames" min="0" max="100" />
+      </label>
+      <label class="row">
+        <span class="grow" data-i18n="labelMinAccuracyGames"></span>
+        <input type="number" id="minAccuracyGames" min="1" max="100" />
+      </label>
+    </section>
+
+    <section>
+      <h2 data-i18n="sectionIndicator"></h2>
+      <label class="row">
+        <input type="checkbox" id="showOpponentIndicator" />
+        <span class="grow" data-i18n="labelIndicatorOpponent"></span>
+      </label>
+      <label class="row">
+        <input type="checkbox" id="showOwnIndicator" />
+        <span class="grow" data-i18n="labelIndicatorSelf"></span>
+      </label>
+    </section>
+
+    <footer>
+      <button id="save" data-i18n="buttonSave"></button>
+      <button id="reset" class="ghost" data-i18n="buttonReset"></button>
+      <span id="status"></span>
+    </footer>
+
+    <p class="contact">
+      <!-- значки лежат прямо в разметке: путь через chrome.runtime.getURL тут не нужен,
+           а лишний запрос за файлом мог бы не успеть до открытия попапа -->
+      <a id="contact" href="mailto:support@fbextractor.com" title="support@fbextractor.com">
+        <svg viewBox="0 0 16 16" width="15" height="15" fill="currentColor" aria-hidden="true">
+          <path d="M2 3h12a1 1 0 0 1 1 1v.2L8 8.6 1 4.2V4a1 1 0 0 1 1-1Z" />
+          <path d="M15 5.9V12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V5.9l6.7 4.2a.6.6 0 0 0 .6 0L15 5.9Z" />
+        </svg>
+      </a>
+      <a
+        id="github"
+        href="https://github.com/maestroant/chess-cheating-signals"
+        target="_blank"
+        rel="noreferrer"
+        title="GitHub"
+      >
+        <svg viewBox="0 0 16 16" width="15" height="15" fill="currentColor" aria-hidden="true">
+          <path
+            d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38
+               0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01
+               1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95
+               0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.65 7.65 0 0 1 4 0c1.53-1.03
+               2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65
+               3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8 8 0 0 0 8 0Z"
+          />
+        </svg>
+      </a>
+      <a
+        id="website"
+        href="https://chess.fbextractor.com"
+        target="_blank"
+        rel="noreferrer"
+        title="chess.fbextractor.com"
+      >
+        <svg viewBox="0 0 16 16" width="15" height="15" fill="currentColor" aria-hidden="true">
+          <path
+            d="M8 1.6 1 7.9v.7h1.9V14a.5.5 0 0 0 .5.5h3.1V10h3v4.5h3.1a.5.5 0 0 0
+               .5-.5V8.6H15v-.7L8 1.6Z"
+          />
+        </svg>
+      </a>
+    </p>
+
+    <script src="../i18n.js"></script>
+    <script src="../content/locale.js"></script>
+    <script src="../content/settings.js"></script>
+    <script src="popup.js"></script>
+  </body>
+</html>

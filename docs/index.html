@@ -1,0 +1,1247 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Chess Cheating Signals — see who you are playing on chess.com</title>
+    <meta
+      name="description"
+      content="Free Chrome extension that badges your chess.com opponent from their last hours of play: win streaks, fresh accounts and unusually high accuracy. No account, no servers, no paid version."
+    />
+    <meta property="og:title" content="Chess Cheating Signals" />
+    <meta
+      property="og:description"
+      content="Badges on your opponent's card on chess.com, read from their last hours of play. Free, with no paid version."
+    />
+    <meta property="og:type" content="website" />
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/logo-32.png" />
+    <link rel="icon" type="image/png" sizes="128x128" href="assets/logo-128.png" />
+    <link rel="apple-touch-icon" href="assets/logo-256.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        /* Accent: chess.com green */
+        --brand: #81b64c;
+        --brand-dk: #5d8034;
+        --brand-lt: #eef5e4;
+        --red: #e53935;
+
+        /* Цвета бейджей — из src/tokens.css */
+        --lucky: #fa412d;
+        --new: #ffe159;
+        --cold: #93ea5d;
+        --high: #9d0202;
+        --win: #6ab64c;
+        --loss: #e45748;
+        --rate: #57d5ff;
+
+        --text: #1c1e21;
+        --sub: #65676b;
+        --border: #dde1e7;
+        --card: #ffffff;
+        --bg: #f0f2f5;
+        --board: #312e2b;
+
+        --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+        --shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+        --shadow-lg: 0 18px 50px rgba(93, 128, 52, 0.18);
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: Inter, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        color: var(--text);
+        background: #fff;
+        line-height: 1.5;
+        -webkit-font-smoothing: antialiased;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      .wrap {
+        max-width: 1140px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      /* ─── nav ─── */
+      nav {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--border);
+      }
+      .nav-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 64px;
+      }
+      .brand-logo {
+        display: block;
+        width: 34px;
+        height: 34px;
+        /* глянцевый рендер на мелком размере тускнеет — добавляем немного контраста */
+        filter: saturate(1.1);
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        font-weight: 800;
+        font-size: 17px;
+        letter-spacing: -0.4px;
+      }
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 28px;
+      }
+      .nav-links a {
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--sub);
+        transition: color 0.15s;
+      }
+      .nav-links a:hover {
+        color: var(--text);
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-family: inherit;
+        font-weight: 700;
+        font-size: 14px;
+        border-radius: 10px;
+        cursor: pointer;
+        border: none;
+        padding: 11px 18px;
+        transition: all 0.15s;
+        white-space: nowrap;
+      }
+      .btn-primary {
+        background: var(--brand);
+        color: #fff;
+        box-shadow: 0 2px 10px rgba(129, 182, 76, 0.35);
+      }
+      .btn-primary:hover {
+        background: #74a544;
+        transform: translateY(-1px);
+        box-shadow: 0 6px 18px rgba(129, 182, 76, 0.4);
+      }
+      .btn-ghost {
+        background: var(--brand-lt);
+        color: var(--brand-dk);
+      }
+      .btn-ghost:hover {
+        background: #e3efd4;
+      }
+      .btn-lg {
+        padding: 15px 26px;
+        font-size: 16px;
+        border-radius: 12px;
+      }
+      .btn svg {
+        flex: none;
+      }
+      .btn-icon {
+        padding: 11px;
+      }
+      .nav-cta {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      /* ─── hero ─── */
+      .hero {
+        padding: 80px 0 90px;
+        position: relative;
+        overflow: hidden;
+      }
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: -200px;
+        right: -200px;
+        width: 600px;
+        height: 600px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(129, 182, 76, 0.12), transparent 70%);
+        z-index: 0;
+      }
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 56px;
+        align-items: center;
+        position: relative;
+        z-index: 1;
+      }
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        background: var(--brand-lt);
+        color: var(--brand-dk);
+        font-size: 13px;
+        font-weight: 600;
+        padding: 6px 13px;
+        border-radius: 20px;
+        margin-bottom: 22px;
+      }
+      .pill .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--brand);
+        flex-shrink: 0;
+        animation: live-pulse 2.2s ease-out infinite;
+        transform: translateZ(0);
+      }
+      @keyframes live-pulse {
+        0% {
+          box-shadow: 0 0 0 0 rgba(129, 182, 76, 0.45), 0 0 0 0 rgba(129, 182, 76, 0.2);
+        }
+        60% {
+          box-shadow: 0 0 0 4px rgba(129, 182, 76, 0.15), 0 0 0 8px rgba(129, 182, 76, 0.06);
+        }
+        100% {
+          box-shadow: 0 0 0 6px rgba(129, 182, 76, 0), 0 0 0 12px rgba(129, 182, 76, 0);
+        }
+      }
+      h1 {
+        font-size: 50px;
+        font-weight: 800;
+        line-height: 1.08;
+        letter-spacing: -1.5px;
+        margin-bottom: 20px;
+      }
+      h1 .grad {
+        color: var(--brand-dk);
+      }
+      .hero p.lead {
+        font-size: 18px;
+        color: var(--sub);
+        margin-bottom: 32px;
+        max-width: 480px;
+      }
+      .hero-cta {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+      .hero-note {
+        font-size: 13px;
+        color: var(--sub);
+        margin-top: 16px;
+        display: flex;
+        align-items: center;
+        gap: 7px;
+      }
+
+      /* ─── макет карточки игрока: то, что реально видно на доске ─── */
+      .mockup-stage {
+        display: flex;
+        justify-content: center;
+        position: relative;
+      }
+      .mockup-stage::before {
+        content: "";
+        position: absolute;
+        inset: 8% 14%;
+        background: linear-gradient(135deg, var(--brand), var(--brand-dk));
+        filter: blur(60px);
+        opacity: 0.25;
+        border-radius: 50%;
+      }
+      .board {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        background: var(--board);
+        border-radius: 16px;
+        padding: 20px;
+        box-shadow: 0 24px 60px rgba(93, 128, 52, 0.2), 0 8px 24px rgba(0, 0, 0, 0.14);
+        color: #e8e6e3;
+        font-size: 14px;
+      }
+      .player {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: 700;
+        flex-wrap: wrap;
+      }
+      .player .avatar {
+        width: 26px;
+        height: 26px;
+        border-radius: 4px;
+        background: #4a4744;
+        flex-shrink: 0;
+      }
+      .player .rating {
+        font-weight: 400;
+        color: #a5a29c;
+      }
+      .ccd {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        margin-left: 4px;
+      }
+      .score {
+        font-weight: 700;
+        font-size: 13px;
+      }
+      .score .w {
+        color: var(--win);
+      }
+      .score .l {
+        color: var(--loss);
+      }
+      .score .sep {
+        margin: 0 2px;
+        color: #e0e0df;
+      }
+      /* кусок доски между карточками: рисуем сеткой, а не вставляем скриншот */
+      .board-strip {
+        position: relative;
+        margin: 12px 0;
+        border-radius: 6px;
+        overflow: hidden;
+      }
+      .board-img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+
+      /* подсказка всплыла поверх доски: сквозь неё видно клетки */
+      .tip {
+        position: absolute;
+        left: 26px;
+        top: 20px;
+        max-width: 330px;
+        padding: 10px 12px;
+        background: rgba(30, 28, 26, 0.86);
+        backdrop-filter: blur(3px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 6px;
+        color: #c3c2c1;
+        font-size: 13px;
+        font-weight: 600;
+        line-height: 1.5;
+        white-space: pre-line;
+        box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
+      }
+      .tip .w {
+        color: var(--win);
+      }
+      .tip .l {
+        color: var(--loss);
+      }
+      .tip .rate {
+        color: var(--rate);
+      }
+      .tip .opening {
+        color: var(--new);
+      }
+
+      /* ─── stats ─── */
+      .stats {
+        background: var(--bg);
+        padding: 36px 0;
+      }
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 24px;
+      }
+      .stat {
+        text-align: center;
+      }
+      .stat .v {
+        font-size: 32px;
+        font-weight: 800;
+        color: var(--brand-dk);
+        letter-spacing: -1px;
+      }
+      .stat .k {
+        font-size: 13px;
+        color: var(--sub);
+        font-weight: 500;
+        margin-top: 2px;
+      }
+
+      /* ─── section ─── */
+      section.block {
+        padding: 90px 0;
+      }
+      .sec-head {
+        text-align: center;
+        max-width: 620px;
+        margin: 0 auto 56px;
+      }
+      .sec-head .eyebrow {
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--brand-dk);
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        margin-bottom: 12px;
+      }
+      .sec-head h2 {
+        font-size: 38px;
+        font-weight: 800;
+        letter-spacing: -1px;
+        margin-bottom: 14px;
+      }
+      .sec-head p {
+        font-size: 17px;
+        color: var(--sub);
+      }
+
+      /* ─── badges ─── */
+      .case-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+      .feat {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 26px;
+        transition: all 0.2s;
+      }
+      .feat:hover {
+        box-shadow: var(--shadow);
+        transform: translateY(-3px);
+        border-color: transparent;
+      }
+      .feat .ico {
+        display: flex;
+        align-items: center;
+        height: 48px;
+        margin-bottom: 14px;
+      }
+      .feat h3 {
+        font-size: 17px;
+        font-weight: 700;
+        margin-bottom: 8px;
+      }
+      .feat p {
+        font-size: 14px;
+        color: var(--sub);
+        line-height: 1.6;
+      }
+
+      /* ─── steps ─── */
+      .steps {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 28px;
+      }
+      .step {
+        text-align: center;
+      }
+      .step .n {
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+        background: var(--brand);
+        color: #fff;
+        font-size: 20px;
+        font-weight: 800;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 18px;
+        box-shadow: 0 6px 16px rgba(129, 182, 76, 0.3);
+      }
+      .step h3 {
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 8px;
+      }
+      .step p {
+        font-size: 14px;
+        color: var(--sub);
+        line-height: 1.6;
+        max-width: 280px;
+        margin: 0 auto;
+      }
+
+      /* ─── safety ─── */
+      .safety {
+        background: var(--bg);
+      }
+      .safety-grid {
+        display: grid;
+        grid-template-columns: 1.1fr 1fr;
+        gap: 48px;
+        align-items: center;
+      }
+      .safety-grid h2 {
+        font-size: 34px;
+        font-weight: 800;
+        letter-spacing: -1px;
+        margin-bottom: 14px;
+      }
+      .safety-grid > div > p {
+        font-size: 16px;
+        color: var(--sub);
+        margin-bottom: 12px;
+      }
+      .safety-card {
+        background: #fff;
+        border-radius: 16px;
+        padding: 24px;
+        box-shadow: var(--shadow-sm);
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+      .safety-row {
+        display: flex;
+        gap: 14px;
+        align-items: flex-start;
+      }
+      .safety-row .ic {
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+        background: var(--brand-lt);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+      .safety-row h4 {
+        font-size: 15px;
+        font-weight: 700;
+        margin-bottom: 3px;
+      }
+      .safety-row p {
+        font-size: 13px;
+        color: var(--sub);
+        line-height: 1.55;
+      }
+
+      /* ─── faq ─── */
+      .faq-list {
+        max-width: 760px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      details.faq {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 4px 20px;
+        transition: box-shadow 0.2s;
+      }
+      details.faq[open] {
+        box-shadow: var(--shadow);
+      }
+      details.faq summary {
+        list-style: none;
+        cursor: pointer;
+        padding: 16px 0;
+        font-size: 16px;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+      }
+      details.faq summary::-webkit-details-marker {
+        display: none;
+      }
+      details.faq summary .plus {
+        color: var(--brand-dk);
+        font-size: 22px;
+        transition: transform 0.2s;
+        font-weight: 400;
+      }
+      details.faq[open] summary .plus {
+        transform: rotate(45deg);
+      }
+      details.faq p {
+        font-size: 14px;
+        color: var(--sub);
+        line-height: 1.65;
+        padding: 0 0 18px;
+      }
+
+      /* ─── cta band ─── */
+      .cta-band {
+        background: linear-gradient(135deg, var(--brand) 0%, var(--brand-dk) 100%);
+        border-radius: 24px;
+        padding: 56px;
+        text-align: center;
+        color: #fff;
+        position: relative;
+        overflow: hidden;
+      }
+      .cta-band::before {
+        content: "";
+        position: absolute;
+        top: -100px;
+        left: -100px;
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.08);
+      }
+      .cta-band::after {
+        content: "";
+        position: absolute;
+        bottom: -120px;
+        right: -80px;
+        width: 360px;
+        height: 360px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.06);
+      }
+      .cta-band h2 {
+        font-size: 38px;
+        font-weight: 800;
+        letter-spacing: -1px;
+        margin-bottom: 14px;
+        position: relative;
+      }
+      .cta-band p {
+        font-size: 17px;
+        opacity: 0.9;
+        margin-bottom: 28px;
+        position: relative;
+      }
+      .cta-band .btn {
+        background: #fff;
+        color: var(--brand-dk);
+        position: relative;
+      }
+      .cta-band .btn:hover {
+        background: #f0f2f5;
+      }
+      .cta-band .btn-ghost {
+        background: rgba(255, 255, 255, 0.16);
+        color: #fff;
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.35);
+      }
+      .cta-band .btn-ghost:hover {
+        background: rgba(255, 255, 255, 0.26);
+      }
+      .cta-band-actions {
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+        flex-wrap: wrap;
+        position: relative;
+      }
+
+      /* ─── другое расширение автора ─── */
+      .author {
+        margin-top: 72px;
+        display: grid;
+        grid-template-columns: 1fr;
+        max-width: 760px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .author-card {
+        display: flex;
+        gap: 18px;
+        align-items: flex-start;
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 24px;
+      }
+      .author-card .ic {
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        background: #e7f0fd;
+        color: #1877f2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        font-weight: 800;
+        font-size: 15px;
+      }
+      .author-eyebrow {
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: var(--sub);
+        margin-bottom: 10px;
+      }
+      .author-card h3 {
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 6px;
+      }
+      .author-card p {
+        font-size: 14px;
+        color: var(--sub);
+        line-height: 1.6;
+        margin-bottom: 10px;
+      }
+      .author-card a.link {
+        font-size: 14px;
+        font-weight: 600;
+        color: #1877f2;
+      }
+      .author-card a.link:hover {
+        text-decoration: underline;
+      }
+      .author-card .dot-sep {
+        color: var(--border);
+        margin: 0 6px;
+      }
+
+      /* ─── footer ─── */
+      footer {
+        padding: 56px 0 40px;
+        border-top: 1px solid var(--border);
+      }
+      .foot-grid {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 40px;
+        flex-wrap: wrap;
+      }
+      .foot-brand {
+        max-width: 320px;
+      }
+      .foot-brand p {
+        font-size: 13px;
+        color: var(--sub);
+        margin-top: 12px;
+        line-height: 1.6;
+      }
+      .foot-cols {
+        display: flex;
+        gap: 64px;
+      }
+      .foot-col h5 {
+        font-size: 13px;
+        font-weight: 700;
+        margin-bottom: 14px;
+      }
+      .foot-col a {
+        display: block;
+        font-size: 13px;
+        color: var(--sub);
+        margin-bottom: 10px;
+        transition: color 0.15s;
+      }
+      .foot-col a:hover {
+        color: var(--brand-dk);
+      }
+      .foot-bottom {
+        margin-top: 40px;
+        padding-top: 24px;
+        border-top: 1px solid var(--border);
+        font-size: 13px;
+        color: var(--sub);
+      }
+      .disclaimer {
+        font-size: 12px;
+        color: #9aa0a6;
+        line-height: 1.6;
+        margin-top: 12px;
+        max-width: 720px;
+      }
+
+      @media (max-width: 900px) {
+        .hero-grid {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
+        .mockup-stage {
+          order: -1;
+        }
+        h1 {
+          font-size: 38px;
+        }
+        .case-grid,
+        .steps {
+          grid-template-columns: 1fr;
+        }
+        .stats-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 28px;
+        }
+        .safety-grid {
+          grid-template-columns: 1fr;
+          gap: 28px;
+        }
+        .nav-links {
+          display: none;
+        }
+        .cta-band {
+          padding: 40px 24px;
+        }
+        .cta-band h2,
+        .sec-head h2 {
+          font-size: 30px;
+        }
+        .author-card {
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div class="wrap nav-inner">
+        <a class="brand" href="#top">
+          <img class="brand-logo" src="assets/logo-64.png" width="34" height="34" alt="" />
+          Chess Cheating Signals
+        </a>
+        <div class="nav-links">
+          <a href="#badges">Badges</a>
+          <a href="#how">How it works</a>
+          <a href="#privacy">Privacy</a>
+          <a href="#faq">FAQ</a>
+        </div>
+        <div class="nav-cta">
+          <a
+            class="btn btn-ghost btn-icon"
+            href="https://github.com/maestroant/chess-cheating-signals"
+            title="Source on GitHub"
+            aria-label="Source on GitHub"
+            ><svg viewBox="0 0 16 16" width="17" height="17" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg></a
+          >
+          <a class="btn btn-primary" href="https://chromewebstore.google.com/detail/fnpboablfdjolmlogkmochacdlpeeacc"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0 4.5-4.5M12 15l-4.5-4.5"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg> Add to Chrome</a>
+        </div>
+      </div>
+    </nav>
+
+    <header class="hero" id="top">
+      <div class="wrap hero-grid">
+        <div>
+          <span class="pill"><span class="dot"></span> Free · works right inside chess.com</span>
+          <h1>See who you are <span class="grad">actually playing</span></h1>
+          <p class="lead">
+            The extension reads your opponent's last hours of play and puts a badge on their card:
+            a win streak, a brand-new account, suspiciously high accuracy. You see it before you
+            make your first move.
+          </p>
+          <div class="hero-cta">
+            <a class="btn btn-primary btn-lg" href="https://chromewebstore.google.com/detail/fnpboablfdjolmlogkmochacdlpeeacc"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0 4.5-4.5M12 15l-4.5-4.5"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg> Add to Chrome</a>
+            <a class="btn btn-ghost btn-lg" href="https://github.com/maestroant/chess-cheating-signals"><svg viewBox="0 0 16 16" width="17" height="17" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg> Source on GitHub</a>
+          </div>
+          <p class="hero-note">
+            Free, no paid tier · Public data only · No engine, no automation
+          </p>
+        </div>
+
+        <div class="mockup-stage">
+          <div class="board">
+            <div class="player">
+              <span class="avatar"></span>
+              <span>YourOpponent</span>
+              <span class="rating">(1466)</span>
+              <span class="ccd">
+                <svg width="33" height="7" viewBox="0 0 33 7" fill="none" aria-hidden="true">
+                  <clipPath id="clipA"><rect width="33" height="7" rx="3.5" /></clipPath>
+                  <g clip-path="url(#clipA)">
+                    <rect width="33" height="7" fill="#e45748" />
+                    <rect width="23.5" height="7" fill="#6ab64c" />
+                  </g>
+                </svg>
+                <span class="score"><span class="w">5</span><span class="sep">:</span><span class="l">2</span></span>
+                <svg width="38" height="12" viewBox="0 0 38 12" fill="none" role="img" aria-label="LUCKY">
+                  <rect width="38" height="12" rx="2" fill="#fa412d" />
+                  <text x="19" y="9" text-anchor="middle" fill="#000" font-family="Inter, sans-serif"
+                    font-size="8" font-weight="700" letter-spacing="0.3">LUCKY</text>
+                </svg>
+                <svg width="29" height="12" viewBox="0 0 29 12" fill="none" role="img" aria-label="NEW">
+                  <rect width="29" height="12" rx="2" fill="#ffe159" />
+                  <text x="14.5" y="9" text-anchor="middle" fill="#000" font-family="Inter, sans-serif"
+                    font-size="8" font-weight="700" letter-spacing="0.3">NEW</text>
+                </svg>
+                <svg width="30" height="12" viewBox="0 0 30 12" fill="none" role="img" aria-label="HIGH">
+                  <rect width="30" height="12" rx="2" fill="#9d0202" />
+                  <text x="15" y="9" text-anchor="middle" fill="#fff" font-family="Inter, sans-serif"
+                    font-size="8" font-weight="700" letter-spacing="0.3">HIGH</text>
+                </svg>
+              </span>
+            </div>
+
+            <div class="board-strip">
+              <img class="board-img" src="assets/board.png" alt="" />
+              <div class="tip">LUCKY — On a roll: more than 70% wins
+NEW — Fresh account: less than 3 months old
+HIGH — High accuracy: above 85% on average
+
+Wins: <span class="w">5</span> · Losses: <span class="l">2</span> · Draws: 0
+Average accuracy: <span class="rate">91%</span> (from 4 of 7 games)
+Last opening: <span class="opening">London System</span>
+Last played on a phone</div>
+            </div>
+
+            <div class="player">
+              <span class="avatar"></span>
+              <span>You</span>
+              <span class="rating">(1502)</span>
+              <span class="ccd">
+                <svg width="33" height="7" viewBox="0 0 33 7" fill="none" aria-hidden="true">
+                  <clipPath id="clipB"><rect width="33" height="7" rx="3.5" /></clipPath>
+                  <g clip-path="url(#clipB)">
+                    <rect width="33" height="7" fill="#e45748" />
+                    <rect width="24.75" height="7" fill="#6ab64c" />
+                  </g>
+                </svg>
+                <span class="score"><span class="w">3</span><span class="sep">:</span><span class="l">1</span></span>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="stats">
+      <div class="wrap stats-grid">
+        <div class="stat">
+          <div class="v">4</div>
+          <div class="k">signals on the card</div>
+        </div>
+        <div class="stat">
+          <div class="v">12 h</div>
+          <div class="k">default window</div>
+        </div>
+        <div class="stat">
+          <div class="v">55</div>
+          <div class="k">languages</div>
+        </div>
+        <div class="stat">
+          <div class="v">0</div>
+          <div class="k">data collected</div>
+        </div>
+      </div>
+    </div>
+
+    <section class="block" id="badges">
+      <div class="wrap">
+        <div class="sec-head">
+          <div class="eyebrow">The badges</div>
+          <h2>Four things worth noticing</h2>
+          <p>
+            Every threshold, the time window and the game modes counted are yours to set in the
+            popup. Green means good for you, red means be careful.
+          </p>
+        </div>
+
+        <div class="case-grid">
+          <div class="feat">
+            <div class="ico">
+              <svg width="76" height="24" viewBox="0 0 38 12" role="img" aria-label="LUCKY">
+                <rect width="38" height="12" rx="2" fill="#fa412d" />
+                <text x="19" y="9" text-anchor="middle" fill="#000" font-family="Inter, sans-serif"
+                  font-size="8" font-weight="700" letter-spacing="0.3">LUCKY</text>
+              </svg>
+            </div>
+            <h3>On a roll</h3>
+            <p>
+              More than 70% wins in the window. Could be a good day, could be help — either way you
+              are not facing a player having an average session.
+            </p>
+          </div>
+
+          <div class="feat">
+            <div class="ico">
+              <svg width="58" height="24" viewBox="0 0 29 12" role="img" aria-label="NEW">
+                <rect width="29" height="12" rx="2" fill="#ffe159" />
+                <text x="14.5" y="9" text-anchor="middle" fill="#000" font-family="Inter, sans-serif"
+                  font-size="8" font-weight="700" letter-spacing="0.3">NEW</text>
+              </svg>
+            </div>
+            <h3>Fresh account</h3>
+            <p>
+              Registered less than three months ago. Normal for a beginner, less normal next to a
+              rating that keeps climbing.
+            </p>
+          </div>
+
+          <div class="feat">
+            <div class="ico">
+              <svg width="60" height="24" viewBox="0 0 30 12" role="img" aria-label="HIGH">
+                <rect width="30" height="12" rx="2" fill="#9d0202" />
+                <text x="15" y="9" text-anchor="middle" fill="#fff" font-family="Inter, sans-serif"
+                  font-size="8" font-weight="700" letter-spacing="0.3">HIGH</text>
+              </svg>
+            </div>
+            <h3>High accuracy</h3>
+            <p>
+              Averaging above 85% across reviewed games. The strongest signal of the four — and the
+              one engines produce most reliably.
+            </p>
+          </div>
+
+          <div class="feat">
+            <div class="ico">
+              <svg width="64" height="24" viewBox="0 0 32 12" role="img" aria-label="COLD">
+                <rect width="32" height="12" rx="2" fill="#93ea5d" />
+                <text x="16" y="9" text-anchor="middle" fill="#000" font-family="Inter, sans-serif"
+                  font-size="8" font-weight="700" letter-spacing="0.3">COLD</text>
+              </svg>
+            </div>
+            <h3>In a slump</h3>
+            <p>
+              Fewer than 30% wins. Nothing suspicious here — it is simply good news for you, so it
+              is green.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="how" style="background: var(--bg)">
+      <div class="wrap">
+        <div class="sec-head">
+          <div class="eyebrow">How it works</div>
+          <h2>Three steps, then you forget about it</h2>
+        </div>
+        <div class="steps">
+          <div class="step">
+            <div class="n">1</div>
+            <h3>Install</h3>
+            <p>Load the extension in Chrome. No account, no key, no setup screen.</p>
+          </div>
+          <div class="step">
+            <div class="n">2</div>
+            <h3>Open a game</h3>
+            <p>
+              The badges appear on the opponent's card by themselves, next to their rating, within
+              a second of the page loading.
+            </p>
+          </div>
+          <div class="step">
+            <div class="n">3</div>
+            <h3>Hover to see why</h3>
+            <p>
+              The tooltip spells out the numbers behind every badge: record, average accuracy, last
+              opening, phone or desktop.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block safety" id="privacy">
+      <div class="wrap safety-grid">
+        <div>
+          <h2>It reads chess.com, not you</h2>
+          <p>
+            The extension asks chess.com for the same finished-game archive its own pages show,
+            straight from your browser and with your own session.
+          </p>
+          <p>
+            There is no server of ours in between. Nothing is collected, stored or sent anywhere,
+            because there is nowhere to send it — the whole thing is a few files in your browser.
+          </p>
+        </div>
+        <div class="safety-card">
+          <div class="safety-row">
+            <div class="ic">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5d8034" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div>
+              <h4>No accounts, no telemetry</h4>
+              <p>
+                Nothing to sign up for, nothing phoning home. Settings live in Chrome's own storage
+                — ours is not a server you can be a row in.
+              </p>
+            </div>
+          </div>
+          <div class="safety-row">
+            <div class="ic">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5d8034" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            </div>
+            <div>
+              <h4>Finished games only</h4>
+              <p>It cannot see the game in progress — only the archive of games already played.</p>
+            </div>
+          </div>
+          <div class="safety-row">
+            <div class="ic">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5d8034" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+            </div>
+            <div>
+              <h4>Nothing chess.com forbids</h4>
+              <p>
+                No engine, no move hints, no automation, no reading of a live game. It asks
+                chess.com for the finished-game history it already shows you, with the same request
+                the site's own pages make while you browse.
+              </p>
+            </div>
+          </div>
+          <div class="safety-row">
+            <div class="ic">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5d8034" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 18l6-6-6-6"/><path d="M8 6l-6 6 6 6"/></svg>
+            </div>
+            <div>
+              <h4>Free and open source</h4>
+              <p>
+                No paid tier, no trial, no ads. Every line is on GitHub — read it, change it, build
+                it yourself.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="faq">
+      <div class="wrap">
+        <div class="sec-head">
+          <div class="eyebrow">FAQ</div>
+          <h2>Straight answers</h2>
+        </div>
+        <div class="faq-list">
+          <details class="faq">
+            <summary>Does a badge mean my opponent is cheating? <span class="plus">+</span></summary>
+            <p>
+              No. A badge means the numbers stand out, nothing more. A win streak happens to honest
+              players every day, and a new account is usually just a new account. Catching cheaters
+              is chess.com's job — they see far more than any extension can. Treat the badges as a
+              reason to play carefully, not as a verdict.
+            </p>
+          </details>
+          <details class="faq">
+            <summary>Why is the accuracy sometimes missing? <span class="plus">+</span></summary>
+            <p>
+              Accuracy exists only for games chess.com has reviewed. In a typical 12-hour window
+              that is a minority of games, so the HIGH badge appears less often than the others.
+              When too few reviewed games are available, the extension says so instead of guessing.
+            </p>
+          </details>
+          <details class="faq">
+            <summary>Can chess.com see that I use it? <span class="plus">+</span></summary>
+            <p>
+              The extension makes the same requests the site's own pages make while you browse it.
+              It does not touch the game, does not suggest moves and does not automate anything —
+              it only reads history that is already public on every player's profile.
+            </p>
+          </details>
+          <details class="faq">
+            <summary>Is it really free? <span class="plus">+</span></summary>
+            <p>
+              Yes, and not in the freemium sense: there is no paid tier to upgrade to, no trial that
+              expires, no feature held back, no ads and nothing about you to sell. The whole source is
+              on GitHub — if it ever stopped being free, you could keep building the last free version
+              yourself.
+            </p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" style="padding-top: 0">
+      <div class="wrap">
+        <div class="cta-band">
+          <h2>Know your opponent before move one</h2>
+          <p>
+            Free, with no pricing page, because there is nothing to sell. Public data only, no
+            engine, nothing chess.com forbids. Installing takes a minute.
+          </p>
+          <div class="cta-band-actions">
+            <a class="btn btn-lg" href="https://chromewebstore.google.com/detail/fnpboablfdjolmlogkmochacdlpeeacc"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0 4.5-4.5M12 15l-4.5-4.5"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg> Add to Chrome</a>
+            <a class="btn btn-ghost btn-lg" href="https://github.com/maestroant/chess-cheating-signals"><svg viewBox="0 0 16 16" width="17" height="17" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg> Source on GitHub</a>
+          </div>
+        </div>
+
+        <div class="author">
+          <div class="author-eyebrow">Also by the author</div>
+          <div class="author-card">
+            <div class="ic">
+              <img src="assets/fb-extractor-128.png" width="30" height="30" alt="" />
+            </div>
+            <div>
+              <h3>FB Extractor Pro</h3>
+              <p>
+                Chrome extension that exports Facebook groups and group members to CSV or XLSX in
+                one click. No API keys, no setup, free plan included.
+              </p>
+              <p style="font-size: 13px">
+                A separate product, and that one does have a paid plan — this extension does not.
+              </p>
+              <a class="link" href="https://fbextractor.com">fbextractor.com</a>
+              <span class="dot-sep">·</span>
+              <a class="link" href="https://chromewebstore.google.com/detail/fb-extractor/nlchcmccgileneicfgpeeljlojiolhob">Chrome Web Store</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="wrap">
+        <div class="foot-grid">
+          <div class="foot-brand">
+            <a class="brand" href="#top">
+              <img class="brand-logo" src="assets/logo-64.png" width="34" height="34" alt="" />
+              Chess Cheating Signals
+            </a>
+            <p>
+              A free Chrome extension that badges your chess.com opponent from their last hours of
+              play. No paid version, no accounts.
+            </p>
+          </div>
+          <div class="foot-cols">
+            <div class="foot-col">
+              <h5>Project</h5>
+              <a href="https://chromewebstore.google.com/detail/fnpboablfdjolmlogkmochacdlpeeacc">Chrome Web Store</a>
+              <a href="https://github.com/maestroant/chess-cheating-signals">Source code</a>
+              <a href="https://github.com/maestroant/chess-cheating-signals#readme">Install guide</a>
+              <a href="https://github.com/maestroant/chess-cheating-signals/issues">Report an issue</a>
+              <a href="privacy.html">Privacy policy</a>
+            </div>
+            <div class="foot-col">
+              <h5>Also by the author</h5>
+              <a href="https://fbextractor.com">FB Extractor Pro</a>
+              <a href="https://chromewebstore.google.com/detail/fb-extractor/nlchcmccgileneicfgpeeljlojiolhob">Get it on Chrome</a>
+            </div>
+          </div>
+        </div>
+        <div class="foot-bottom">
+          <p>&copy; 2026 Chess Cheating Signals</p>
+          <p class="disclaimer">
+            Not affiliated with, endorsed by or connected to Chess.com. Chess.com is a trademark of
+            its respective owner. The badges are statistical hints about publicly available game
+            history and are not an accusation of cheating.
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

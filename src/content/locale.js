@@ -97,11 +97,11 @@ CCD.locale = {
 
     const found = this.detect()
     this._current = this.resolve(found.code)
-    console.log(
-      "[CCD] язык сайта:", found.code || "нет",
-      "(источник: " + found.source + ")",
-      "→ интерфейс:", this._current
-    )
+    // console.log(
+    //   "[CCD] язык сайта:", found.code || "нет",
+    //   "(источник: " + found.source + ")",
+    //   "→ интерфейс:", this._current
+    // )
     return this._current
   }
 }

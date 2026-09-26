@@ -120,18 +120,18 @@ CCD.ui = {
    */
   dumpRows() {
     const rows = this.rows()
-    console.log("[CCD] строк .cc-user-block-component:", rows.length)
+    // console.log("[CCD] строк .cc-user-block-component:", rows.length)
 
     rows.forEach((row, i) => {
       const box = row.getBoundingClientRect()
-      console.log(
-        "[CCD]   #" + i,
-        i < 2 ? "→ " + ["opponent", "self"][i] : "→ не учитывается (берём только первые две)",
-        "ник:", row.querySelector(this.SELECTORS.username)?.textContent?.trim() || "НЕТ",
-        "| размер:", Math.round(box.width) + "x" + Math.round(box.height),
-        "| сверху:", Math.round(box.top),
-        "| наш узел:", row.querySelector("[data-ccd-role]")?.dataset.ccdRole || "нет"
-      )
+      // console.log(
+      //   "[CCD]   #" + i,
+      //   i < 2 ? "→ " + ["opponent", "self"][i] : "→ не учитывается (берём только первые две)",
+      //   "ник:", row.querySelector(this.SELECTORS.username)?.textContent?.trim() || "НЕТ",
+      //   "| размер:", Math.round(box.width) + "x" + Math.round(box.height),
+      //   "| сверху:", Math.round(box.top),
+      //   "| наш узел:", row.querySelector("[data-ccd-role]")?.dataset.ccdRole || "нет"
+      // )
     })
   },
 
@@ -178,11 +178,12 @@ CCD.ui = {
     const withIndicator = own ? settings.showOwnIndicator : settings.showOpponentIndicator
     const badges = own ? [] : stats.badges
 
-    if (!stats.total || (!withIndicator && !badges.length)) {
-      console.log(
-        "[CCD] " + target.role + " " + target.username + ": нечего рисовать —",
-        !stats.total ? "нет партий в окне" : "индикатор и бейджи выключены"
-      )
+    // партий в окне нет — индикатор всё равно рисуем, серым и со счётом 0:0
+    if (!withIndicator && !badges.length) {
+      // console.log(
+      //   "[CCD] " + target.role + " " + target.username + ": нечего рисовать —",
+      //   "индикатор и бейджи выключены"
+      // )
       this.clear(target.role)
       return
     }
@@ -205,12 +206,12 @@ CCD.ui = {
       return
     }
 
-    console.log(
-      "[CCD] " + target.role + " " + target.username + ": нарисовано —",
-      withIndicator ? "индикатор" : "без индикатора",
-      "| бейджи:", badges.join(",") || "нет",
-      "| видно:", box.getBoundingClientRect().width > 0
-    )
+    // console.log(
+    //   "[CCD] " + target.role + " " + target.username + ": нарисовано —",
+    //   withIndicator ? "индикатор" : "без индикатора",
+    //   "| бейджи:", badges.join(",") || "нет",
+    //   "| видно:", box.getBoundingClientRect().width > 0
+    // )
   },
 
   async badgeNode(badge, blink) {
@@ -221,14 +222,16 @@ CCD.ui = {
   },
 
   async indicatorNode(stats) {
+    const decisive = stats.wld.win + stats.wld.loss
+
     const box = document.createElement("span")
-    box.className = "ccd-indicator"
+    // при 0:0 делить нечего: красная полоса читалась бы как одни поражения
+    box.className = decisive ? "ccd-indicator" : "ccd-indicator ccd-indicator-empty"
 
     const bar = document.createElement("span")
     bar.className = "ccd-indicator-bar"
     bar.innerHTML = await this.svg("indicator")
 
-    const decisive = stats.wld.win + stats.wld.loss
     const share = decisive ? stats.wld.win / decisive : 0
     bar.querySelector("#ccd-wins")?.setAttribute("width", String(33 * share))
 

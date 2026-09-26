@@ -9,10 +9,10 @@ CCD.main = {
   _busy: false,
 
   init() {
-    console.log(
-      "[CCD] content script загружен:", location.pathname,
-      "| версия:", chrome.runtime.getManifest().version
-    )
+    // console.log(
+    //   "[CCD] content script загружен:", location.pathname,
+    //   "| версия:", chrome.runtime.getManifest().version
+    // )
     CCD.locale.current()
     this.schedule()
 
@@ -59,7 +59,7 @@ CCD.main = {
     this._stopped = true
     clearTimeout(this._timer)
     this._observer?.disconnect()
-    console.log("[CCD] расширение перезагружено — обновите страницу")
+    // console.log("[CCD] расширение перезагружено — обновите страницу")
   },
 
   schedule(delay = this.LOAD_DELAY, onlyIfStale = false) {
@@ -91,29 +91,29 @@ CCD.main = {
       const s = await CCD.settings.get()
       await this.applyLanguage()
 
-      console.log(
-        "[CCD] проход:", location.pathname,
-        "| окно:", s.windowHours + " ч",
-        "| свой индикатор:", s.showOwnIndicator,
-        "| индикатор соперника:", s.showOpponentIndicator,
-        "| бейджи:", s.showBadges
-      )
-      CCD.ui.dumpRows()
+      // console.log(
+      //   "[CCD] проход:", location.pathname,
+      //   "| окно:", s.windowHours + " ч",
+      //   "| свой индикатор:", s.showOwnIndicator,
+      //   "| индикатор соперника:", s.showOpponentIndicator,
+      //   "| бейджи:", s.showBadges
+      // )
+      // CCD.ui.dumpRows()
 
       const targets = CCD.ui.targets()
 
       // карточек может не быть вовсе — страница со списком партий, например
       if (!targets.length) {
-        console.log("[CCD] целей нет: ни строк игроков с ником, ни шапки профиля")
+        // console.log("[CCD] целей нет: ни строк игроков с ником, ни шапки профиля")
         return
       }
 
       // строк на доске должно быть ровно две: роль назначается по порядку в DOM,
       // и любой посторонний .cc-user-block-component сдвигает её на чужую карточку
-      console.log(
-        "[CCD] цели:", targets.map((t) => t.role + "=" + t.username).join(", "),
-        "| строк на странице:", CCD.ui.rows().length
-      )
+      // console.log(
+      //   "[CCD] цели:", targets.map((t) => t.role + "=" + t.username).join(", "),
+      //   "| строк на странице:", CCD.ui.rows().length
+      // )
 
       for (const target of targets) {
         const own = target.kind === "indicator"
@@ -122,10 +122,10 @@ CCD.main = {
           : !s.showOpponentIndicator && !s.showBadges
 
         if (nothingToShow) {
-          console.log(
-            "[CCD] " + target.role + " " + target.username + ": выключено в настройках —",
-            own ? "showOwnIndicator" : "showOpponentIndicator + showBadges"
-          )
+          // console.log(
+          //   "[CCD] " + target.role + " " + target.username + ": выключено в настройках —",
+          //   own ? "showOwnIndicator" : "showOpponentIndicator + showBadges"
+          // )
           CCD.ui.clear(target.role)
           continue
         }
@@ -135,16 +135,16 @@ CCD.main = {
           const payload = await CCD.api.playerGames(target.username, since)
           const stats = CCD.analyze.run(payload, s)
 
-          console.log(
-            "[CCD]", target.username,
-            "партий:", stats.total,
-            "W/L/D:", stats.wld.win + "/" + stats.wld.loss + "/" + stats.wld.draw,
-            "винрейт:", Math.round(stats.winRate) + "%",
-            "точность:", stats.accuracy ? Math.round(stats.accuracy) + "% по " + stats.accGames : "нет",
-            "бейджи:", stats.badges.join(",") || "нет",
-            "дебют:", stats.opening || "нет",
-            "источник:", payload.source
-          )
+          // console.log(
+          //   "[CCD]", target.username,
+          //   "партий:", stats.total,
+          //   "W/L/D:", stats.wld.win + "/" + stats.wld.loss + "/" + stats.wld.draw,
+          //   "винрейт:", Math.round(stats.winRate) + "%",
+          //   "точность:", stats.accuracy ? Math.round(stats.accuracy) + "% по " + stats.accGames : "нет",
+          //   "бейджи:", stats.badges.join(",") || "нет",
+          //   "дебют:", stats.opening || "нет",
+          //   "источник:", payload.source
+          // )
 
           await CCD.ui.render(target, stats, s)
         } catch (e) {

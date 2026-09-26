@@ -19,7 +19,7 @@ CCD.api = {
     const key = username.toLowerCase()
     const hit = this._cache.get(key)
     if (hit && Date.now() - hit.ts < this.TTL_MS) {
-      console.log("[CCD] " + username + ": из кэша,", hit.payload.games.length, "партий")
+      // console.log("[CCD] " + username + ": из кэша,", hit.payload.games.length, "партий")
       return hit.payload
     }
 
@@ -33,10 +33,10 @@ CCD.api = {
       payload = await this._public(username, sinceMs)
     }
 
-    console.log(
-      "[CCD] " + username + ":", payload.games.length, "партий из", payload.source,
-      "| профиль:", payload.profile?.username || "нет"
-    )
+    // console.log(
+    //   "[CCD] " + username + ":", payload.games.length, "партий из", payload.source,
+    //   "| профиль:", payload.profile?.username || "нет"
+    // )
 
     this._cache.set(key, { ts: Date.now(), payload })
     return payload
@@ -75,12 +75,12 @@ CCD.api = {
     const first = raw?.hydratedGames?.[0]
     if (!first) return
 
-    console.log(
-      "[CCD] блоки ответа:", Object.keys(first).join(", "),
-      "| дебют:", first.openingMetadata?.ecoFamilyName ?? "НЕТ",
-      "| точность:", first.analysisMetadata?.whitePlayerMetadata?.accuracy ?? "НЕТ",
-      "| профиль:", first.playerMetadata?.whitePlayerMetadata?.username ?? "НЕТ"
-    )
+    // console.log(
+    //   "[CCD] блоки ответа:", Object.keys(first).join(", "),
+    //   "| дебют:", first.openingMetadata?.ecoFamilyName ?? "НЕТ",
+    //   "| точность:", first.analysisMetadata?.whitePlayerMetadata?.accuracy ?? "НЕТ",
+    //   "| профиль:", first.playerMetadata?.whitePlayerMetadata?.username ?? "НЕТ"
+    // )
   },
 
   async _hydrate(username, page) {

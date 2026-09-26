@@ -33,7 +33,7 @@ body {
   overflow: hidden;
 }
 body {
-  font-family: Inter, "Nirmala UI", "Noto Sans Devanagari", "Segoe UI", Roboto,
+  font-family: Inter, "Nirmala UI", "Noto Sans Devanagari", "Noto Sans Bengali", "Segoe UI", Roboto,
     Helvetica, Arial, sans-serif;
   color: var(--text);
   -webkit-font-smoothing: antialiased;

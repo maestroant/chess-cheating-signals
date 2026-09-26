@@ -51,6 +51,14 @@
   display: block;
 }
 
+/* счёт 0:0 — полоса и цифры серые */
+.ccd-indicator-empty {
+  --ccd-bar-loss: var(--ccd-empty);
+  --ccd-win: var(--ccd-empty);
+  --ccd-loss: var(--ccd-empty);
+  --ccd-sep: var(--ccd-empty);
+}
+
 .ccd-indicator-bar {
   display: inline-flex;
   flex: 0 0 auto;

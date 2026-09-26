@@ -14,15 +14,15 @@ CCD.analyze = {
     )
 
     // видно, куда делись партии: за окно по времени или под отсев по тайм-контролю
-    if (games.length !== payload.games.length) {
-      const classes = {}
-      for (const g of payload.games) classes[g.timeClass] = (classes[g.timeClass] || 0) + 1
-      console.log(
-        "[CCD] отсев:", payload.games.length, "→", games.length,
-        "| в ответе:", JSON.stringify(classes),
-        "| учитываем:", s.timeClasses.join(",")
-      )
-    }
+    // if (games.length !== payload.games.length) {
+    //   const classes = {}
+    //   for (const g of payload.games) classes[g.timeClass] = (classes[g.timeClass] || 0) + 1
+    //   console.log(
+    //     "[CCD] отсев:", payload.games.length, "→", games.length,
+    //     "| в ответе:", JSON.stringify(classes),
+    //     "| учитываем:", s.timeClasses.join(",")
+    //   )
+    // }
 
     const wld = { win: 0, loss: 0, draw: 0 }
     let accSum = 0
@@ -37,7 +37,10 @@ CCD.analyze = {
     }
 
     const total = wld.win + wld.loss + wld.draw
-    const winRate = total ? (wld.win / total) * 100 : 0
+    // ничьи в процент побед не входят — так же считается счёт в индикаторе,
+    // и плашка не расходится с цифрами рядом с ней
+    const decisive = wld.win + wld.loss
+    const winRate = decisive ? (wld.win / decisive) * 100 : 0
     const accuracy = accGames ? accSum / accGames : null
 
     return {
@@ -49,7 +52,7 @@ CCD.analyze = {
       source: payload.source,
       device: this.device(games),
       opening: this.latest(games, "opening"),
-      badges: this.badges({ total, winRate, accuracy, accGames, profile: payload.profile }, s)
+      badges: this.badges({ decisive, winRate, accuracy, accGames, profile: payload.profile }, s)
     }
   },
 
@@ -57,7 +60,8 @@ CCD.analyze = {
     const list = []
     if (!s.showBadges) return list
 
-    if (stats.total > s.minGames && stats.winRate > s.luckyWinRate) {
+    // минимум тоже по результативным: иначе 1:0 при пяти ничьих дало бы 100% и LUCKY
+    if (stats.decisive > s.minGames && stats.winRate > s.luckyWinRate) {
       list.push("lucky")
     }
     if (stats.profile?.createdAt) {
@@ -71,7 +75,7 @@ CCD.analyze = {
     ) {
       list.push("high")
     }
-    if (stats.total > s.minGames && stats.winRate < s.coldWinRate) {
+    if (stats.decisive > s.minGames && stats.winRate < s.coldWinRate) {
       list.push("cold")
     }
 

@@ -6,6 +6,7 @@ CCD.api = {
     "https://www.chess.com/service/player-game-archive-v2/" +
     "chesscom.game_gateway.v2.GameGatewayService/HydrateGamesByCriteria",
   PAGE_SIZE: 50,
+  FIELD_MASK: "game,playerMetadata,analysisMetadata,openingMetadata",
   MAX_PAGES: 3,
   TTL_MS: 60000,
 
@@ -47,6 +48,9 @@ CCD.api = {
   async _internal(username, sinceMs) {
     const games = []
     let profile = null
+    // клиент самой свежей партии, даже вне окна: устройство нужно и тому,
+    // кто за последние часы ещё не доиграл ни одной партии
+    let latest = null
 
     for (let page = 1; page <= this.MAX_PAGES; page++) {
       const raw = await this._hydrate(username, page)
@@ -57,6 +61,7 @@ CCD.api = {
         const game = this._normalize(item, username)
         if (!game) continue
         if (game.profile && !profile) profile = game.profile
+        if (game.client && (!latest || game.endedAt > latest.endedAt)) latest = game
         if (game.endedAt >= sinceMs) games.push(game)
       }
 
@@ -64,7 +69,7 @@ CCD.api = {
       if (list.length < this.PAGE_SIZE || oldest < sinceMs) break
     }
 
-    return { games, profile, source: "internal" }
+    return { games, profile, client: latest?.client ?? null, source: "internal" }
   },
 
   /** Разовый лог структуры ответа: показывает, какие блоки реально приходят */
@@ -105,14 +110,19 @@ CCD.api = {
       // о нём. Пока забывали на любой не-ok, один отказ стирал кэш, и следующий
       // проход шёл качать HTML профиля — то есть ровно туда, откуда прилетел
       // отказ. Так один 429 превращался в бесконечную череду новых.
-      if (playerId && res.status === 400) await this._forgetUuid(username)
+      // у Connect-RPC причина лежит в теле ответа — без неё 400 не отладить
+      const detail = (await res.text().catch(() => "")).slice(0, 300)
+
+      // «Cannot find field» — сервер сменил схему запроса, uuid тут ни при чём:
+      // стерев его, мы бы только зря качали профиль заново
+      if (playerId && res.status === 400 && !/cannot find field/i.test(detail)) {
+        await this._forgetUuid(username)
+      }
 
       // 429 с любого адреса chess.com — просьба притормозить целиком: лимит
       // считается по IP, а не по эндпоинту.
       if (res.status === 429) await this._pauseProfile(res.headers.get("retry-after"))
 
-      // у Connect-RPC причина лежит в теле ответа — без неё 400 не отладить
-      const detail = (await res.text().catch(() => "")).slice(0, 300)
       throw new Error(
         "HTTP " + res.status +
         (playerId ? " (playerId: " + playerId + ")" : " (без playerId)") +
@@ -133,11 +143,17 @@ CCD.api = {
         "content-type": "application/json",
         "connect-protocol-version": "1"
       },
+      // С 28.09.2026 параметры лежат в обёртке criteria: плоское тело сервер
+      // отвергает ("Cannot find field: … in HydrateGamesByCriteriaRequest" → 400).
+      // Без fieldMask приходит один блок game — ни точности, ни даты регистрации, ни дебюта
       body: JSON.stringify({
-        isVsComputer: false,
-        isVsCoach: false,
-        pageSize: this.PAGE_SIZE,
-        ...body
+        criteria: {
+          isVsComputer: false,
+          isVsCoach: false,
+          pageSize: this.PAGE_SIZE,
+          ...body
+        },
+        fieldMask: this.FIELD_MASK
       })
     })
   },

@@ -50,7 +50,7 @@ CCD.analyze = {
       accuracy,
       accGames,
       source: payload.source,
-      device: this.device(games),
+      device: this.device(payload.client ?? this.latest(games, "client")),
       opening: this.latest(games, "opening"),
       badges: this.badges({ decisive, winRate, accuracy, accGames, profile: payload.profile }, s)
     }
@@ -92,10 +92,20 @@ CCD.analyze = {
     return found ? found[key] : null
   },
 
-  /** Устройство из поля client последней партии */
-  device(games) {
-    const client = this.latest(games, "client")
+  /**
+   * Устройство по полю client последней партии. Его отдаёт только внутренний
+   * эндпоинт (payload.client — самая свежая партия, даже вне окна); в публичном API поля нет.
+   */
+  device(client) {
     if (!client) return null
-    return /iphone|ipad|android|mobile|ios/i.test(client) ? "phone" : "pc"
-  }
+    // телефон проверяем первым: Android — это тоже Linux
+    if (this.PHONE.test(client)) return "phone"
+    if (this.PC.test(client)) return "pc"
+    return null // незнакомый клиент — не гадаем
+  },
+
+  // Приложения (Chesscom-iOS/…, Chesscom-Android-…) и сайт с телефона (LC6;…;iOS / Android OS;…)
+  PHONE: /iphone|ipad|android|mobile|ios\b/i,
+  // Сайт с компьютера: LC6;chrome/153.0.0/browser;Windows 10 / Mac OS / Linux / Chrome OS
+  PC: /windows|mac ?os|macintosh|linux|ubuntu|cros|chrome ?os/i
 }

@@ -12,9 +12,18 @@ content-type: application/json
 connect-protocol-version: 1        ← chess.com шлёт этот заголовок (Connect RPC)
 cookie: <сессия, уходит сама из content script>
 
-{ "username": "НИК", "playerId": "<uuid>",
-  "isVsComputer": false, "isVsCoach": false, "page": 1, "pageSize": 50 }
+{ "criteria": { "username": "НИК", "playerId": "<uuid>",
+                "isVsComputer": false, "isVsCoach": false, "page": 1, "pageSize": 50 },
+  "fieldMask": "game,playerMetadata,analysisMetadata,openingMetadata" }
 ```
+
+**28.09.2026 формат сменился.** Раньше тело было плоским (те же поля без обёртки) — теперь
+сервер его отвергает: `400 invalid_argument: Cannot find field: isVsComputer in message
+HydrateGamesByCriteriaRequest`, и расширение молча уходило в публичный API. Параметры
+переехали в `criteria` (сообщение `chesscom.game_gateway.v2.Criteria`; сайт там же шлёт
+`gameIds`). `fieldMask` обязателен: без него приходит только блок `game` — без точности,
+даты регистрации и названия дебюта. Проверено запросом без логина: 200, фильтр по нику
+и `page` работают, `username` без `playerId` тоже принимается.
 
 Важно: сам chess.com **не шлёт** ни `fieldMask`, ни `timeClasses`, ни обёртку `criteria` —
 плоское тело, и в ответ приходит всё. Статус 200, CSRF-заголовков нет.

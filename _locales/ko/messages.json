@@ -1,0 +1,8 @@
+{
+  "extName": {
+    "message": "Chess Cheating Signals"
+  },
+  "extDescription": {
+    "message": "무료. chess.com 상대 신호를 공개 데이터만으로 표시: 승률, 정확도, 계정 생성 시기. 엔진을 쓰지 않습니다."
+  }
+}

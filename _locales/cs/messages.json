@@ -1,0 +1,8 @@
+{
+  "extName": {
+    "message": "Chess Cheating Signals"
+  },
+  "extDescription": {
+    "message": "Zdarma. Signály o soupeři na chess.com jen z veřejných dat: výhry, přesnost, věk účtu. Bez enginu."
+  }
+}

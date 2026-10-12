@@ -1,0 +1,8 @@
+{
+  "extName": {
+    "message": "Chess Cheating Signals"
+  },
+  "extDescription": {
+    "message": "Libre. Mga senyales sa kalaban sa chess.com mula sa pampublikong data lang: win rate, accuracy, edad ng account. Walang engine."
+  }
+}

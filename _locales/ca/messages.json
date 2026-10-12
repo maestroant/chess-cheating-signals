@@ -1,0 +1,8 @@
+{
+  "extName": {
+    "message": "Chess Cheating Signals"
+  },
+  "extDescription": {
+    "message": "Gratuït. Senyals del rival a chess.com només amb dades públiques: victòries, precisió, antiguitat del compte. Sense motor."
+  }
+}

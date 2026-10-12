@@ -1,0 +1,147 @@
+.ccd-card {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  /* logical property: на страницах справа налево отступ уходит на другую сторону */
+  margin-inline-start: 8px;
+  vertical-align: middle;
+  line-height: 1;
+  overflow: visible;
+  cursor: default;
+}
+
+.ccd-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.ccd-badge {
+  display: inline-flex;
+  line-height: 0;
+  /* форма задаётся ещё и здесь: если вёрстка страницы обрежет низ SVG,
+     скругление всё равно останется одинаковым сверху и снизу */
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+/* три моргания при появлении бейджа */
+@keyframes ccd-blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.1;
+  }
+}
+
+.ccd-badge.ccd-blink {
+  animation: ccd-blink 0.8s ease-in-out 3;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ccd-badge.ccd-blink {
+    animation: none;
+  }
+}
+
+.ccd-badge svg,
+.ccd-indicator-bar svg {
+  display: block;
+}
+
+.ccd-indicator-bar {
+  display: inline-flex;
+  flex: 0 0 auto;
+  line-height: 0;
+}
+
+/* у chess.com есть свои правила для svg внутри строки игрока — фиксируем размер жёстко */
+.ccd-card .ccd-indicator-bar svg {
+  display: block;
+  width: 33px;
+  height: 7px;
+  min-height: 7px;
+  max-width: none;
+  max-height: none;
+  overflow: visible;
+}
+
+.ccd-card .ccd-badge svg {
+  display: block;
+  height: 12px;
+  min-height: 12px;
+  max-height: none;
+}
+
+.ccd-score {
+  font-family: "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.ccd-score .ccd-win {
+  color: var(--ccd-win);
+}
+
+.ccd-score .ccd-loss {
+  color: var(--ccd-loss);
+}
+
+.ccd-score .ccd-sep {
+  margin: 0 2px;
+  color: var(--ccd-sep);
+}
+
+.ccd-tooltip {
+  position: fixed;
+  z-index: 2147483647;
+  pointer-events: none;
+}
+
+.ccd-tooltip[hidden] {
+  display: none;
+}
+
+/*
+ * Запасной вид, если классы подсказки chess.com изменятся: :where() даёт нулевую
+ * специфичность, поэтому любое правило сайта перебьёт эти значения.
+ */
+:where(.ccd-tooltip-inner) {
+  display: block;
+  padding: 8px 10px;
+  border-radius: 5px;
+  background: var(--ccd-tip-bg);
+  color: var(--ccd-tip-text);
+  /* размеры настоящей подсказки chess.com: 17px / 600 */
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.35;
+  box-shadow: 0 6px 18px var(--ccd-tip-shadow);
+}
+
+.ccd-tooltip .ccd-t-win {
+  color: var(--ccd-win);
+}
+
+.ccd-tooltip .ccd-t-loss {
+  color: var(--ccd-loss);
+}
+
+.ccd-tooltip .ccd-t-opening {
+  color: var(--ccd-new);
+}
+
+.ccd-tooltip .ccd-t-rate {
+  color: var(--ccd-rate);
+}
+
+/* Подсказки сайта — короткие однострочные ярлыки, нам нужен многострочный текст */
+.ccd-tooltip .ccd-tooltip-inner {
+  max-width: 420px;
+  white-space: pre-line;
+  /* start, а не left: на арабском и иврите текст должен прижиматься справа */
+  text-align: start;
+}
